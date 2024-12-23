@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Détails visuels</title>
+  <meta name="description" content="partie portfolio">
+
+  <link href="assets/img/favicon.png" rel="icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="portfolio-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename"> Portfolio</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="about.html">A propos</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="portfolio.html" class="active">Portfolio</a></li>
+          <li><a href="blog.html">Blog</a></li>
+
+
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Portfolio</h1>
+              <p class="mb-0">Versions imagées de mon portfolio avec mes certifications, mes hobbies,...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Portfolio</li>
+          </ol>
+        </div>
+      </nav>
+    </div>
+
+    <section id="portfolio" class="portfolio section">
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">Tous</li>
+            <li data-filter=".filter-cyberdefense">Cyberdéfense</li>
+            <li data-filter=".filter-pentesting">Pentesting</li>
+            <li data-filter=".filter-dev">Dev web </li>
+            <li data-filter=".filter-hobbies">Hobbies</li>
+          </ul>
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-hobbies">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/basket.png" class="img-fluid portfolio__image--size" alt="Photo d'un ballon de basketball">
+                <div class="portfolio-info">
+                  <h4>Basketball</h4>
+                  <p>Sport d'équipe préféré.</p>
+                  <a href="assets/img/portfolio/basket.png" title="basket" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-pentesting">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/hacker3.jpeg" class="img-fluid portfolio__image--size" alt="photo de ma certification de complete beginner">
+                <div class="portfolio-info">
+                  <h4>Complete beginner </h4>
+                  <p>Certifications complete beginner de la cyberoffensive | Tryhackme</p>
+                  <a href="assets/img/portfolio/complete_beginner.png" title=" IT" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-dev">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/info.png" class="img-fluid portfolio__image--size" alt="image d'un écran">
+                <div class="portfolio-info">
+                  <h4>Web</h4>
+                  <p>Developpement informatique</p>
+                  <a href="assets/img/portfolio/info.png" title="IT " data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cyberdefense">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/hacker2.jpeg" class="img-fluid portfolio__image--size" alt="image d'un">
+                <div class="portfolio-info">
+                  <h4>Intro_cyber</h4>
+                  <p>Introduction à la cyber | Tryhackme</p>
+                  <a href="assets/img/portfolio/intro_cyber.png" title="Cyber Intro" data-gallery="portfolio-gallery-book" class="glightbox preview-link text-center"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cyberdefense">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/isc2.jpeg" class="img-fluid portfolio__image--size" alt="image du logo isc2">
+                <div class="portfolio-info">
+                  <h4>ISC2</h4>
+                  <p>Certification cyberincident | ISC2</p>
+                  <a href="assets/img/portfolio/isc2.png" title="ISC2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-hobbies">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/mangas.png" class="img-fluid portfolio__image--size" alt="image du mangas onepiece">
+                <div class="portfolio-info">
+                  <h4>Mangas</h4>
+                  <p>Mangas </p>
+                  <a href="assets/img/portfolio/mangas.png" title="Mugiwara" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-hobbies">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/meditation.png" class="img-fluid portfolio__image--size" alt="image d'un coucher de soleil">
+                <div class="portfolio-info">
+                  <h4>Médidation</h4>
+                  <p>méditation quotidienne pour gérer le stress</p>
+                  <a href="assets/img/portfolio/meditation.png" title="sunset" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-hobbies">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/morse.png" class="img-fluid portfolio__image--size" alt="image de mon livre: Le MORSE">
+                <div class="portfolio-info">
+                  <h4>Mon livre</h4>
+                  <p>Le Morse, mon livre sur le développement personnel</p>
+                  <a href="assets/img/portfolio/morse.png" title="morse" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-pentesting">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/hacker1.jpeg" class="img-fluid portfolio__image--size" alt="image d'un pentester">
+                <div class="portfolio-info">
+                  <h4>Pentesting</h4>
+                  <p>Certification de junior pentester</p>
+                  <a href="assets/img/portfolio/pentester.png" title="Pentester" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-hobbies">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/stoic.png" class="img-fluid portfolio__image--size" alt="image d'un stoicien">
+                <div class="portfolio-info">
+                  <h4>Stoicisme</h4>
+                  <p>Le stoicisme...</p>
+                  <a href="assets/img/portfolio/stoic.png" title="stoic" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-dev">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/symfony_logo.jpeg" class="img-fluid portfolio__image--size" alt="image du logo de symfony">
+                <div class="portfolio-info">
+                  <h4>Symfony</h4>
+                  <p>Framework de developpement backend</p>
+                  <a href="assets/img/portfolio/symfony.PNG" title="symfony logo" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-dev">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/info.png" class="img-fluid portfolio__image--size" alt="image representant du web">
+                <div class="portfolio-info">
+                  <h4>Fondamentaux du web</h4>
+                  <p>Certifications des bases du web</p>
+                  <a href="assets/img/portfolio/web_fund.png" title="fondamentaux du web" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3 class="sitename">Vous savez quoi? </h3>
+      <p>J'aime ce que je fais</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://github.com/BanconleAkobi/"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/banconl%C3%A9-akobi-a88940273/"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <strong class="px-1 sitename">Portfolio-Banconle</strong> <span>Tout droits réservés  </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
