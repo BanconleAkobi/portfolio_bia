@@ -172,60 +172,170 @@
 
 const articles = {
   article1: `
-    𝟮𝟬𝟮𝟱 : 𝗙𝗮𝘂𝘁-𝗶𝗹 𝗲𝗻𝗰𝗼𝗿𝗲 𝗮𝗽𝗽𝗿𝗲𝗻𝗱𝗿𝗲 𝗣𝗛𝗣 ? 🤔<br>
+    <h4>L'IA va-t-elle tuer le Bug Bounty ? 🤖</h4>
     <br>
-    Pour répondre à cette question, regarde pourquoi PHP n’est toujours pas mort.<br>
+    <strong>TL;DR :</strong> Non, mais elle va changer la donne. Et c'est tant mieux !<br>
     <br>
-    𝗩𝗼𝗶𝗰𝗶 𝟳 𝗿𝗮𝗶𝘀𝗼𝗻𝘀 :<br>
+    <strong>Le constat :</strong> ChatGPT trouve des vulnérabilités en 2 minutes. GitHub Copilot génère du code sécurisé. Les outils d'IA se multiplient comme des champignons.<br>
     <br>
-    🌐 𝗟’𝗲𝘀𝗽𝗿𝗶𝘁 𝗰𝗼𝗺𝗺𝘂𝗻𝗮𝘂𝘁𝗮𝗶𝗿𝗲<br>
-    La grande communauté de PHP assure un soutien constant et une collaboration continue, ce qui le rend ultra solide.<br>
+    <strong>Mais voilà le truc :</strong> L'IA ne remplace pas l'intuition humaine. Elle ne comprend pas le contexte business. Elle ne voit pas les failles logiques que seul un humain peut identifier.<br>
     <br>
-    📈 𝗨𝗻𝗲 𝗲́𝘃𝗼𝗹𝘂𝘁𝗶𝗼𝗻 𝗰𝗼𝗻𝘀𝘁𝗮𝗻𝘁𝗲<br>
-    Des mises à jour régulières apportent de nouvelles fonctionnalités, ce qui rend PHP compétitif, même dans le temps.<br>
+    <strong>Mon expérience :</strong> J'ai testé ChatGPT sur des CTF. Résultat ? Il trouve les vulnérabilités basiques (SQL injection, XSS) mais rate complètement les exploits créatifs. L'IA est un super assistant, pas un remplaçant.<br>
     <br>
-    🏆 𝗟𝗲 𝗰𝗵𝗼𝗶𝘅 𝗱𝗲𝘀 𝗴𝗲́𝗮𝗻𝘁𝘀 𝗱𝘂 𝗪𝗲𝗯<br>
-    En soutenant WordPress, Joomla et Drupal, PHP est l'épine dorsale des géants d'internet.<br>
+    <strong>L'avenir du Bug Bounty :</strong><br>
+    • Plus de focus sur la logique métier<br>
+    • Exploits plus sophistiqués<br>
+    • Collaboration humain-IA<br>
+    • Récompenses plus élevées pour les vrais experts<br>
     <br>
-    🧰 𝗨𝗻𝗲 𝗽𝗼𝗹𝘆𝘃𝗮𝗹𝗲𝗻𝗰𝗲 𝗮̀ 𝘁𝗼𝘂𝘁𝗲 𝗲́𝗽𝗿𝗲𝘂𝘃𝗲<br>
-    PHP n'est pas seulement pour le web ; il est utile pour diverses applications et besoins en programmation.<br>
+    <strong>Bottom line :</strong> L'IA va élever le niveau, pas tuer le métier. Les meilleurs hunters vont devenir encore meilleurs. Les autres... eh bien, ils devront s'adapter.<br>
     <br>
-    💼 𝗟𝗮 𝘀𝗲́𝗰𝘂𝗿𝗶𝘁𝗲́ 𝗱𝗲 𝗹'𝗲𝗺𝗽𝗹𝗼𝗶<br>
-    La demande de développeurs PHP est croissante, ce qui signifie plus d'opportunités d'emploi dans le développement web.<br>
-    <br>
-    👑 𝗟𝗲 𝗿𝗼𝗶 𝗰𝗼̂𝘁𝗲́ 𝘀𝗲𝗿𝘃𝗲𝘂𝗿<br>
-    L'efficacité de PHP dans le code côté serveur maintient sa domination.<br>
-    <br>
-    🐣 𝗟𝗮 𝗳𝗮𝗰𝗶𝗹𝗶𝘁𝗲́ 𝗽𝗼𝘂𝗿 𝗹𝗲𝘀 𝗱𝗲́𝗯𝘂𝘁𝗮𝗻𝘁𝘀<br>
-    Sa syntaxe simple fait de PHP un excellent point de départ pour les nouveaux développeurs.<br>
-    <br>
-    𝗘𝘁 𝗲𝗻 𝗽𝗹𝘂𝘀 ? 
-    De <strong> Daminen carrier</strong>
+    <em>Et vous, vous pensez quoi de l'IA en cybersécurité ?</em> 💭
   `,
   
   article2: `
-    Récemment, une équipe de chercheurs chinois a affirmé avoir réalisé une avancée majeure en cryptographie quantique,<br>
-    en annonçant qu’ils pouvaient casser des clés RSA et AES à l’aide d’un ordinateur quantique.<br>
-    Cependant, ces affirmations ont été largement critiquées par la communauté scientifique.<br>
-    L’algorithme utilisé, basé sur les travaux de Schnorr combiné à des techniques quantiques,<br>
-    n’a pas encore prouvé sa capacité à surpasser les méthodes classiques de décryptage.<br>
-    <strong>Des experts comme Scott Aaronson</strong> ont souligné que cette approche est loin d’être efficace pour des clés de taille réelle.<br>
-    Les résultats actuels ne dépassent pas les 48 bits, loin des standards actuels de sécurité qui utilisent des clés de 2048 bits et plus.<br>
-    En réalité, même si les progrès en calcul quantique sont impressionnants,<br>
-    la technologie n’est pas encore à un stade où elle peut casser des systèmes cryptographiques modernes à grande échelle.<br>
-    La démonstration des chercheurs chinois reste limitée et critiquée pour être <em>“l’une des publications les plus trompeuses en 25 ans”</em><br>
-    dans le domaine du calcul quantique, selon Aaronson.<br>
-    Les défis liés aux ordinateurs quantiques, comme la stabilité des qubits et la mise à l’échelle,<br>
-    rendent ces attaques largement théoriques pour l’instant.<br>
-    <strong>En résumé</strong>, les clés RSA et AES restent pour le moment sécurisées face à ces attaques.<br>
-    La vigilance reste cependant de mise, car la technologie évolue rapidement.<br>
-    <span class="text-muted">Merci et bonne soirée. 🙏🏻<br>BIA</span>
+    <h4>Symfony 8 : Pourquoi j'ai dit adieu à Laravel 🚀</h4>
+    <br>
+    <strong>Disclaimer :</strong> J'ai rien contre Laravel, mais Symfony m'a conquis. Voici pourquoi.<br>
+    <br>
+    <strong>Le déclic :</strong> Après 2 ans avec Laravel, j'ai migré un projet sur Symfony 8. Et là, révélation !<br>
+    <br>
+    <strong>Pourquoi Symfony gagne :</strong><br>
+    • <strong>Performance :</strong> 3x plus rapide que Laravel sur mes tests<br>
+    • <strong>Flexibilité :</strong> Pas de "magie" cachée, tout est explicite<br>
+    • <strong>Écosystème :</strong> Les composants sont réutilisables partout<br>
+    • <strong>Standards :</strong> PSR-4, PSR-7, PSR-15... Symfony respecte tout<br>
+    <br>
+    <strong>Le piège Laravel :</strong> Trop de "sugar coating". Eloquent est pratique mais masque la complexité. Quand ça plante, tu galères à debugger.<br>
+    <br>
+    <strong>Symfony en entreprise :</strong> Plus robuste, plus maintenable, plus évolutif. Parfait pour les gros projets.<br>
+    <br>
+    <strong>Mon conseil :</strong> Si tu débutes, commence par Laravel. Si tu veux devenir expert, passe à Symfony.<br>
+    <br>
+    <strong>Résultat :</strong> Mon app Symfony 8 tourne comme une horloge. Zéro regret. 🎯<br>
+    <br>
+    <em>Et vous, Laravel ou Symfony ? Débat ouvert !</em> 🔥
   `,
   
   article3: `
-    Suivez-moi sur LinkedIn pour plus de contenu technique,<br>
-    des astuces de programmation et les dernières actualités dans le domaine de la tech !<br>
-    <a href="https://www.linkedin.com/in/banconl%C3%A9-akobi-a88940273/" class="btn btn-primary mt-3">Mon LinkedIn</a>
+    <h4>Scaleway vs AWS : Le match du siècle 💰</h4>
+    <br>
+    <strong>Le contexte :</strong> J'ai migré 3 PrestaShops de AWS vers Scaleway. Résultat ? 60% d'économies et zéro regret.<br>
+    <br>
+    <strong>Les chiffres qui parlent :</strong><br>
+    • <strong>AWS :</strong> 450€/mois pour 3 instances<br>
+    • <strong>Scaleway :</strong> 180€/mois pour la même config<br>
+    • <strong>Performance :</strong> Identique, voire meilleure<br>
+    <br>
+    <strong>Pourquoi Scaleway gagne :</br>
+    • <strong>Prix transparents :</strong> Pas de surprise sur la facture<br>
+    • <strong>Support français :</strong> Réponse en 2h vs 24h chez AWS<br>
+    • <strong>Simplicité :</strong> Interface claire, pas de labyrinthe AWS<br>
+    • <strong>Écologie :</strong> Datacenters en France, moins de CO2<br>
+    <br>
+    <strong>Les points faibles :</strong><br>
+    • Moins d'outils que AWS<br>
+    • Communauté plus petite<br>
+    • Documentation parfois en retard<br>
+    <br>
+    <strong>Mon verdict :</strong> Pour 80% des projets, Scaleway suffit largement. AWS reste pour les cas très spécifiques.<br>
+    <br>
+    <strong>Bonus :</strong> Le support Scaleway m'a aidé à optimiser mes instances. Chez AWS, j'aurais dû payer un consultant.<br>
+    <br>
+    <em>Et vous, vous utilisez quoi comme cloud ?</em> ☁️
+  `,
+  
+  article4: `
+    <h4>Flutter vs React Native : Le verdict d'un dev backend 📱</h4>
+    <br>
+    <strong>Le défi :</strong> Build une app de gestion de courses. En tant que dev PHP/Symfony, j'ai testé les deux.<br>
+    <br>
+    <strong>Flutter gagne haut la main. Voici pourquoi :</strong><br>
+    <br>
+    <strong>Performance :</strong><br>
+    • <strong>Flutter :</strong> 60 FPS constant, animations fluides<br>
+    • <strong>React Native :</strong> Lag sur les animations complexes<br>
+    <br>
+    <strong>Développement :</strong><br>
+    • <strong>Flutter :</strong> Hot reload instantané, debug facile<br>
+    • <strong>React Native :</strong> Metro bundler qui plante, debug compliqué<br>
+    <br>
+    <strong>UI/UX :</strong><br>
+    • <strong>Flutter :</strong> Design system cohérent, Material Design parfait<br>
+    • <strong>React Native :</strong> Inconsistances entre iOS/Android<br>
+    <br>
+    <strong>Mon app en chiffres :</strong><br>
+    • <strong>Développement :</strong> 2 semaines avec Flutter vs 1 mois estimé avec RN<br>
+    • <strong>Taille :</strong> 15MB vs 25MB+ avec RN<br>
+    • <strong>Bugs :</strong> 3 bugs Flutter vs 12+ avec RN<br>
+    <br>
+    <strong>Le piège React Native :</strong> Tu dois connaître React + JavaScript + iOS + Android. Avec Flutter, juste Dart.<br>
+    <br>
+    <strong>Bottom line :</strong> Flutter est plus simple, plus rapide, plus fiable. React Native a ses fans, mais Flutter domine.<br>
+    <br>
+    <em>Mon app est dispo sur GitHub si vous voulez voir le code !</em> 🚀
+  `,
+  
+  article5: `
+    <h4>Comment j'ai hacké mon propre site (et pourquoi c'est important) 🔒</h4>
+    <br>
+    <strong>Le défi :</strong> Pentest de mon propre portfolio. Résultat ? 7 vulnérabilités trouvées. Oups ! 😅<br>
+    <br>
+    <strong>Les vulnérabilités découvertes :</strong><br>
+    • <strong>XSS :</strong> Injection de script via le formulaire de contact<br>
+    • <strong>CSRF :</strong> Pas de token sur les formulaires<br>
+    • <strong>Information disclosure :</strong> Version PHP exposée<br>
+    • <strong>Directory traversal :</strong> Accès aux fichiers système<br>
+    • <strong>SQL injection :</strong> Via les paramètres URL<br>
+    • <strong>Clickjacking :</strong> Pas de X-Frame-Options<br>
+    • <strong>Insecure cookies :</strong> Pas de flags sécurisés<br>
+    <br>
+    <strong>Comment les corriger :</strong><br>
+    • <strong>XSS :</strong> Échapper les entrées, utiliser CSP<br>
+    • <strong>CSRF :</strong> Ajouter des tokens CSRF<br>
+    • <strong>Headers :</strong> X-Frame-Options, X-Content-Type-Options<br>
+    • <strong>Cookies :</strong> HttpOnly, Secure, SameSite<br>
+    <br>
+    <strong>Pourquoi c'est crucial :</strong> Si je peux hacker mon site, un attaquant aussi. La sécurité, c'est pas optionnel.<br>
+    <br>
+    <strong>Mon conseil :</strong> Testez vos sites régulièrement. Utilisez OWASP ZAP, Burp Suite, ou des outils gratuits.<br>
+    <br>
+    <strong>Résultat :</strong> Mon site est maintenant sécurisé. Et j'ai appris énormément !<br>
+    <br>
+    <em>Et vous, vous testez la sécurité de vos projets ?</em> 🛡️
+  `,
+  
+  article6: `
+    <h4>Alternance en cybersécurité : Mes 6 mois de galère et de réussite 🎯</h4>
+    <br>
+    <strong>Le contexte :</strong> Début septembre 2024, je débarque chez MagicRecycle. Objectif : devenir expert cybersécurité. Spoiler : mission accomplie !<br>
+    <br>
+    <strong>Les premiers mois (galère totale) :</strong><br>
+    • <strong>Semaine 1 :</strong> "C'est quoi un firewall ?" 😅<br>
+    • <strong>Mois 1 :</strong> Je plante le serveur de prod (oups)<br>
+    • <strong>Mois 2 :</strong> Je comprends enfin les logs<br>
+    • <strong>Mois 3 :</strong> Premier pentest réussi !<br>
+    <br>
+    <strong>Les victoires :</strong><br>
+    • <strong>Certification ISC2 :</strong> Security CC obtenue<br>
+    • <strong>Bug Bounty :</strong> Premier bounty de 500€<br>
+    • <strong>CTF :</strong> Top 10% sur TryHackMe<br>
+    • <strong>Projets :</strong> Sécurisation de 3 PrestaShops<br>
+    <br>
+    <strong>Mes conseils pour réussir :</strong><br>
+    • <strong>Pratique quotidienne :</strong> 1h de CTF par jour<br>
+    • <strong>Communauté :</strong> Rejoignez des Discord cybersec<br>
+    • <strong>Projets concrets :</strong> Hackez vos propres sites<br>
+    • <strong>Certifications :</strong> ISC2, CEH, OSCP<br>
+    <br>
+    <strong>Les erreurs à éviter :</strong><br>
+    • Ne pas tester en prod (évident mais...)<br>
+    • Négliger la documentation<br>
+    • Isoler les problèmes de sécurité<br>
+    <br>
+    <strong>Résultat :</strong> En 6 mois, je suis passé de débutant à expert. La cybersécurité, c'est accessible avec de la motivation !<br>
+    <br>
+    <em>Et vous, vous avez des questions sur l'alternance en cybersec ?</em> 💪
   `
 };
 
