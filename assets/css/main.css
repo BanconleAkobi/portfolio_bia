@@ -1624,6 +1624,39 @@ section,
 #articleContent br {
   margin-bottom: 10px;
 }
+
+/* Profile Image Responsive Styles */
+.profile-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .profile-img {
+    max-width: 250px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-img {
+    max-width: 200px;
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+}
 .card-body{
   background-color: black;
   border: 2px solid black;

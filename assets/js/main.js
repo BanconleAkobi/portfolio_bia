@@ -173,170 +173,170 @@
 
 const articles = {
   article1: `
-    <h4>L'IA va-t-elle tuer le Bug Bounty ? 🤖</h4>
+    <h4>Will AI Kill Bug Bounty? 🤖</h4>
     <br>
-    <strong>TL;DR :</strong> Non, mais elle va changer la donne. Et c'est tant mieux !<br>
+    <strong>TL;DR:</strong> No, but it will change the game. And that's great!<br>
     <br>
-    <strong>Le constat :</strong> ChatGPT trouve des vulnérabilités en 2 minutes. GitHub Copilot génère du code sécurisé. Les outils d'IA se multiplient comme des champignons.<br>
+    <strong>The reality:</strong> ChatGPT finds vulnerabilities in 2 minutes. GitHub Copilot generates secure code. AI tools are multiplying like mushrooms.<br>
     <br>
-    <strong>Mais voilà le truc :</strong> L'IA ne remplace pas l'intuition humaine. Elle ne comprend pas le contexte business. Elle ne voit pas les failles logiques que seul un humain peut identifier.<br>
+    <strong>But here's the thing:</strong> AI doesn't replace human intuition. It doesn't understand business context. It doesn't see logical flaws that only a human can identify.<br>
     <br>
-    <strong>Mon expérience :</strong> J'ai testé ChatGPT sur des CTF. Résultat ? Il trouve les vulnérabilités basiques (SQL injection, XSS) mais rate complètement les exploits créatifs. L'IA est un super assistant, pas un remplaçant.<br>
+    <strong>My experience:</strong> I tested ChatGPT on CTFs. Result? It finds basic vulnerabilities (SQL injection, XSS) but completely misses creative exploits. AI is a super assistant, not a replacement.<br>
     <br>
-    <strong>L'avenir du Bug Bounty :</strong><br>
-    • Plus de focus sur la logique métier<br>
-    • Exploits plus sophistiqués<br>
-    • Collaboration humain-IA<br>
-    • Récompenses plus élevées pour les vrais experts<br>
+    <strong>The future of Bug Bounty:</strong><br>
+    • More focus on business logic<br>
+    • More sophisticated exploits<br>
+    • Human-AI collaboration<br>
+    • Higher rewards for real experts<br>
     <br>
-    <strong>Bottom line :</strong> L'IA va élever le niveau, pas tuer le métier. Les meilleurs hunters vont devenir encore meilleurs. Les autres... eh bien, ils devront s'adapter.<br>
+    <strong>Bottom line:</strong> AI will raise the bar, not kill the job. The best hunters will become even better. Others... well, they'll have to adapt.<br>
     <br>
-    <em>Et vous, vous pensez quoi de l'IA en cybersécurité ?</em> 💭
+    <em>What do you think about AI in cybersecurity?</em> 💭
   `,
   
   article2: `
-    <h4>Symfony 8 : Pourquoi j'ai dit adieu à Laravel 🚀</h4>
+    <h4>Symfony 8: Why I Said Goodbye to Laravel 🚀</h4>
     <br>
-    <strong>Disclaimer :</strong> J'ai rien contre Laravel, mais Symfony m'a conquis. Voici pourquoi.<br>
+    <strong>Disclaimer:</strong> I have nothing against Laravel, but Symfony won me over. Here's why.<br>
     <br>
-    <strong>Le déclic :</strong> Après 2 ans avec Laravel, j'ai migré un projet sur Symfony 8. Et là, révélation !<br>
+    <strong>The trigger:</strong> After 2 years with Laravel, I migrated a project to Symfony 8. And there, revelation!<br>
     <br>
-    <strong>Pourquoi Symfony gagne :</strong><br>
-    • <strong>Performance :</strong> 3x plus rapide que Laravel sur mes tests<br>
-    • <strong>Flexibilité :</strong> Pas de "magie" cachée, tout est explicite<br>
-    • <strong>Écosystème :</strong> Les composants sont réutilisables partout<br>
-    • <strong>Standards :</strong> PSR-4, PSR-7, PSR-15... Symfony respecte tout<br>
+    <strong>Why Symfony wins:</strong><br>
+    • <strong>Performance:</strong> 3x faster than Laravel in my tests<br>
+    • <strong>Flexibility:</strong> No hidden "magic", everything is explicit<br>
+    • <strong>Ecosystem:</strong> Components are reusable everywhere<br>
+    • <strong>Standards:</strong> PSR-4, PSR-7, PSR-15... Symfony respects everything<br>
     <br>
-    <strong>Le piège Laravel :</strong> Trop de "sugar coating". Eloquent est pratique mais masque la complexité. Quand ça plante, tu galères à debugger.<br>
+    <strong>The Laravel trap:</strong> Too much "sugar coating". Eloquent is practical but masks complexity. When it breaks, you struggle to debug.<br>
     <br>
-    <strong>Symfony en entreprise :</strong> Plus robuste, plus maintenable, plus évolutif. Parfait pour les gros projets.<br>
+    <strong>Symfony in enterprise:</strong> More robust, more maintainable, more scalable. Perfect for big projects.<br>
     <br>
-    <strong>Mon conseil :</strong> Si tu débutes, commence par Laravel. Si tu veux devenir expert, passe à Symfony.<br>
+    <strong>My advice:</strong> If you're starting, begin with Laravel. If you want to become an expert, switch to Symfony.<br>
     <br>
-    <strong>Résultat :</strong> Mon app Symfony 8 tourne comme une horloge. Zéro regret. 🎯<br>
+    <strong>Result:</strong> My Symfony 8 app runs like clockwork. Zero regrets. 🎯<br>
     <br>
-    <em>Et vous, Laravel ou Symfony ? Débat ouvert !</em> 🔥
+    <em>What about you, Laravel or Symfony? Open debate!</em> 🔥
   `,
   
   article3: `
-    <h4>Scaleway vs AWS : Le match du siècle 💰</h4>
+    <h4>Scaleway vs AWS: The Match of the Century 💰</h4>
     <br>
-    <strong>Le contexte :</strong> J'ai migré 3 PrestaShops de AWS vers Scaleway. Résultat ? 60% d'économies et zéro regret.<br>
+    <strong>Context:</strong> I migrated 3 PrestaShops from AWS to Scaleway. Result? 60% savings and zero regrets.<br>
     <br>
-    <strong>Les chiffres qui parlent :</strong><br>
-    • <strong>AWS :</strong> 450€/mois pour 3 instances<br>
-    • <strong>Scaleway :</strong> 180€/mois pour la même config<br>
-    • <strong>Performance :</strong> Identique, voire meilleure<br>
+    <strong>The numbers speak:</strong><br>
+    • <strong>AWS:</strong> €450/month for 3 instances<br>
+    • <strong>Scaleway:</strong> €180/month for the same config<br>
+    • <strong>Performance:</strong> Identical, even better<br>
     <br>
-    <strong>Pourquoi Scaleway gagne :</br>
-    • <strong>Prix transparents :</strong> Pas de surprise sur la facture<br>
-    • <strong>Support français :</strong> Réponse en 2h vs 24h chez AWS<br>
-    • <strong>Simplicité :</strong> Interface claire, pas de labyrinthe AWS<br>
-    • <strong>Écologie :</strong> Datacenters en France, moins de CO2<br>
+    <strong>Why Scaleway wins:</strong><br>
+    • <strong>Transparent pricing:</strong> No surprises on the bill<br>
+    • <strong>French support:</strong> 2h response vs 24h at AWS<br>
+    • <strong>Simplicity:</strong> Clear interface, no AWS maze<br>
+    • <strong>Ecology:</strong> Datacenters in France, less CO2<br>
     <br>
-    <strong>Les points faibles :</strong><br>
-    • Moins d'outils que AWS<br>
-    • Communauté plus petite<br>
-    • Documentation parfois en retard<br>
+    <strong>Weak points:</strong><br>
+    • Fewer tools than AWS<br>
+    • Smaller community<br>
+    • Documentation sometimes behind<br>
     <br>
-    <strong>Mon verdict :</strong> Pour 80% des projets, Scaleway suffit largement. AWS reste pour les cas très spécifiques.<br>
+    <strong>My verdict:</strong> For 80% of projects, Scaleway is more than enough. AWS remains for very specific cases.<br>
     <br>
-    <strong>Bonus :</strong> Le support Scaleway m'a aidé à optimiser mes instances. Chez AWS, j'aurais dû payer un consultant.<br>
+    <strong>Bonus:</strong> Scaleway support helped me optimize my instances. At AWS, I would have had to pay a consultant.<br>
     <br>
-    <em>Et vous, vous utilisez quoi comme cloud ?</em> ☁️
+    <em>What cloud do you use?</em> ☁️
   `,
   
   article4: `
-    <h4>Flutter vs React Native : Le verdict d'un dev backend 📱</h4>
+    <h4>Flutter vs React Native: A Backend Dev's Verdict 📱</h4>
     <br>
-    <strong>Le défi :</strong> Build une app de gestion de courses. En tant que dev PHP/Symfony, j'ai testé les deux.<br>
+    <strong>The challenge:</strong> Build a shopping management app. As a PHP/Symfony dev, I tested both.<br>
     <br>
-    <strong>Flutter gagne haut la main. Voici pourquoi :</strong><br>
+    <strong>Flutter wins hands down. Here's why:</strong><br>
     <br>
-    <strong>Performance :</strong><br>
-    • <strong>Flutter :</strong> 60 FPS constant, animations fluides<br>
-    • <strong>React Native :</strong> Lag sur les animations complexes<br>
+    <strong>Performance:</strong><br>
+    • <strong>Flutter:</strong> Constant 60 FPS, smooth animations<br>
+    • <strong>React Native:</strong> Lag on complex animations<br>
     <br>
-    <strong>Développement :</strong><br>
-    • <strong>Flutter :</strong> Hot reload instantané, debug facile<br>
-    • <strong>React Native :</strong> Metro bundler qui plante, debug compliqué<br>
+    <strong>Development:</strong><br>
+    • <strong>Flutter:</strong> Instant hot reload, easy debug<br>
+    • <strong>React Native:</strong> Metro bundler crashes, complicated debug<br>
     <br>
-    <strong>UI/UX :</strong><br>
-    • <strong>Flutter :</strong> Design system cohérent, Material Design parfait<br>
-    • <strong>React Native :</strong> Inconsistances entre iOS/Android<br>
+    <strong>UI/UX:</strong><br>
+    • <strong>Flutter:</strong> Consistent design system, perfect Material Design<br>
+    • <strong>React Native:</strong> Inconsistencies between iOS/Android<br>
     <br>
-    <strong>Mon app en chiffres :</strong><br>
-    • <strong>Développement :</strong> 2 semaines avec Flutter vs 1 mois estimé avec RN<br>
-    • <strong>Taille :</strong> 15MB vs 25MB+ avec RN<br>
-    • <strong>Bugs :</strong> 3 bugs Flutter vs 12+ avec RN<br>
+    <strong>My app in numbers:</strong><br>
+    • <strong>Development:</strong> 2 weeks with Flutter vs 1 month estimated with RN<br>
+    • <strong>Size:</strong> 15MB vs 25MB+ with RN<br>
+    • <strong>Bugs:</strong> 3 Flutter bugs vs 12+ with RN<br>
     <br>
-    <strong>Le piège React Native :</strong> Tu dois connaître React + JavaScript + iOS + Android. Avec Flutter, juste Dart.<br>
+    <strong>The React Native trap:</strong> You need to know React + JavaScript + iOS + Android. With Flutter, just Dart.<br>
     <br>
-    <strong>Bottom line :</strong> Flutter est plus simple, plus rapide, plus fiable. React Native a ses fans, mais Flutter domine.<br>
+    <strong>Bottom line:</strong> Flutter is simpler, faster, more reliable. React Native has its fans, but Flutter dominates.<br>
     <br>
-    <em>Mon app est dispo sur GitHub si vous voulez voir le code !</em> 🚀
+    <em>My app is available on GitHub if you want to see the code!</em> 🚀
   `,
   
   article5: `
-    <h4>Comment j'ai hacké mon propre site (et pourquoi c'est important) 🔒</h4>
+    <h4>How I Hacked My Own Site (and Why It's Important) 🔒</h4>
     <br>
-    <strong>Le défi :</strong> Pentest de mon propre portfolio. Résultat ? 7 vulnérabilités trouvées. Oups ! 😅<br>
+    <strong>The challenge:</strong> Pentest of my own portfolio. Result? 7 vulnerabilities found. Oops! 😅<br>
     <br>
-    <strong>Les vulnérabilités découvertes :</strong><br>
-    • <strong>XSS :</strong> Injection de script via le formulaire de contact<br>
-    • <strong>CSRF :</strong> Pas de token sur les formulaires<br>
-    • <strong>Information disclosure :</strong> Version PHP exposée<br>
-    • <strong>Directory traversal :</strong> Accès aux fichiers système<br>
-    • <strong>SQL injection :</strong> Via les paramètres URL<br>
-    • <strong>Clickjacking :</strong> Pas de X-Frame-Options<br>
-    • <strong>Insecure cookies :</strong> Pas de flags sécurisés<br>
+    <strong>Discovered vulnerabilities:</strong><br>
+    • <strong>XSS:</strong> Script injection via contact form<br>
+    • <strong>CSRF:</strong> No tokens on forms<br>
+    • <strong>Information disclosure:</strong> PHP version exposed<br>
+    • <strong>Directory traversal:</strong> System file access<br>
+    • <strong>SQL injection:</strong> Via URL parameters<br>
+    • <strong>Clickjacking:</strong> No X-Frame-Options<br>
+    • <strong>Insecure cookies:</strong> No security flags<br>
     <br>
-    <strong>Comment les corriger :</strong><br>
-    • <strong>XSS :</strong> Échapper les entrées, utiliser CSP<br>
-    • <strong>CSRF :</strong> Ajouter des tokens CSRF<br>
-    • <strong>Headers :</strong> X-Frame-Options, X-Content-Type-Options<br>
-    • <strong>Cookies :</strong> HttpOnly, Secure, SameSite<br>
+    <strong>How to fix them:</strong><br>
+    • <strong>XSS:</strong> Escape inputs, use CSP<br>
+    • <strong>CSRF:</strong> Add CSRF tokens<br>
+    • <strong>Headers:</strong> X-Frame-Options, X-Content-Type-Options<br>
+    • <strong>Cookies:</strong> HttpOnly, Secure, SameSite<br>
     <br>
-    <strong>Pourquoi c'est crucial :</strong> Si je peux hacker mon site, un attaquant aussi. La sécurité, c'est pas optionnel.<br>
+    <strong>Why it's crucial:</strong> If I can hack my site, an attacker can too. Security is not optional.<br>
     <br>
-    <strong>Mon conseil :</strong> Testez vos sites régulièrement. Utilisez OWASP ZAP, Burp Suite, ou des outils gratuits.<br>
+    <strong>My advice:</strong> Test your sites regularly. Use OWASP ZAP, Burp Suite, or free tools.<br>
     <br>
-    <strong>Résultat :</strong> Mon site est maintenant sécurisé. Et j'ai appris énormément !<br>
+    <strong>Result:</strong> My site is now secure. And I learned a lot!<br>
     <br>
-    <em>Et vous, vous testez la sécurité de vos projets ?</em> 🛡️
+    <em>Do you test the security of your projects?</em> 🛡️
   `,
   
   article6: `
-    <h4>Alternance en cybersécurité : Mes 6 mois de galère et de réussite 🎯</h4>
+    <h4>Cybersecurity Apprenticeship: My 6 Months of Struggle and Success 🎯</h4>
     <br>
-    <strong>Le contexte :</strong> Début septembre 2024, je débarque chez MagicRecycle. Objectif : devenir expert cybersécurité. Spoiler : mission accomplie !<br>
+    <strong>Context:</strong> Early September 2024, I arrive at MagicRecycle. Goal: become a cybersecurity expert. Spoiler: mission accomplished!<br>
     <br>
-    <strong>Les premiers mois (galère totale) :</strong><br>
-    • <strong>Semaine 1 :</strong> "C'est quoi un firewall ?" 😅<br>
-    • <strong>Mois 1 :</strong> Je plante le serveur de prod (oups)<br>
-    • <strong>Mois 2 :</strong> Je comprends enfin les logs<br>
-    • <strong>Mois 3 :</strong> Premier pentest réussi !<br>
+    <strong>First months (total struggle):</strong><br>
+    • <strong>Week 1:</strong> "What's a firewall?" 😅<br>
+    • <strong>Month 1:</strong> I crash the prod server (oops)<br>
+    • <strong>Month 2:</strong> I finally understand logs<br>
+    • <strong>Month 3:</strong> First successful pentest!<br>
     <br>
-    <strong>Les victoires :</strong><br>
-    • <strong>Certification ISC2 :</strong> Security CC obtenue<br>
-    • <strong>Bug Bounty :</strong> Premier bounty de 500€<br>
-    • <strong>CTF :</strong> Top 10% sur TryHackMe<br>
-    • <strong>Projets :</strong> Sécurisation de 3 PrestaShops<br>
+    <strong>The victories:</strong><br>
+    • <strong>ISC2 Certification:</strong> Security CC obtained<br>
+    • <strong>Bug Bounty:</strong> First €500 bounty<br>
+    • <strong>CTF:</strong> Top 10% on TryHackMe<br>
+    • <strong>Projects:</strong> Securing 3 PrestaShops<br>
     <br>
-    <strong>Mes conseils pour réussir :</strong><br>
-    • <strong>Pratique quotidienne :</strong> 1h de CTF par jour<br>
-    • <strong>Communauté :</strong> Rejoignez des Discord cybersec<br>
-    • <strong>Projets concrets :</strong> Hackez vos propres sites<br>
-    • <strong>Certifications :</strong> ISC2, CEH, OSCP<br>
+    <strong>My tips for success:</strong><br>
+    • <strong>Daily practice:</strong> 1h of CTF per day<br>
+    • <strong>Community:</strong> Join cybersecurity Discords<br>
+    • <strong>Concrete projects:</strong> Hack your own sites<br>
+    • <strong>Certifications:</strong> ISC2, CEH, OSCP<br>
     <br>
-    <strong>Les erreurs à éviter :</strong><br>
-    • Ne pas tester en prod (évident mais...)<br>
-    • Négliger la documentation<br>
-    • Isoler les problèmes de sécurité<br>
+    <strong>Mistakes to avoid:</strong><br>
+    • Don't test in prod (obvious but...)<br>
+    • Neglect documentation<br>
+    • Isolate security problems<br>
     <br>
-    <strong>Résultat :</strong> En 6 mois, je suis passé de débutant à expert. La cybersécurité, c'est accessible avec de la motivation !<br>
+    <strong>Result:</strong> In 6 months, I went from beginner to expert. Cybersecurity is accessible with motivation!<br>
     <br>
-    <em>Et vous, vous avez des questions sur l'alternance en cybersec ?</em> 💪
+    <em>Do you have questions about cybersecurity apprenticeships?</em> 💪
   `
 };
 
