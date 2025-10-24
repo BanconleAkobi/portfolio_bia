@@ -1663,6 +1663,187 @@ section,
   color:white;
 }
 
+/* Projects Section Styles */
+.projects {
+  background-color: var(--background-color);
+  padding: 60px 0;
+}
+
+.project-card {
+  background: linear-gradient(135deg, var(--surface-color) 0%, color-mix(in srgb, var(--surface-color), black 10%) 100%);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
+  border-radius: 12px;
+  padding: 30px;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-color), transparent 90%), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.project-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 40px rgba(24, 210, 110, 0.15), 0 0 30px rgba(24, 210, 110, 0.1);
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-color), white 5%) 0%, color-mix(in srgb, var(--surface-color), black 5%) 100%);
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+.project-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--accent-color);
+  position: relative;
+  z-index: 1;
+}
+
+.project-header h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin: 0 0 10px 0;
+  font-family: var(--heading-font);
+  letter-spacing: 0.5px;
+}
+
+.tech-stack {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-description {
+  color: var(--default-color);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.project-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 25px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.project-highlights li {
+  padding-left: 25px;
+  margin-bottom: 12px;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.project-highlights li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.project-card:hover .project-highlights li {
+  color: var(--default-color);
+  padding-left: 28px;
+}
+
+.project-card .btn {
+  margin-top: auto;
+  width: fit-content;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.project-card .btn-primary {
+  background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), white 10%) 100%);
+  border: 1px solid var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.project-card .btn-primary:hover {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), white 10%) 0%, var(--accent-color) 100%);
+  box-shadow: 0 8px 20px rgba(24, 210, 110, 0.3);
+  transform: scale(1.05);
+}
+
+/* Status badge for In Progress projects */
+.project-card.in-progress::after {
+  content: "IN PROGRESS";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    padding: 25px;
+  }
+
+  .project-header h4 {
+    font-size: 1.1rem;
+  }
+
+  .tech-stack {
+    font-size: 0.75rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+  }
+
+  .project-highlights li {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    padding-left: 22px;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
 /* Blog Cards Styling */
 .blog-card {
   background-color: var(--surface-color);
