@@ -50,6 +50,20 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  padding-top: 80px;
+}
+
+/* Adjust body padding for mobile */
+@media (max-width: 1199px) {
+  body {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding-top: 65px;
+  }
 }
 
 a {
@@ -180,7 +194,7 @@ input:checked + .slider:before {
 
 /* Adjust header position for language switcher */
 .header {
-  top: 40px;
+  top: 0;
 }
 
 /*--------------------------------------------------------------
@@ -192,7 +206,11 @@ input:checked + .slider:before {
   background-color: var(--background-color);
   padding: 15px 0;
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .header .logo {
@@ -628,7 +646,7 @@ input:checked + .slider:before {
 }
 
 .page-title .heading {
-  padding: 160px 0 80px 0;
+  padding: 120px 0 80px 0;
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
@@ -668,7 +686,7 @@ section,
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 60px 0;
-  scroll-margin-top: 100px;
+  scroll-margin-top: 120px;
   overflow: clip;
 }
 
@@ -676,7 +694,7 @@ section,
 
   section,
   .section {
-    scroll-margin-top: 66px;
+    scroll-margin-top: 100px;
   }
 }
 
@@ -722,7 +740,7 @@ section,
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 80px 0;
+  padding: 120px 0 80px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1403,9 +1421,9 @@ section,
 }
 
 
-.starter-section {
-  /* Add your styles here */
-}
+/* .starter-section {
+  Add your styles here when needed
+} */
 
 /*--------------------------------------------------------------
 # Section contacts
