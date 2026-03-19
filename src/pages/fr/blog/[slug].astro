@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { blogPosts } from '../../../data/blog';
+
+export async function getStaticPaths() {
+  return blogPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const lang = 'fr';
+const dateFormatted = new Date(post.date).toLocaleDateString('fr-FR', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+---
+
+<BaseLayout
+  lang={lang}
+  title={post.title}
+  description={post.excerpt}
+>
+  <div class="article-hero">
+    <div class="article-hero-inner">
+      <div class="article-meta gsap-reveal">
+        <span class="label">{post.category}</span>
+        <time class="mono" datetime={post.date}>{dateFormatted}</time>
+      </div>
+      <h1 class="article-title gsap-reveal">{post.title}</h1>
+      <p class="article-excerpt gsap-reveal">{post.excerpt}</p>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <div class="article-content gsap-reveal">
+      <div class="prose" set:html={post.content.replace(/\n\n/g, '</p><p>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/^/, '<p>').replace(/$/, '</p>')} />
+
+      <div class="article-footer">
+        <a href="/fr/blog" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Retour au blog
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .article-hero {
+    padding: clamp(8rem, 12vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 4vw, 4rem);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--gradient-hero);
+  }
+
+  .article-hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-title {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-style: italic;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .article-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .article-body {
+    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .article-content {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .prose :global(p) {
+    font-size: 1.0625rem;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--accent-cyber);
+    background: rgba(0, 229, 160, 0.08);
+    padding: 0.2em 0.4em;
+  }
+
+  .article-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+</style>

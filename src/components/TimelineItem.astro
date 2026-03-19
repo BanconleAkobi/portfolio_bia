@@ -1,0 +1,100 @@
+---
+interface Props {
+  date: string;
+  title: string;
+  place: string;
+  desc: string;
+  index: number;
+}
+
+const { date, title, place, desc, index } = Astro.props;
+---
+
+<div class="timeline-item gsap-item" style={`--delay: ${index * 0.1}s`}>
+  <div class="timeline-marker" aria-hidden="true">
+    <div class="timeline-dot"></div>
+    <div class="timeline-line"></div>
+  </div>
+  <div class="timeline-content">
+    <time class="timeline-date mono" datetime={date}>{date}</time>
+    <h3 class="timeline-title">{title}</h3>
+    <p class="timeline-place label">{place}</p>
+    <p class="timeline-desc">{desc}</p>
+  </div>
+</div>
+
+<style>
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.4rem;
+  }
+
+  .timeline-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-gold);
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px var(--accent-gold);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: scale(1.4);
+  }
+
+  .timeline-line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(var(--accent-gold), var(--border-subtle));
+    margin-top: 0.5rem;
+    min-height: 40px;
+  }
+
+  .timeline-item:last-child .timeline-line {
+    display: none;
+  }
+
+  .timeline-content {
+    padding-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .timeline-date {
+    font-size: 0.75rem;
+    color: var(--accent-cyber);
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+
+  .timeline-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: normal;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .timeline-place {
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,367 @@
+---
+import { t, getLocalePath, getOtherLang } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+const otherLang = getOtherLang(lang);
+const currentPath = Astro.url.pathname;
+const otherLangPath = currentPath.replace(`/${lang}`, `/${otherLang}`);
+
+const navItems = [
+  { key: 'about', href: getLocalePath(lang, '/about'), label: tr.nav.about },
+  { key: 'projects', href: getLocalePath(lang, '/projects'), label: tr.nav.projects },
+  { key: 'blog', href: getLocalePath(lang, '/blog'), label: tr.nav.blog },
+  { key: 'contact', href: getLocalePath(lang, '/contact'), label: tr.nav.contact },
+];
+---
+
+<header id="header" class="header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href={getLocalePath(lang, '/')} class="logo" aria-label="Accueil — Banconlé AKOBI">
+      <span class="logo-name">B.AKOBI</span>
+      <span class="logo-dot"></span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="desktop-nav" aria-label="Navigation principale">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class={`nav-link link-underline ${currentPath.startsWith(item.href) ? 'active' : ''}`}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right actions -->
+    <div class="header-actions">
+      <!-- Language toggle -->
+      <a
+        href={otherLangPath}
+        class="lang-toggle"
+        aria-label={`Switch to ${otherLang.toUpperCase()}`}
+      >
+        <span class="lang-active">{lang.toUpperCase()}</span>
+        <span class="lang-sep">/</span>
+        <span class="lang-other">{otherLang.toUpperCase()}</span>
+      </a>
+
+      <!-- Hamburger -->
+      <button
+        id="hamburger"
+        class="hamburger"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menu mobile">
+    <nav class="mobile-nav" aria-label="Navigation mobile">
+      <a href={getLocalePath(lang, '/')} class="mobile-nav-link">{tr.nav.home}</a>
+      {navItems.map(item => (
+        <a href={item.href} class="mobile-nav-link">{item.label}</a>
+      ))}
+      <div class="mobile-lang">
+        <a href={currentPath} class={lang === 'fr' ? 'lang-btn active' : 'lang-btn'}>FR</a>
+        <a href={otherLangPath} class={lang === 'en' ? 'lang-btn active' : 'lang-btn'}>EN</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+
+  .header.scrolled {
+    background-color: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .logo-name {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+  }
+
+  .logo:hover .logo-name {
+    color: var(--accent-gold);
+  }
+
+  .logo-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-cyber);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--text-primary);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .lang-active {
+    color: var(--accent-gold);
+  }
+
+  .lang-sep {
+    color: var(--border-subtle);
+  }
+
+  .lang-other {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+  }
+
+  .lang-toggle:hover .lang-other {
+    color: var(--text-primary);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .ham-line {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.open .ham-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .hamburger.open .ham-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger.open .ham-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 999;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-style: italic;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .mobile-menu.open .mobile-nav-link {
+    animation: slideUp 0.5s ease forwards;
+  }
+
+  .mobile-menu.open .mobile-nav-link:nth-child(1) { animation-delay: 0.1s; }
+  .mobile-menu.open .mobile-nav-link:nth-child(2) { animation-delay: 0.15s; }
+  .mobile-menu.open .mobile-nav-link:nth-child(3) { animation-delay: 0.2s; }
+  .mobile-menu.open .mobile-nav-link:nth-child(4) { animation-delay: 0.25s; }
+  .mobile-menu.open .mobile-nav-link:nth-child(5) { animation-delay: 0.3s; }
+
+  @keyframes slideUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--accent-gold);
+  }
+
+  .mobile-lang {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: slideUp 0.5s ease 0.35s forwards;
+  }
+
+  .lang-btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+  }
+
+  .lang-btn.active,
+  .lang-btn:hover {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<script is:inline>
+  const header = document.getElementById('header');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll behavior
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  // Hamburger toggle
+  hamburger?.addEventListener('click', () => {
+    const isOpen = hamburger.classList.contains('open');
+    hamburger.classList.toggle('open');
+    mobileMenu?.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenu?.setAttribute('aria-hidden', String(isOpen));
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger?.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Header entrance animation
+  if (typeof gsap !== 'undefined') {
+    gsap.fromTo('#header',
+      { opacity: 0, y: -20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 }
+    );
+  }
+</script>

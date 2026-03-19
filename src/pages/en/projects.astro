@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { t } from '../../i18n/utils';
+import { projects } from '../../data/projects';
+
+const lang = 'en';
+const tr = t(lang);
+const projectsTr = tr.projects_page;
+---
+
+<BaseLayout lang={lang} title={projectsTr.title} description="All projects by Banconlé AKOBI — SaaS, cybersecurity, full-stack, AI, infrastructure.">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="label gsap-reveal" style="margin-bottom:1rem">{projectsTr.subtitle}</p>
+      <h1 class="page-title gsap-reveal">{projectsTr.title}</h1>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="filters gsap-reveal" role="group" aria-label="Filter by category">
+      {projectsTr.filters.map((filter, i) => (
+        <button class={`filter-btn ${i === 0 ? 'active' : ''}`} data-filter={i === 0 ? 'all' : filter} aria-pressed={i === 0 ? 'true' : 'false'}>
+          {filter}
+        </button>
+      ))}
+    </div>
+
+    <div class="projects-grid gsap-stagger" id="projects-grid">
+      {projects.map(project => (
+        <ProjectCard project={project} lang={lang} />
+      ))}
+    </div>
+
+    <div class="no-results" id="no-results" hidden aria-live="polite">
+      <p class="mono">// no projects in this category</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: clamp(8rem,12vw,12rem) clamp(1.5rem,5vw,4rem) clamp(2rem,4vw,4rem); border-bottom: 1px solid var(--border-subtle); background: var(--gradient-hero); }
+  .page-hero-inner { max-width: 1400px; margin: 0 auto; }
+  .page-title { font-size: clamp(2.5rem,6vw,5.5rem); font-style: italic; margin-top: 0.5rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; }
+  .filter-btn { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-secondary); background: transparent; border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; cursor: pointer; transition: all 0.3s ease; min-height: 44px; }
+  .filter-btn:hover, .filter-btn.active { color: var(--accent-gold); border-color: var(--accent-gold); background: rgba(201,169,110,0.05); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .no-results { text-align: center; padding: 4rem; color: var(--text-secondary); }
+  @media (max-width:1024px) { .projects-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width:640px) { .projects-grid { grid-template-columns: 1fr; } }
+</style>
+
+<script is:inline>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  const noResults = document.getElementById('no-results');
+  const categoryMap = { 'Cybersecurity': 'Cybersécurité', 'Web / Full-Stack': 'Web / Full-Stack', 'SaaS': 'SaaS', 'AI / Academic': 'IA / Académique', 'Infrastructure': 'Infrastructure', 'Other': 'Autre' };
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+      const filter = btn.getAttribute('data-filter');
+      const mapped = categoryMap[filter] || filter;
+      let count = 0;
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const show = filter === 'all' || cat === mapped || cat === filter;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) count++;
+      });
+      if (noResults) noResults.hidden = count > 0;
+    });
+  });
+</script>

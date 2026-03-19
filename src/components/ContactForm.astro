@@ -1,0 +1,219 @@
+---
+import { t } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+---
+
+<form
+  class="contact-form"
+  name="contact"
+  method="POST"
+  netlify
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  id="contact-form"
+  novalidate
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <p class="hidden" aria-hidden="true">
+    <label>
+      Don't fill this out if you're human:
+      <input name="bot-field" />
+    </label>
+  </p>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name" class="form-label">{tr.contact_page.form_name} *</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-input"
+        placeholder={tr.contact_page.form_placeholder_name}
+        required
+        autocomplete="name"
+        aria-required="true"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email" class="form-label">{tr.contact_page.form_email} *</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-input"
+        placeholder={tr.contact_page.form_placeholder_email}
+        required
+        autocomplete="email"
+        aria-required="true"
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="subject" class="form-label">{tr.contact_page.form_subject}</label>
+    <input
+      type="text"
+      id="subject"
+      name="subject"
+      class="form-input"
+      placeholder={tr.contact_page.form_placeholder_subject}
+      autocomplete="off"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="message" class="form-label">{tr.contact_page.form_message} *</label>
+    <textarea
+      id="message"
+      name="message"
+      class="form-input form-textarea"
+      placeholder={tr.contact_page.form_placeholder_message}
+      required
+      rows="6"
+      aria-required="true"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="btn-primary form-submit" id="submit-btn">
+    {tr.contact_page.form_send}
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <line x1="22" y1="2" x2="11" y2="13"/>
+      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+    </svg>
+  </button>
+
+  <div class="form-success" id="form-success" aria-live="polite" role="alert" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    {tr.contact_page.form_success}
+  </div>
+</form>
+
+<style>
+  .hidden {
+    display: none;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .form-input {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    padding: 0.875rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    transition: border-color 0.3s ease;
+    outline: none;
+    width: 100%;
+  }
+
+  .form-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+  }
+
+  .form-input:focus {
+    border-color: var(--accent-gold);
+  }
+
+  .form-input:invalid:not(:placeholder-shown) {
+    border-color: var(--accent-danger);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .form-submit {
+    align-self: flex-start;
+    width: auto;
+  }
+
+  .form-success {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--accent-cyber);
+    color: var(--accent-cyber);
+    font-size: 0.9rem;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script is:inline>
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form) return;
+
+    const formData = new FormData(form);
+    submitBtn && (submitBtn.textContent = '...');
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      form.style.opacity = '0';
+      form.style.pointerEvents = 'none';
+      if (success) {
+        success.hidden = false;
+      }
+    } catch {
+      submitBtn && (submitBtn.textContent = 'Erreur — réessayez');
+    }
+  });
+</script>

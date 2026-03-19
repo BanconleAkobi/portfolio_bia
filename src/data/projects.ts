@@ -1,0 +1,176 @@
+export type ProjectCategory = 'Cybersécurité' | 'Web / Full-Stack' | 'SaaS' | 'IA / Académique' | 'Infrastructure' | 'Autre';
+
+export interface Project {
+  id: string;
+  title: string;
+  titleEn: string;
+  description: string;
+  descriptionEn: string;
+  stack: string[];
+  category: ProjectCategory;
+  github?: string;
+  demo?: string;
+  featured?: boolean;
+  repoEmpty?: boolean;
+  image?: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: 'lanceos',
+    title: 'LanceOS',
+    titleEn: 'LanceOS',
+    description: 'Plateforme de gestion complète (facturation, CRM, projets) pour indépendants. Design system "Editorial Luxury" custom. Lancé en mars 2026.',
+    descriptionEn: 'Complete management platform (invoicing, CRM, projects) for freelancers. Custom "Editorial Luxury" design system. Launched March 2026.',
+    stack: ['Next.js 15', 'TypeScript', 'Supabase', 'Prisma', 'Tailwind CSS'],
+    category: 'SaaS',
+    demo: 'https://lanceos.eu',
+    featured: true,
+  },
+  {
+    id: 'marketplace-amap',
+    title: 'Marketplace AMAP',
+    titleEn: 'AMAP Marketplace',
+    description: 'Marketplace distribuée pour une AMAP. Architecture MongoDB shardée, double frontend consommateur/producteur, API REST Spring Boot, orchestré via Docker Compose. Projet de groupe 4A ICy FISA.',
+    descriptionEn: 'Distributed marketplace for a local farm collective. Sharded MongoDB architecture, dual consumer/producer frontend, Spring Boot REST API, orchestrated via Docker Compose. Group project, 4th-year FISA.',
+    stack: ['Spring Boot', 'Java 17', 'MongoDB', 'React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Docker Compose'],
+    category: 'Web / Full-Stack',
+    github: 'https://github.com/BanconleAkobi/project_bdd',
+    featured: true,
+  },
+  {
+    id: 'portail-bloc',
+    title: 'Portail BLOC',
+    titleEn: 'BLOC Portal',
+    description: 'Portail extranet client pour Boulanger Location. Gestion des sinistres et fins de contrat. Design inspiré Boulanger, filtrage client-side, intégration rapports Piceasoft.',
+    descriptionEn: 'Client extranet portal for Boulanger Location. Claims management and end-of-contract handling. Boulanger-inspired design, client-side filtering, Piceasoft report integration.',
+    stack: ['Symfony 5.4', 'Twig', 'MySQL', 'API Piceasoft'],
+    category: 'Web / Full-Stack',
+    featured: true,
+  },
+  {
+    id: 'smartfone',
+    title: 'Plateforme smartfone.fr',
+    titleEn: 'smartfone.fr Platform',
+    description: 'Migration majeure PrestaShop 1.7.7→1.7.8, intégration paiement Alma (2x/3x/4x), module custom BlockDomTom, optimisation SEO & UX mobile, scripts migration Scaleway.',
+    descriptionEn: 'Major PrestaShop 1.7.7→1.7.8 migration, Alma payment integration (2x/3x/4x), custom BlockDomTom module, SEO & mobile UX optimization, Scaleway migration scripts.',
+    stack: ['PrestaShop 1.7.8', 'PHP', 'MySQL', 'Scaleway'],
+    category: 'Web / Full-Stack',
+    featured: true,
+  },
+  {
+    id: 'erp-regeneration',
+    title: 'ERP "Regeneration"',
+    titleEn: 'ERP "Regeneration"',
+    description: 'ERP sur mesure intégrant gestion produits, back-office blog SEO, et synchronisation multi-plateformes. Gère tout le cycle de vie des smartphones reconditionnés.',
+    descriptionEn: 'Custom ERP integrating product management, SEO blog back-office, and multi-platform synchronization. Manages the full lifecycle of refurbished smartphones.',
+    stack: ['Symfony', 'PHP', 'API PrestaShop', 'API OpenSI'],
+    category: 'Web / Full-Stack',
+  },
+  {
+    id: 'tp-ia-othello',
+    title: 'TP IA Othello',
+    titleEn: 'AI Othello Lab',
+    description: 'Agent IA pour le jeu Othello/Reversi avec algorithme Minimax et élagage Alpha-Beta. Évaluation heuristique des positions de plateau.',
+    descriptionEn: 'AI agent for Othello/Reversi with Minimax algorithm and Alpha-Beta pruning. Heuristic board position evaluation.',
+    stack: ['Python', 'Minimax', 'Alpha-Beta Pruning'],
+    category: 'IA / Académique',
+    github: 'https://github.com/BanconleAkobi/TP_IA_Othello',
+  },
+  {
+    id: 'q-learning',
+    title: 'Q-Learning',
+    titleEn: 'Q-Learning',
+    description: 'Implémentation de l\'algorithme Q-Learning pour résolution de problèmes de navigation/décision. TP d\'apprentissage par renforcement FISA 4A.',
+    descriptionEn: 'Q-Learning algorithm implementation for navigation/decision problems. Reinforcement learning lab, 4th-year FISA.',
+    stack: ['Python', 'Q-Learning', 'Reinforcement Learning'],
+    category: 'IA / Académique',
+    github: 'https://github.com/BanconleAkobi/Q_learning',
+    repoEmpty: true,
+  },
+  {
+    id: 'mini-esb',
+    title: 'Mini ESB',
+    titleEn: 'Mini ESB',
+    description: 'Implémentation d\'un mini Enterprise Service Bus avec communication asynchrone via RabbitMQ. Routage de messages, files d\'attente et intégration inter-services.',
+    descriptionEn: 'Mini Enterprise Service Bus with asynchronous messaging via RabbitMQ. Message routing, queues, and inter-service integration.',
+    stack: ['Java', 'RabbitMQ', 'Message Architecture'],
+    category: 'IA / Académique',
+  },
+  {
+    id: 'siem-bucarest',
+    title: 'Implémentation SIEM',
+    titleEn: 'SIEM Implementation',
+    description: 'Déploiement et configuration SIEM, analyse de logs, détection de menaces en environnement entreprise. Stage chez EasyDo Digital Technologies à Bucarest. Certifications Splunk obtenues.',
+    descriptionEn: 'SIEM deployment and configuration, log analysis, enterprise threat detection. Internship at EasyDo Digital Technologies, Bucharest. Splunk certifications obtained.',
+    stack: ['Splunk', 'Wazuh', 'Mitre ATT&CK'],
+    category: 'Cybersécurité',
+  },
+  {
+    id: 'auditblitz',
+    title: 'AuditBlitz',
+    titleEn: 'AuditBlitz',
+    description: 'Concept d\'outil d\'audit sécurité automatisé ciblant les indie hackers et startups. En phase de conception.',
+    descriptionEn: 'Automated security audit tool concept targeting indie hackers and startups. In design phase.',
+    stack: ['Go', 'Next.js'],
+    category: 'Cybersécurité',
+  },
+  {
+    id: 'ctf-labs',
+    title: 'CTF & Pentesting Labs',
+    titleEn: 'CTF & Pentesting Labs',
+    description: '+100 challenges résolus sur TryHackMe (parcours Junior Penetration Tester). Rapports de CTF disponibles sur GitHub.',
+    descriptionEn: '100+ challenges solved on TryHackMe (Junior Penetration Tester path). CTF reports available on GitHub.',
+    stack: ['Kali Linux', 'Burp Suite', 'Nmap', 'Metasploit', 'OWASP'],
+    category: 'Cybersécurité',
+    github: 'https://github.com/BanconleAkobi/CTF',
+  },
+  {
+    id: 'jeu-tron',
+    title: 'Jeu Tron',
+    titleEn: 'Tron Game',
+    description: 'Implémentation du jeu Tron en local avec moteur de collision, rendu graphique temps réel et gestion des inputs joueurs.',
+    descriptionEn: 'Local Tron game implementation with collision engine, real-time graphics, and player input management.',
+    stack: ['Java', 'JavaFX', 'Spring Boot'],
+    category: 'Autre',
+  },
+  {
+    id: 'ticket-manager',
+    title: 'Ticket Manager',
+    titleEn: 'Ticket Manager',
+    description: 'Application CRUD de gestion de tickets support avec authentification, gestion de rôles et suivi de statuts.',
+    descriptionEn: 'CRUD support ticket management app with authentication, role management, and status tracking.',
+    stack: ['Symfony', 'PHP', 'MySQL'],
+    category: 'Web / Full-Stack',
+    github: 'https://github.com/BanconleAkobi/ticket_manager',
+  },
+  {
+    id: 'chat-c',
+    title: 'Chat en C',
+    titleEn: 'C Chat',
+    description: 'Application de chat client-serveur multi-utilisateurs avec programmation socket bas niveau.',
+    descriptionEn: 'Multi-user client-server chat application using low-level socket programming.',
+    stack: ['C', 'Sockets', 'TCP/IP'],
+    category: 'Autre',
+    github: 'https://github.com/BanconleAkobi/C_Chat',
+  },
+  {
+    id: 'creathon',
+    title: 'Creathon — Accessibilité Festival',
+    titleEn: 'Creathon — Festival Accessibility',
+    description: 'Site d\'accompagnement des personnes handicapées lors d\'un festival. Projet Creathon axé accessibilité web.',
+    descriptionEn: 'Website assisting people with disabilities at a festival. Creathon project focused on web accessibility.',
+    stack: ['HTML', 'CSS', 'Web Design'],
+    category: 'Autre',
+    github: 'https://github.com/BanconleAkobi/Creathon_project',
+  },
+  {
+    id: 'windows-server',
+    title: 'Windows Server — TP Infrastructure',
+    titleEn: 'Windows Server — Infrastructure Lab',
+    description: 'Mise en place d\'une infrastructure réseau complète : contrôleur de domaine AD, serveur DHCP, DNS et hébergement IIS.',
+    descriptionEn: 'Complete network infrastructure setup: AD domain controller, DHCP, DNS, and IIS web hosting.',
+    stack: ['Windows Server', 'Active Directory', 'DHCP', 'DNS', 'IIS'],
+    category: 'Infrastructure',
+  },
+];

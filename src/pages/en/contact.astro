@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { t } from '../../i18n/utils';
+
+const lang = 'en';
+const tr = t(lang);
+const contact = tr.contact_page;
+---
+
+<BaseLayout lang={lang} title={contact.title} description="Contact Banconlé AKOBI — Freelance missions, internships, tech projects.">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="label gsap-reveal" style="margin-bottom:1rem">{contact.subtitle}</p>
+      <h1 class="page-title gsap-reveal">{contact.title}</h1>
+    </div>
+  </div>
+
+  <div class="section contact-layout">
+    <div class="contact-info gsap-reveal">
+      <p class="contact-intro">{contact.intro}</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <p class="label contact-item-label">{contact.email_label}</p>
+          <a href="mailto:ingenieurbanconle@gmail.com" class="contact-item-value link-underline">ingenieurbanconle@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <p class="label contact-item-label">{contact.location_label}</p>
+          <p class="contact-item-value">{contact.location}</p>
+        </div>
+        <div class="contact-item">
+          <p class="label contact-item-label">LinkedIn</p>
+          <a href="https://www.linkedin.com/in/banconl%C3%A9-akobi-a88940273" class="contact-item-value link-underline" target="_blank" rel="noopener noreferrer">linkedin.com/in/banconlé-akobi</a>
+        </div>
+        <div class="contact-item">
+          <p class="label contact-item-label">GitHub</p>
+          <a href="https://github.com/BanconleAkobi" class="contact-item-value link-underline" target="_blank" rel="noopener noreferrer">github.com/BanconleAkobi</a>
+        </div>
+      </div>
+      <div class="contact-deco">
+        <div class="mono contact-deco-text">
+          <span style="color:var(--accent-cyber)">&gt;_</span> Waiting for your message...
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrapper gsap-reveal">
+      <ContactForm lang={lang} />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: clamp(8rem,12vw,12rem) clamp(1.5rem,5vw,4rem) clamp(2rem,4vw,4rem); border-bottom: 1px solid var(--border-subtle); background: var(--gradient-hero); }
+  .page-hero-inner { max-width: 1400px; margin: 0 auto; }
+  .page-title { font-size: clamp(2.5rem,6vw,5.5rem); font-style: italic; margin-top: 0.5rem; }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; }
+  .contact-intro { font-size: 1.0625rem; line-height: 1.8; margin-bottom: 3rem; color: var(--text-secondary); }
+  .contact-details { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem; }
+  .contact-item { display: flex; flex-direction: column; gap: 0.4rem; }
+  .contact-item-label { font-size: 0.7rem; color: var(--accent-gold); }
+  .contact-item-value { font-size: 0.9375rem; color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; width: fit-content; }
+  a.contact-item-value:hover { color: var(--text-primary); }
+  .contact-deco { border: 1px solid var(--border-subtle); padding: 1rem 1.25rem; background: var(--bg-secondary); }
+  .contact-deco-text { font-size: 0.8rem; color: var(--text-secondary); }
+  .contact-form-wrapper { position: sticky; top: 6rem; }
+  @media (max-width:1024px) { .contact-layout { grid-template-columns: 1fr; gap: 3rem; } .contact-form-wrapper { position: static; } }
+</style>

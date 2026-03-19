@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import { t } from '../../../i18n/utils';
+import { blogPosts } from '../../../data/blog';
+
+const lang = 'fr';
+const tr = t(lang);
+const blog = tr.blog_page;
+
+const [featured, ...rest] = blogPosts;
+---
+
+<BaseLayout
+  lang={lang}
+  title={blog.title}
+  description="Blog de Banconlé AKOBI — Cybersécurité, développement web, cloud, carrière."
+>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="label gsap-reveal" style="margin-bottom:1rem">{blog.subtitle}</p>
+      <h1 class="page-title gsap-reveal">{blog.title}</h1>
+    </div>
+  </div>
+
+  <div class="section">
+    <!-- Featured -->
+    {featured && (
+      <div class="gsap-reveal" style="margin-bottom:2rem">
+        <p class="label" style="margin-bottom:1.5rem">{blog.featured}</p>
+        <BlogCard
+          title={featured.title}
+          category={featured.category}
+          date={new Date(featured.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          excerpt={featured.excerpt}
+          slug={featured.slug}
+          lang={lang}
+          featured={true}
+        />
+      </div>
+    )}
+
+    <!-- Grid -->
+    <div class="blog-grid gsap-stagger">
+      {rest.map(post => (
+        <BlogCard
+          title={post.title}
+          category={post.category}
+          date={new Date(post.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          excerpt={post.excerpt}
+          slug={post.slug}
+          lang={lang}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: clamp(8rem, 12vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 4vw, 4rem);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--gradient-hero);
+  }
+
+  .page-hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

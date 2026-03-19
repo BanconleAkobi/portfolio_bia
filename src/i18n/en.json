@@ -1,0 +1,205 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Banconlé AKOBI",
+    "subtitle": "Computer Science & Cybersecurity Engineer",
+    "tagline": "I build robust, secure systems that last. From cloud architecture to pentesting, from custom ERP to SaaS — with method and ambition.",
+    "cta": "Explore my work",
+    "scroll": "Scroll"
+  },
+  "brief": {
+    "title": "In brief",
+    "items": [
+      {
+        "num": "01",
+        "title": "4th-year engineering student",
+        "desc": "INSA Hauts-de-France, specialization in Cybersecurity & Cloud"
+      },
+      {
+        "num": "02",
+        "title": "IT Manager @ SEMR",
+        "desc": "Apprenticeship — Scaleway infrastructure, ERP, e-commerce smartfone.fr & magicrecycle.com"
+      },
+      {
+        "num": "03",
+        "title": "Founder of LanceOS",
+        "desc": "All-in-one SaaS for freelancers — launched March 2026 at lanceos.eu"
+      }
+    ]
+  },
+  "expertise": {
+    "title": "Areas of Expertise",
+    "subtitle": "Multidisciplinary by conviction",
+    "items": [
+      {
+        "icon": "shield",
+        "title": "Cybersecurity & Pentesting",
+        "desc": "Splunk, Wazuh, Kali Linux, Burp Suite, TryHackMe Junior Penetration Tester. Log analysis, SIEM, CTF."
+      },
+      {
+        "icon": "code",
+        "title": "Full-Stack Development",
+        "desc": "Next.js, Symfony, Spring Boot, React, TypeScript. From REST APIs to polished editorial frontends."
+      },
+      {
+        "icon": "cloud",
+        "title": "Cloud Architecture & DevOps",
+        "desc": "Scaleway, Docker Compose, CI/CD, sharded MongoDB, infrastructure migrations."
+      },
+      {
+        "icon": "shopping-bag",
+        "title": "E-commerce & PrestaShop",
+        "desc": "Major migrations, custom modules, Alma payment integration, SEO and mobile UX."
+      },
+      {
+        "icon": "brain",
+        "title": "AI & Machine Learning",
+        "desc": "Minimax, Q-Learning, game heuristics. Python, academic and applied approaches."
+      },
+      {
+        "icon": "mic",
+        "title": "Eloquence & Communication",
+        "desc": "2nd place nationally — Inter-INSA x VINCI 2026. Author of MORSE, a book on personal discipline."
+      }
+    ]
+  },
+  "projects_section": {
+    "title": "Featured Projects",
+    "subtitle": "What I've built",
+    "cta_code": "View code",
+    "cta_demo": "Live demo",
+    "cta_all": "All projects"
+  },
+  "quote": {
+    "text": "Discipline forges excellence. Habit creates consistency. Consistency leads to success.",
+    "author": "Banconlé AKOBI",
+    "work": "MORSE"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Engineer, author, builder",
+    "bio": "4th-year computer science and engineering student at INSA Hauts-de-France, I work daily at the intersection of cybersecurity, full-stack development, and cloud architecture. Through my apprenticeship at SEMR (smartfone.fr / magicrecycle.com), I manage the internal ERP, Scaleway infrastructure, and major e-commerce migrations.\n\nBeyond code, I authored a book on personal discipline (MORSE), placed 2nd nationally at the Inter-INSA x VINCI 2026 eloquence contest, and founded LanceOS, a SaaS platform for freelancers.\n\nThree words: curious, organized, creative. One conviction: technical skill without vision is worthless.",
+    "timeline_title": "Journey",
+    "timeline": [
+      {
+        "date": "May 2026 – Present",
+        "title": "Cybersecurity Internship",
+        "place": "EasyDo Digital Technologies — Bucharest, Romania",
+        "desc": "Splunk & Wazuh SIEM deployment, threat analysis, pentesting. Splunk certifications obtained."
+      },
+      {
+        "date": "Jan 2026",
+        "title": "2nd place — National Eloquence Contest",
+        "place": "Inter-INSA x VINCI — La Défense, Paris",
+        "desc": "National finalist among engineers from France's INSA schools."
+      },
+      {
+        "date": "Mar 2026",
+        "title": "LanceOS Launch",
+        "place": "lanceos.eu",
+        "desc": "All-in-one SaaS for freelancers: invoicing, CRM, project management."
+      },
+      {
+        "date": "Nov 2025",
+        "title": "1st prize — INSA HdF Eloquence Contest",
+        "place": "Valenciennes — 4th edition",
+        "desc": "1st prize at the internal INSA Hauts-de-France eloquence contest."
+      },
+      {
+        "date": "Sept 2024 – Present",
+        "title": "IT Manager Apprentice",
+        "place": "SEMR MagicRecycle / Smartfone.fr — Versailles",
+        "desc": "Scaleway infrastructure, Regeneration ERP, PrestaShop migrations, payment integrations."
+      },
+      {
+        "date": "Jul 2023 – Aug 2025",
+        "title": "CTF & Bug Bounty",
+        "place": "TryHackMe — Junior Pentester path",
+        "desc": "100+ challenges solved. Junior Penetration Tester path completed."
+      },
+      {
+        "date": "2022 – 2024",
+        "title": "Bachelor's in Computer Science",
+        "place": "UPHF — Valenciennes",
+        "desc": "Graduated with honors."
+      },
+      {
+        "date": "2022",
+        "title": "Scientific Baccalaureate",
+        "place": "Lycée Français de Lomé, Togo",
+        "desc": "Graduated with honors."
+      }
+    ],
+    "values_title": "Values & Philosophy",
+    "values": [
+      {
+        "icon": "target",
+        "title": "Discipline",
+        "desc": "Rigorous execution is the foundation of every lasting result."
+      },
+      {
+        "icon": "search",
+        "title": "Curiosity",
+        "desc": "Every new technology is a door — I open them all."
+      },
+      {
+        "icon": "mic",
+        "title": "Eloquence",
+        "desc": "Knowing how to code isn't enough. Knowing how to convince makes the difference."
+      }
+    ],
+    "certifications_title": "Certifications & Recognition",
+    "certifications": [
+      "ISC2 Security CC",
+      "TryHackMe Junior Penetration Tester",
+      "Splunk Technical Selling Foundations (85%)",
+      "Splunk SEI — 3 certifications",
+      "2nd place nationally — Inter-INSA x VINCI 2026",
+      "Author of MORSE"
+    ]
+  },
+  "projects_page": {
+    "title": "Projects",
+    "subtitle": "What I've built, from A to Z",
+    "filters": ["All", "Cybersecurity", "Web / Full-Stack", "SaaS", "AI / Academic", "Infrastructure", "Other"],
+    "cta_code": "View code",
+    "cta_demo": "Live"
+  },
+  "blog_page": {
+    "title": "Blog",
+    "subtitle": "Field notes, technical analysis, reflections",
+    "featured": "Featured",
+    "read_more": "Read article"
+  },
+  "contact_page": {
+    "title": "Contact",
+    "subtitle": "A project, an opportunity, a conversation?",
+    "intro": "Available for freelance missions, internships/apprenticeships, or simply to discuss a tech project. I respond within 48 hours.",
+    "email_label": "Email",
+    "location_label": "Location",
+    "location": "Valenciennes / Versailles, France",
+    "form_name": "Name",
+    "form_email": "Email",
+    "form_subject": "Subject",
+    "form_message": "Message",
+    "form_send": "Send message",
+    "form_success": "Message sent! I'll get back to you within 48 hours.",
+    "form_placeholder_name": "Your name",
+    "form_placeholder_email": "your@email.com",
+    "form_placeholder_subject": "What is this about?",
+    "form_placeholder_message": "Describe your project or request..."
+  },
+  "footer": {
+    "tagline": "Crafted with precision",
+    "nav_title": "Navigation",
+    "contact_title": "Quick contact",
+    "social_title": "Social",
+    "copyright": "© 2026 Banconlé AKOBI"
+  }
+}

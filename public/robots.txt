@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://banconle.dev/sitemap-index.xml

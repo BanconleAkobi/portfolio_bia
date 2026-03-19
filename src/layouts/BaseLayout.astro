@@ -1,0 +1,188 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLang, t } from '../i18n/utils';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  lang?: 'fr' | 'en';
+}
+
+const {
+  title,
+  description,
+  ogImage = '/images/og-image.jpg',
+  lang: propLang
+} = Astro.props;
+
+const lang = propLang || getLang(new URL(Astro.request.url));
+const tr = t(lang);
+
+const defaultTitle = lang === 'fr'
+  ? 'Banconlé AKOBI — Ingénieur Informatique & Cybersécurité'
+  : 'Banconlé AKOBI — Computer Science & Cybersecurity Engineer';
+const defaultDesc = lang === 'fr'
+  ? 'Portfolio de Banconlé AKOBI — Ingénieur 4A INSA HdF, IT Manager @ SEMR, fondateur de LanceOS. Cybersécurité, full-stack, cloud.'
+  : 'Portfolio of Banconlé AKOBI — 4th-year INSA HdF engineer, IT Manager @ SEMR, founder of LanceOS. Cybersecurity, full-stack, cloud.';
+
+const pageTitle = title ? `${title} — Banconlé AKOBI` : defaultTitle;
+const pageDesc = description || defaultDesc;
+const siteUrl = 'https://banconle.dev';
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDesc} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDesc} />
+  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:url" content={siteUrl} />
+  <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDesc} />
+  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+  <!-- Canonical -->
+  <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Banconlé AKOBI",
+    "jobTitle": lang === 'fr' ? "Ingénieur Informatique & Cybersécurité" : "Computer Science & Cybersecurity Engineer",
+    "url": siteUrl,
+    "sameAs": [
+      "https://www.linkedin.com/in/banconl%C3%A9-akobi-a88940273",
+      "https://github.com/BanconleAkobi"
+    ],
+    "email": "ingenieurbanconle@gmail.com",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "INSA Hauts-de-France"
+    }
+  })} />
+</head>
+<body>
+  <!-- Custom cursor -->
+  <div class="custom-cursor" id="cursor" aria-hidden="true"></div>
+
+  <Header lang={lang} />
+
+  <main>
+    <slot />
+  </main>
+
+  <Footer lang={lang} />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
+
+  <!-- Global animations -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Custom cursor
+      const cursor = document.getElementById('cursor');
+      if (cursor && window.matchMedia('(pointer: fine)').matches) {
+        document.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, [data-cursor]').forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+      }
+
+      // Register ScrollTrigger
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Reveal animations for all .gsap-reveal elements
+        gsap.utils.toArray('.gsap-reveal').forEach(el => {
+          gsap.fromTo(el,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        });
+
+        // Stagger reveals
+        document.querySelectorAll('.gsap-stagger').forEach(container => {
+          const children = container.querySelectorAll('.gsap-item');
+          if (children.length === 0) return;
+          gsap.fromTo(children,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.15,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: container,
+                start: 'top 80%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        });
+
+        // Clip path image reveals
+        gsap.utils.toArray('.gsap-clip').forEach(el => {
+          gsap.fromTo(el,
+            { clipPath: 'inset(100% 0 0 0)' },
+            {
+              clipPath: 'inset(0% 0 0 0)',
+              duration: 1.2,
+              ease: 'power4.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        });
+      }
+    });
+  </script>
+</body>
+</html>
