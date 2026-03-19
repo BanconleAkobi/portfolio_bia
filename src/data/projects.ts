@@ -26,6 +26,7 @@ export const projects: Project[] = [
     category: 'SaaS',
     demo: 'https://lanceos.eu',
     featured: true,
+    image: '/images/projects/lanceos.png',
   },
   {
     id: 'marketplace-amap',
@@ -66,6 +67,7 @@ export const projects: Project[] = [
     descriptionEn: 'Custom ERP integrating product management, SEO blog back-office, and multi-platform synchronization. Manages the full lifecycle of refurbished smartphones.',
     stack: ['Symfony', 'PHP', 'API PrestaShop', 'API OpenSI'],
     category: 'Web / Full-Stack',
+    image: '/images/projects/erp.png',
   },
   {
     id: 'tp-ia-othello',
@@ -76,6 +78,7 @@ export const projects: Project[] = [
     stack: ['Python', 'Minimax', 'Alpha-Beta Pruning'],
     category: 'IA / Académique',
     github: 'https://github.com/BanconleAkobi/TP_IA_Othello',
+    image: '/images/projects/othello.jpg',
   },
   {
     id: 'q-learning',
@@ -124,6 +127,7 @@ export const projects: Project[] = [
     stack: ['Kali Linux', 'Burp Suite', 'Nmap', 'Metasploit', 'OWASP'],
     category: 'Cybersécurité',
     github: 'https://github.com/BanconleAkobi/CTF',
+    image: '/images/projects/ctf.jpeg',
   },
   {
     id: 'jeu-tron',
@@ -163,6 +167,7 @@ export const projects: Project[] = [
     stack: ['HTML', 'CSS', 'Web Design'],
     category: 'Autre',
     github: 'https://github.com/BanconleAkobi/Creathon_project',
+    image: '/images/projects/creathon.png',
   },
   {
     id: 'windows-server',
@@ -172,5 +177,6 @@ export const projects: Project[] = [
     descriptionEn: 'Complete network infrastructure setup: AD domain controller, DHCP, DNS, and IIS web hosting.',
     stack: ['Windows Server', 'Active Directory', 'DHCP', 'DNS', 'IIS'],
     category: 'Infrastructure',
+    image: '/images/projects/windows.png',
   },
 ];
