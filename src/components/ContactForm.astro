@@ -202,12 +202,10 @@ const tr = t(lang);
       const lang = form.dataset.lang || 'fr';
       const recipient = form.dataset.recipient || 'ingenieurbanconle@gmail.com';
       const defaultSubject = form.dataset.defaultSubject || (lang === 'fr' ? 'Message depuis le portfolio' : 'Message from portfolio');
-      const subjectLine = subjectRaw || defaultSubject;
+      const topic = subjectRaw || defaultSubject;
+      const subjectLine = topic + ' — ' + name + ' <' + email + '>';
 
-      const body =
-        lang === 'fr'
-          ? ['Nom : ' + name, 'Email : ' + email, '', 'Message :', message].join('\n')
-          : ['Name: ' + name, 'Email: ' + email, '', 'Message:', message].join('\n');
+      const body = message;
 
       const mailto =
         'mailto:' +
@@ -229,7 +227,21 @@ const tr = t(lang);
       submitBtn.disabled = true;
       submitBtn.textContent = '…';
 
-      window.location.href = mailto;
+      const openMailto = function () {
+        const useNewTab = window.matchMedia('(pointer: fine)').matches;
+        if (useNewTab) {
+          const a = document.createElement('a');
+          a.href = mailto;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        } else {
+          window.location.href = mailto;
+        }
+      };
+      openMailto();
 
       if (success) {
         success.hidden = false;
