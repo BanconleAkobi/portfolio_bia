@@ -151,8 +151,8 @@ export const projects: Project[] = [
   },
   {
     id: 'creathon',
-    title: 'Creathon — Accessibilité Festival',
-    titleEn: 'Creathon — Festival Accessibility',
+    title: 'Creathon - Accessibilité Festival',
+    titleEn: 'Creathon - Festival Accessibility',
     description: 'Site d\'accompagnement des personnes handicapées lors d\'un festival. Projet Creathon axé accessibilité web.',
     descriptionEn: 'Website assisting people with disabilities at a festival. Creathon project focused on web accessibility.',
     stack: ['HTML', 'CSS', 'Web Design'],
@@ -162,8 +162,8 @@ export const projects: Project[] = [
   },
   {
     id: 'windows-server',
-    title: 'Windows Server — TP Infrastructure',
-    titleEn: 'Windows Server — Infrastructure Lab',
+    title: 'Windows Server - TP Infrastructure',
+    titleEn: 'Windows Server - Infrastructure Lab',
     description: 'Mise en place d\'une infrastructure réseau complète : contrôleur de domaine AD, serveur DHCP, DNS et hébergement IIS.',
     descriptionEn: 'Complete network infrastructure setup: AD domain controller, DHCP, DNS, and IIS web hosting.',
     stack: ['Windows Server', 'Active Directory', 'DHCP', 'DNS', 'IIS'],
@@ -172,8 +172,8 @@ export const projects: Project[] = [
   },
   {
     id: 'api-k8s-minikube',
-    title: 'Service API — Kubernetes (Minikube)',
-    titleEn: 'API Service — Kubernetes (Minikube)',
+    title: 'Service API - Kubernetes (Minikube)',
+    titleEn: 'API Service - Kubernetes (Minikube)',
     description: 'Travail pratique : configuration et déploiement d\'un service API conteneurisé avec Docker, orchestration sur cluster local Minikube (Kubernetes).',
     descriptionEn: 'School lab: configuring and deploying a containerized API service with Docker, orchestrated on a local Minikube Kubernetes cluster.',
     stack: ['Kubernetes', 'Docker', 'Minikube', 'API REST'],
@@ -181,8 +181,8 @@ export const projects: Project[] = [
   },
   {
     id: 'data-mining-r-weka',
-    title: 'Analyse de données — Data mining',
-    titleEn: 'Data Mining — RStudio & Weka',
+    title: 'Analyse de données - Data mining',
+    titleEn: 'Data Mining - RStudio & Weka',
     description: 'Travaux pratiques : exploration et modélisation de données avec RStudio, expérimentations sous Weka (classifieurs, prétraitement).',
     descriptionEn: 'Labs: data exploration and modeling with RStudio, experiments in Weka (classifiers, preprocessing).',
     stack: ['R', 'RStudio', 'Weka', 'Data mining'],

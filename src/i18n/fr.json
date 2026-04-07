@@ -9,7 +9,7 @@
   "hero": {
     "name": "Banconlé AKOBI",
     "subtitle": "Ingénieur Informatique & Cybersécurité",
-    "tagline": "Je construis des systèmes robustes, sécurisés et qui durent. De l'architecture cloud au pentesting, de l'ERP sur mesure au SaaS — avec méthode et ambition.",
+    "tagline": "Je construis des systèmes robustes, sécurisés et qui durent. De l'architecture cloud au pentesting, de l'ERP sur mesure au SaaS - avec méthode et ambition.",
     "cta": "Découvrir mon parcours",
     "scroll": "Défiler"
   },
@@ -24,12 +24,12 @@
       {
         "num": "02",
         "title": "IT Manager @ SEMR",
-        "desc": "Alternance — infrastructure Scaleway, ERP, e-commerce smartfone.fr & magicrecycle.com"
+        "desc": "Alternance - infrastructure Scaleway, ERP, e-commerce smartfone.fr & magicrecycle.com"
       },
       {
         "num": "03",
         "title": "Fondateur LanceOS",
-        "desc": "SaaS tout-en-un pour freelances — lancé mars 2026 sur lanceos.eu"
+        "desc": "SaaS tout-en-un pour freelances - lancé mars 2026 sur lanceos.eu"
       }
     ]
   },
@@ -84,19 +84,19 @@
   "about": {
     "title": "À propos",
     "subtitle": "Ingénieur, auteur, bâtisseur",
-    "bio": "Ingénieur en informatique en 4e année à l'INSA Hauts-de-France, en formation ingénieur sous statut d'alternant (spécialisation informatique et cybersécurité, 2024–2027). Je conjugue cybersécurité, développement full-stack et architecture cloud. En alternance chez SEMR (smartfone.fr / magicrecycle.com), je pilote notamment l'ERP « Regeneration », l'infrastructure Scaleway et les migrations e-commerce.\n\nSur le terrain : LanceOS (SaaS pour freelances), la pratique CTF (TryHackMe, +100 challenges) et le déploiement SIEM (stage à Bucarest — Splunk, Wazuh).\n\nAu-delà du code, je suis auteur d'un livre sur la discipline personnelle (MORSE), vainqueur du concours d'éloquence INSA Hauts-de-France 2025-2026, et 2e au concours national Inter-INSA x VINCI 2026.\n\nTrois mots : curieux, organisé, créatif. Une conviction : la technique sans vision ne vaut rien.",
+    "bio": "Ingénieur en informatique en 4e année à l'INSA Hauts-de-France, en formation ingénieur sous statut d'alternant (spécialisation informatique et cybersécurité, 2024–2027). Je conjugue cybersécurité, développement full-stack et architecture cloud. En alternance chez SEMR (smartfone.fr / magicrecycle.com), je pilote notamment l'ERP « Regeneration », l'infrastructure Scaleway et les migrations e-commerce.\n\nSur le terrain : LanceOS (SaaS pour freelances), la pratique CTF (TryHackMe, +100 challenges) et le déploiement SIEM (stage à Bucarest - Splunk, Wazuh).\n\nAu-delà du code, je suis auteur d'un livre sur la discipline personnelle (MORSE), vainqueur du concours d'éloquence INSA Hauts-de-France 2025-2026, et 2e au concours national Inter-INSA x VINCI 2026.\n\nTrois mots : curieux, organisé, créatif. Une conviction : la technique sans vision ne vaut rien.",
     "timeline_title": "Parcours",
     "timeline": [
       {
         "date": "Mai 2026 – En cours",
         "title": "Stage Cybersécurité",
-        "place": "EasyDo Digital Technologies — Bucarest, Roumanie",
+        "place": "EasyDo Digital Technologies - Bucarest, Roumanie",
         "desc": "Déploiement SIEM Splunk & Wazuh, analyse de menaces, pentesting. Certifications Splunk obtenues."
       },
       {
         "date": "Janv 2026",
-        "title": "2e place nationale — Concours d'éloquence",
-        "place": "Inter-INSA x VINCI — La Défense, Paris",
+        "title": "2e place nationale - Concours d'éloquence",
+        "place": "Inter-INSA x VINCI - La Défense, Paris",
         "desc": "Finaliste national parmi les ingénieurs des INSA de France."
       },
       {
@@ -107,32 +107,32 @@
       },
       {
         "date": "2025 – 2026",
-        "title": "Vainqueur — Concours d'éloquence INSA Hauts-de-France",
+        "title": "Vainqueur - Concours d'éloquence INSA Hauts-de-France",
         "place": "Valenciennes",
         "desc": "Lauréat du concours d'éloquence de l'école (édition 2025-2026)."
       },
       {
         "date": "Sept 2024 – 2027",
         "title": "Formation ingénieur (alternance)",
-        "place": "INSA Hauts-de-France — Valenciennes",
+        "place": "INSA Hauts-de-France - Valenciennes",
         "desc": "Cycle ingénieur sous statut d'alternant, spécialisation informatique et cybersécurité."
       },
       {
         "date": "Sept 2024 – Présent",
         "title": "IT Manager Apprentice",
-        "place": "SEMR MagicRecycle / Smartfone.fr — Versailles",
+        "place": "SEMR MagicRecycle / Smartfone.fr - Versailles",
         "desc": "Infrastructure Scaleway, ERP Regeneration, migrations PrestaShop, intégrations paiement."
       },
       {
         "date": "Juil 2023 – Août 2025",
         "title": "CTF & Bug Bounty",
-        "place": "TryHackMe — Junior Pentester path",
+        "place": "TryHackMe - Junior Pentester path",
         "desc": "+100 challenges résolus. Parcours Junior Penetration Tester complété."
       },
       {
         "date": "2022 – 2024",
         "title": "Licence Informatique",
-        "place": "UPHF — Valenciennes",
+        "place": "UPHF - Valenciennes",
         "desc": "Mention Très Bien."
       },
       {
@@ -165,12 +165,12 @@
       "ISC2 Security CC",
       "TryHackMe Junior Penetration Tester",
       "Splunk Technical Selling Foundations (85%)",
-      "Splunk SEI — 3 certifications",
-      "Certification RGPD (parcours en ligne — site de l'ASSI)",
-      "Udemy — Ethical Hacking",
-      "Udemy — Création d'un backend robuste avec Symfony",
+      "Splunk SEI - 3 certifications",
+      "Certification RGPD (parcours en ligne - site de l'ASSI)",
+      "Udemy - Ethical Hacking",
+      "Udemy - Création d'un backend robuste avec Symfony",
       "2e place nationale Inter-INSA x VINCI 2026",
-      "Vainqueur — Concours d'éloquence INSA Hauts-de-France 2025-2026",
+      "Vainqueur - Concours d'éloquence INSA Hauts-de-France 2025-2026",
       "Auteur du livre MORSE"
     ]
   },
@@ -199,7 +199,7 @@
     "form_subject": "Sujet",
     "form_message": "Message",
     "form_send": "Envoyer le message",
-    "form_success": "Message envoyé ! Je vous réponds sous 48h.",
+    "form_success": "Votre messagerie devrait s'ouvrir avec le message prérempli. Envoyez l'e-mail depuis votre client pour me joindre.",
     "form_placeholder_name": "Votre nom",
     "form_placeholder_email": "votre@email.com",
     "form_placeholder_subject": "De quoi s'agit-il ?",

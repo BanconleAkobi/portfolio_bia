@@ -12,21 +12,11 @@ const tr = t(lang);
 
 <form
   class="contact-form"
-  name="contact"
-  method="POST"
-  netlify
-  data-netlify="true"
-  netlify-honeypot="bot-field"
   id="contact-form"
-  novalidate
+  data-lang={lang}
+  data-recipient="ingenieurbanconle@gmail.com"
+  data-default-subject={lang === 'fr' ? 'Message depuis le portfolio' : 'Message from portfolio'}
 >
-  <input type="hidden" name="form-name" value="contact" />
-  <p class="hidden" aria-hidden="true">
-    <label>
-      Don't fill this out if you're human:
-      <input name="bot-field" />
-    </label>
-  </p>
 
   <div class="form-row">
     <div class="form-group">
@@ -189,31 +179,66 @@ const tr = t(lang);
 </style>
 
 <script is:inline>
-  const form = document.getElementById('contact-form');
-  const success = document.getElementById('form-success');
-  const submitBtn = document.getElementById('submit-btn');
+  (function () {
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+    const sendLabel = submitBtn ? submitBtn.innerHTML : '';
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!form) return;
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form || !submitBtn) return;
 
-    const formData = new FormData(form);
-    submitBtn && (submitBtn.textContent = '...');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      });
+      const fd = new FormData(form);
+      const name = String(fd.get('name') || '').trim();
+      const email = String(fd.get('email') || '').trim();
+      const subjectRaw = String(fd.get('subject') || '').trim();
+      const message = String(fd.get('message') || '').trim();
+      const lang = form.dataset.lang || 'fr';
+      const recipient = form.dataset.recipient || 'ingenieurbanconle@gmail.com';
+      const defaultSubject = form.dataset.defaultSubject || (lang === 'fr' ? 'Message depuis le portfolio' : 'Message from portfolio');
+      const subjectLine = subjectRaw || defaultSubject;
 
-      form.style.opacity = '0';
-      form.style.pointerEvents = 'none';
+      const body =
+        lang === 'fr'
+          ? ['Nom : ' + name, 'Email : ' + email, '', 'Message :', message].join('\n')
+          : ['Name: ' + name, 'Email: ' + email, '', 'Message:', message].join('\n');
+
+      const mailto =
+        'mailto:' +
+        recipient +
+        '?subject=' +
+        encodeURIComponent(subjectLine) +
+        '&body=' +
+        encodeURIComponent(body);
+
+      if (mailto.length > 1800) {
+        window.alert(
+          lang === 'fr'
+            ? 'Le message est trop long pour un lien mail. Raccourcissez le texte ou écrivez directement à ' + recipient
+            : 'Message is too long for a mail link. Shorten the text or write directly to ' + recipient
+        );
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '…';
+
+      window.location.href = mailto;
+
       if (success) {
         success.hidden = false;
       }
-    } catch {
-      submitBtn && (submitBtn.textContent = 'Erreur — réessayez');
-    }
-  });
+
+      setTimeout(function () {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = sendLabel;
+      }, 800);
+    });
+  })();
 </script>

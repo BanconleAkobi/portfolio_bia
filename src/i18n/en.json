@@ -193,7 +193,7 @@
     "form_subject": "Subject",
     "form_message": "Message",
     "form_send": "Send message",
-    "form_success": "Message sent! I'll get back to you within 48 hours.",
+    "form_success": "Your email app should open with the message prefilled. Send the email from there to reach me.",
     "form_placeholder_name": "Your name",
     "form_placeholder_email": "your@email.com",
     "form_placeholder_subject": "What is this about?",
