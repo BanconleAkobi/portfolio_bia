@@ -65,7 +65,7 @@
       {
         "icon": "mic",
         "title": "Éloquence & Communication",
-        "desc": "2e place nationale concours Inter-INSA x VINCI 2026. Auteur du livre MORSE sur la discipline."
+        "desc": "Vainqueur du concours d'éloquence INSA Hauts-de-France 2025-2026 ; 2e place nationale Inter-INSA x VINCI 2026. Auteur du livre MORSE sur la discipline."
       }
     ]
   },
@@ -84,7 +84,7 @@
   "about": {
     "title": "À propos",
     "subtitle": "Ingénieur, auteur, bâtisseur",
-    "bio": "Ingénieur en informatique en 4e année à l'INSA Hauts-de-France, je conjugue cybersécurité, développement full-stack et architecture cloud au quotidien. En alternance chez SEMR (smartfone.fr / magicrecycle.com), je pilote l'ERP interne, l'infrastructure Scaleway et les migrations e-commerce.\n\nAu-delà du code, je suis auteur d'un livre sur la discipline personnelle (MORSE), finaliste national du concours d'éloquence Inter-INSA x VINCI 2026 (2e place), et fondateur de LanceOS, un SaaS pour freelances.\n\nTrois mots : curieux, organisé, créatif. Une conviction : la technique sans vision ne vaut rien.",
+    "bio": "Ingénieur en informatique en 4e année à l'INSA Hauts-de-France, en formation ingénieur sous statut d'alternant (spécialisation informatique et cybersécurité, 2024–2027). Je conjugue cybersécurité, développement full-stack et architecture cloud. En alternance chez SEMR (smartfone.fr / magicrecycle.com), je pilote notamment l'ERP « Regeneration », l'infrastructure Scaleway et les migrations e-commerce.\n\nSur le terrain : LanceOS (SaaS pour freelances), la pratique CTF (TryHackMe, +100 challenges) et le déploiement SIEM (stage à Bucarest — Splunk, Wazuh).\n\nAu-delà du code, je suis auteur d'un livre sur la discipline personnelle (MORSE), vainqueur du concours d'éloquence INSA Hauts-de-France 2025-2026, et 2e au concours national Inter-INSA x VINCI 2026.\n\nTrois mots : curieux, organisé, créatif. Une conviction : la technique sans vision ne vaut rien.",
     "timeline_title": "Parcours",
     "timeline": [
       {
@@ -106,10 +106,16 @@
         "desc": "SaaS tout-en-un pour freelances : facturation, CRM, gestion de projets."
       },
       {
-        "date": "Nov 2025",
-        "title": "1er prix — Concours d'éloquence INSA HdF",
-        "place": "Valenciennes — 4e édition",
-        "desc": "1er prix du concours d'éloquence interne INSA Hauts-de-France."
+        "date": "2025 – 2026",
+        "title": "Vainqueur — Concours d'éloquence INSA Hauts-de-France",
+        "place": "Valenciennes",
+        "desc": "Lauréat du concours d'éloquence de l'école (édition 2025-2026)."
+      },
+      {
+        "date": "Sept 2024 – 2027",
+        "title": "Formation ingénieur (alternance)",
+        "place": "INSA Hauts-de-France — Valenciennes",
+        "desc": "Cycle ingénieur sous statut d'alternant, spécialisation informatique et cybersécurité."
       },
       {
         "date": "Sept 2024 – Présent",
@@ -160,7 +166,11 @@
       "TryHackMe Junior Penetration Tester",
       "Splunk Technical Selling Foundations (85%)",
       "Splunk SEI — 3 certifications",
+      "Certification RGPD (parcours en ligne — site de l'ASSI)",
+      "Udemy — Ethical Hacking",
+      "Udemy — Création d'un backend robuste avec Symfony",
       "2e place nationale Inter-INSA x VINCI 2026",
+      "Vainqueur — Concours d'éloquence INSA Hauts-de-France 2025-2026",
       "Auteur du livre MORSE"
     ]
   },

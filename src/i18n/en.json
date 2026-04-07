@@ -65,7 +65,7 @@
       {
         "icon": "mic",
         "title": "Eloquence & Communication",
-        "desc": "2nd place nationally — Inter-INSA x VINCI 2026. Author of MORSE, a book on personal discipline."
+        "desc": "Winner of the INSA Hauts-de-France eloquence contest 2025-2026; 2nd place nationally — Inter-INSA x VINCI 2026. Author of MORSE, a book on personal discipline."
       }
     ]
   },
@@ -84,7 +84,7 @@
   "about": {
     "title": "About",
     "subtitle": "Engineer, author, builder",
-    "bio": "4th-year computer science and engineering student at INSA Hauts-de-France, I work daily at the intersection of cybersecurity, full-stack development, and cloud architecture. Through my apprenticeship at SEMR (smartfone.fr / magicrecycle.com), I manage the internal ERP, Scaleway infrastructure, and major e-commerce migrations.\n\nBeyond code, I authored a book on personal discipline (MORSE), placed 2nd nationally at the Inter-INSA x VINCI 2026 eloquence contest, and founded LanceOS, a SaaS platform for freelancers.\n\nThree words: curious, organized, creative. One conviction: technical skill without vision is worthless.",
+    "bio": "4th-year engineering student at INSA Hauts-de-France, pursuing a work-study engineering degree in computer science and cybersecurity (2024–2027). I work at the intersection of cybersecurity, full-stack development, and cloud architecture. Through my apprenticeship at SEMR (smartfone.fr / magicrecycle.com), I lead the Regeneration ERP, Scaleway infrastructure, and major e-commerce migrations.\n\nOn the ground: LanceOS (SaaS for freelancers), CTF practice (TryHackMe, 100+ challenges), and SIEM deployment (internship in Bucharest — Splunk, Wazuh).\n\nBeyond code, I authored a book on personal discipline (MORSE), won the INSA Hauts-de-France eloquence contest 2025-2026, and placed 2nd nationally at Inter-INSA x VINCI 2026.\n\nThree words: curious, organized, creative. One conviction: technical skill without vision is worthless.",
     "timeline_title": "Journey",
     "timeline": [
       {
@@ -160,7 +160,11 @@
       "TryHackMe Junior Penetration Tester",
       "Splunk Technical Selling Foundations (85%)",
       "Splunk SEI — 3 certifications",
+      "GDPR certification (online course — ASSI website)",
+      "Udemy — Ethical Hacking",
+      "Udemy — Building a robust Symfony backend",
       "2nd place nationally — Inter-INSA x VINCI 2026",
+      "Winner — INSA Hauts-de-France eloquence contest 2025-2026",
       "Author of MORSE"
     ]
   },
