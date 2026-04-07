@@ -9,7 +9,7 @@
   "hero": {
     "name": "Banconlé AKOBI",
     "subtitle": "Computer Science & Cybersecurity Engineer",
-    "tagline": "I build robust, secure systems that last. From cloud architecture to pentesting, from custom ERP to SaaS — with method and ambition.",
+    "tagline": "I build robust, secure systems that last. From cloud architecture to pentesting, from custom ERP to SaaS - with method and ambition.",
     "cta": "Explore my work",
     "scroll": "Scroll"
   },
@@ -24,12 +24,12 @@
       {
         "num": "02",
         "title": "IT Manager @ SEMR",
-        "desc": "Apprenticeship — Scaleway infrastructure, ERP, e-commerce smartfone.fr & magicrecycle.com"
+        "desc": "Apprenticeship - Scaleway infrastructure, ERP, e-commerce smartfone.fr & magicrecycle.com"
       },
       {
         "num": "03",
         "title": "Founder of LanceOS",
-        "desc": "All-in-one SaaS for freelancers — launched March 2026 at lanceos.eu"
+        "desc": "All-in-one SaaS for freelancers - launched March 2026 at lanceos.eu"
       }
     ]
   },
@@ -65,7 +65,7 @@
       {
         "icon": "mic",
         "title": "Eloquence & Communication",
-        "desc": "Winner of the INSA Hauts-de-France eloquence contest 2025-2026; 2nd place nationally — Inter-INSA x VINCI 2026. Author of MORSE, a book on personal discipline."
+        "desc": "Winner of the INSA Hauts-de-France eloquence contest 2025-2026; 2nd place nationally - Inter-INSA x VINCI 2026. Author of MORSE, a book on personal discipline."
       }
     ]
   },
@@ -84,19 +84,19 @@
   "about": {
     "title": "About",
     "subtitle": "Engineer, author, builder",
-    "bio": "4th-year engineering student at INSA Hauts-de-France, pursuing a work-study engineering degree in computer science and cybersecurity (2024–2027). I work at the intersection of cybersecurity, full-stack development, and cloud architecture. Through my apprenticeship at SEMR (smartfone.fr / magicrecycle.com), I lead the Regeneration ERP, Scaleway infrastructure, and major e-commerce migrations.\n\nOn the ground: LanceOS (SaaS for freelancers), CTF practice (TryHackMe, 100+ challenges), and SIEM deployment (internship in Bucharest — Splunk, Wazuh).\n\nBeyond code, I authored a book on personal discipline (MORSE), won the INSA Hauts-de-France eloquence contest 2025-2026, and placed 2nd nationally at Inter-INSA x VINCI 2026.\n\nThree words: curious, organized, creative. One conviction: technical skill without vision is worthless.",
+    "bio": "4th-year engineering student at INSA Hauts-de-France, pursuing a work-study engineering degree in computer science and cybersecurity (2024–2027). I work at the intersection of cybersecurity, full-stack development, and cloud architecture. Through my apprenticeship at SEMR (smartfone.fr / magicrecycle.com), I lead the Regeneration ERP, Scaleway infrastructure, and major e-commerce migrations.\n\nOn the ground: LanceOS (SaaS for freelancers), CTF practice (TryHackMe, 100+ challenges), and SIEM deployment (internship in Bucharest - Splunk, Wazuh).\n\nBeyond code, I authored a book on personal discipline (MORSE), won the INSA Hauts-de-France eloquence contest 2025-2026, and placed 2nd nationally at Inter-INSA x VINCI 2026.\n\nThree words: curious, organized, creative. One conviction: technical skill without vision is worthless.",
     "timeline_title": "Journey",
     "timeline": [
       {
         "date": "May 2026 – Present",
         "title": "Cybersecurity Internship",
-        "place": "EasyDo Digital Technologies — Bucharest, Romania",
+        "place": "EasyDo Digital Technologies - Bucharest, Romania",
         "desc": "Splunk & Wazuh SIEM deployment, threat analysis, pentesting. Splunk certifications obtained."
       },
       {
         "date": "Jan 2026",
-        "title": "2nd place — National Eloquence Contest",
-        "place": "Inter-INSA x VINCI — La Défense, Paris",
+        "title": "2nd place - National Eloquence Contest",
+        "place": "Inter-INSA x VINCI - La Défense, Paris",
         "desc": "National finalist among engineers from France's INSA schools."
       },
       {
@@ -107,26 +107,26 @@
       },
       {
         "date": "Nov 2025",
-        "title": "1st prize — INSA HdF Eloquence Contest",
-        "place": "Valenciennes — 4th edition",
+        "title": "1st prize - INSA HdF Eloquence Contest",
+        "place": "Valenciennes - 4th edition",
         "desc": "1st prize at the internal INSA Hauts-de-France eloquence contest."
       },
       {
         "date": "Sept 2024 – Present",
         "title": "IT Manager Apprentice",
-        "place": "SEMR MagicRecycle / Smartfone.fr — Versailles",
+        "place": "SEMR MagicRecycle / Smartfone.fr - Versailles",
         "desc": "Scaleway infrastructure, Regeneration ERP, PrestaShop migrations, payment integrations."
       },
       {
         "date": "Jul 2023 – Aug 2025",
         "title": "CTF & Bug Bounty",
-        "place": "TryHackMe — Junior Pentester path",
+        "place": "TryHackMe - Junior Pentester path",
         "desc": "100+ challenges solved. Junior Penetration Tester path completed."
       },
       {
         "date": "2022 – 2024",
         "title": "Bachelor's in Computer Science",
-        "place": "UPHF — Valenciennes",
+        "place": "UPHF - Valenciennes",
         "desc": "Graduated with honors."
       },
       {
@@ -146,7 +146,7 @@
       {
         "icon": "search",
         "title": "Curiosity",
-        "desc": "Every new technology is a door — I open them all."
+        "desc": "Every new technology is a door - I open them all."
       },
       {
         "icon": "mic",
@@ -159,12 +159,12 @@
       "ISC2 Security CC",
       "TryHackMe Junior Penetration Tester",
       "Splunk Technical Selling Foundations (85%)",
-      "Splunk SEI — 3 certifications",
-      "GDPR certification (online course — ASSI website)",
-      "Udemy — Ethical Hacking",
-      "Udemy — Building a robust Symfony backend",
-      "2nd place nationally — Inter-INSA x VINCI 2026",
-      "Winner — INSA Hauts-de-France eloquence contest 2025-2026",
+      "Splunk SEI - 3 certifications",
+      "GDPR certification (online course - ANSI website)",
+      "Udemy - Ethical Hacking",
+      "Udemy - Building a robust Symfony backend",
+      "2nd place nationally - Inter-INSA x VINCI 2026",
+      "Winner - INSA Hauts-de-France eloquence contest 2025-2026",
       "Author of MORSE"
     ]
   },
