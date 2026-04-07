@@ -15,6 +15,14 @@ export interface Project {
   image?: string;
 }
 
+/** Ordre d’affichage sur la page d’accueil (section « Projets phares ») */
+export const homepageFeaturedProjectIds = [
+  'lanceos',
+  'erp-regeneration',
+  'ctf-labs',
+  'siem-bucarest',
+] as const;
+
 export const projects: Project[] = [
   {
     id: 'lanceos',
@@ -37,7 +45,6 @@ export const projects: Project[] = [
     stack: ['Spring Boot', 'Java 17', 'MongoDB', 'React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Docker Compose'],
     category: 'Web / Full-Stack',
     github: 'https://github.com/BanconleAkobi/project_bdd',
-    featured: true,
   },
   {
     id: 'portail-bloc',
@@ -47,7 +54,6 @@ export const projects: Project[] = [
     descriptionEn: 'Client extranet portal for Boulanger Location. Claims management and end-of-contract handling. Boulanger-inspired design, client-side filtering, Piceasoft report integration.',
     stack: ['Symfony 5.4', 'Twig', 'MySQL', 'API Piceasoft'],
     category: 'Web / Full-Stack',
-    featured: true,
   },
   {
     id: 'smartfone',
@@ -57,7 +63,6 @@ export const projects: Project[] = [
     descriptionEn: 'Major PrestaShop 1.7.7→1.7.8 migration, Alma payment integration (2x/3x/4x), custom BlockDomTom module, SEO & mobile UX optimization, Scaleway migration scripts.',
     stack: ['PrestaShop 1.7.8', 'PHP', 'MySQL', 'Scaleway'],
     category: 'Web / Full-Stack',
-    featured: true,
   },
   {
     id: 'erp-regeneration',
@@ -108,6 +113,7 @@ export const projects: Project[] = [
     descriptionEn: 'SIEM deployment and configuration, log analysis, enterprise threat detection. Internship at EasyDo Digital Technologies, Bucharest. Splunk certifications obtained.',
     stack: ['Splunk', 'Wazuh', 'Mitre ATT&CK'],
     category: 'Cybersécurité',
+    featured: true,
   },
   {
     id: 'ctf-labs',
@@ -118,6 +124,7 @@ export const projects: Project[] = [
     stack: ['Kali Linux', 'Burp Suite', 'Nmap', 'Metasploit', 'OWASP'],
     category: 'Cybersécurité',
     github: 'https://github.com/BanconleAkobi/CTF',
+    featured: true,
     image: '/images/projects/ctf.jpeg',
   },
   {

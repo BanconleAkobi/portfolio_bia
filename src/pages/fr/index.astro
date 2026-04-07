@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
 import { t } from '../../i18n/utils';
-import { projects } from '../../data/projects';
+import { projects, homepageFeaturedProjectIds } from '../../data/projects';
+import type { Project } from '../../data/projects';
 
 const lang = 'fr';
 const tr = t(lang);
-const featuredProjects = projects.filter(p => p.featured).slice(0, 4);
+const featuredProjects = homepageFeaturedProjectIds
+  .map((id) => projects.find((p) => p.id === id))
+  .filter((p): p is Project => p !== undefined);
 ---
 
 <BaseLayout lang={lang}>
