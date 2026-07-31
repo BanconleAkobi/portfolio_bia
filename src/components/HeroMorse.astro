@@ -150,11 +150,14 @@ const units = toUnits(WORD);
     border: 0;
   }
 
-  /* --- Titre --- */
+  /* --- Titre ---
+     Hiérarchie du plus petit au plus gros :
+     « Et surtout, » < « Je code. J'écris. » < « je parle. »
+     La conjonction n'est qu'une respiration, elle passe en gris secondaire
+     et s'efface. Chaque palier a son propre clamp, aucun n'est dérivé en em,
+     pour que le rapport de tailles tienne du mobile au grand écran. */
   .om-hero__title {
     margin: 0;
-    font-size: clamp(3rem, 12vw, 9.5rem);
-    line-height: 0.86;
     letter-spacing: -0.045em;
     font-weight: 800;
   }
@@ -163,26 +166,40 @@ const units = toUnits(WORD);
     display: block;
   }
 
+  .om-hero__line--1,
+  .om-hero__line--2 {
+    font-size: clamp(2rem, 8vw, 6.4rem);
+    line-height: 0.86;
+  }
+
   .om-hero__line--1 { animation: om-rise 0.7s var(--om-ease) both; }
   .om-hero__line--2 { animation: om-rise 0.7s var(--om-ease) 0.28s both; }
+
   .om-hero__line--3 {
+    /* Plus d'air que les blocs sans : l'italique serif monte et descend. */
+    line-height: 0.98;
     animation: om-pop 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) 0.72s both;
     transform-origin: left bottom;
   }
 
   .om-hero__lead {
     font-weight: 400;
-    font-size: 0.72em;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.1rem, 3.2vw, 2.3rem);
+    /* Le crénage serré est un effet de titre : hors sujet à cette taille. */
+    letter-spacing: normal;
+    color: var(--om-ink-muted);
+    padding-right: 0.4em;
   }
 
   .om-hero__line--3 .om-serif {
-    font-size: 1em;
+    font-size: clamp(2.9rem, 11.5vw, 9rem);
+    line-height: 1.06;
   }
 
   /* --- Copie --- */
   .om-hero__copy {
-    margin-top: clamp(1.5rem, 3.5vw, 2.75rem);
+    /* Le titre respire avant le texte courant. */
+    margin-top: clamp(2.25rem, 5vw, 4.25rem);
     max-width: 46ch;
     display: grid;
     gap: 0.625rem;
@@ -242,6 +259,11 @@ const units = toUnits(WORD);
   .om-hero__portrait {
     margin: 0;
     max-width: 420px;
+  }
+
+  /* .om-frame porte déjà overflow:hidden, l'image est donc rognée aux angles. */
+  .om-hero__portrait .om-frame {
+    border-radius: 8px;
   }
 
   .om-hero__caption {
