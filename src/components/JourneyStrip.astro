@@ -2,6 +2,7 @@
 import { t, getLocalePath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 import MorseMark from './MorseMark.astro';
+import OrgLogo from './OrgLogo.astro';
 
 interface Props {
   lang: Lang;
@@ -26,7 +27,10 @@ const timeline = tr.about.timeline;
         <span class="om-journey__date">{item.date}</span>
         <span class="om-journey__label">
           <span class="om-journey__role">{item.title}</span>
-          <span class="om-journey__place">{item.place}</span>
+          <span class="om-journey__place">
+            <OrgLogo keys={'logos' in item ? item.logos : []} />
+            <span>{item.place}</span>
+          </span>
         </span>
         <span class="om-journey__desc">{item.desc}</span>
       </li>
@@ -96,6 +100,10 @@ const timeline = tr.about.timeline;
   }
 
   .om-journey__place {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.08em;

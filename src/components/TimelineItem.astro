@@ -1,13 +1,17 @@
 ---
+import OrgLogo from './OrgLogo.astro';
+
 interface Props {
   date: string;
   title: string;
   place: string;
   desc: string;
   index: number;
+  /** Clés des organisations à illustrer sur la ligne. */
+  logos?: string[];
 }
 
-const { date, title, place, desc } = Astro.props;
+const { date, title, place, desc, logos = [] } = Astro.props;
 ---
 
 <li class="om-tl gsap-item">
@@ -18,7 +22,10 @@ const { date, title, place, desc } = Astro.props;
   <div class="om-tl__content">
     <span class="om-tl__date">{date}</span>
     <h3 class="om-tl__title">{title}</h3>
-    <p class="om-tl__place">{place}</p>
+    <p class="om-tl__place">
+      <OrgLogo keys={logos} />
+      <span>{place}</span>
+    </p>
     <p class="om-tl__desc">{desc}</p>
   </div>
 </li>
@@ -82,7 +89,11 @@ const { date, title, place, desc } = Astro.props;
   }
 
   .om-tl__place {
-    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.15rem 0 0;
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.1em;
