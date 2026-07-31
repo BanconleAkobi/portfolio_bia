@@ -1,0 +1,14 @@
+---
+import { toMorse } from '../lib/morse';
+
+interface Props {
+  /** Mot à transcrire. Il doit toujours être lisible en clair à proximité. */
+  word: string;
+  class?: string;
+}
+
+const { word, class: className } = Astro.props;
+const code = toMorse(word);
+---
+
+<span class:list={['om-morse', className]} aria-hidden="true">{code}</span>

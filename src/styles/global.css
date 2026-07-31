@@ -1,35 +1,91 @@
 @import "tailwindcss";
 
-@theme {
-  --color-bg-primary: #0A0A0A;
-  --color-bg-secondary: #111111;
-  --color-bg-elevated: #1A1A1A;
-  --color-text-primary: #F5F0EB;
-  --color-text-secondary: #8A8A8A;
-  --color-accent-gold: #C9A96E;
-  --color-accent-cyber: #00E5A0;
-  --color-accent-danger: #FF4444;
-  --color-border-subtle: #222222;
+/* ==========================================================================
+   MORSE - Système de design
+   Palette chaude « Jour » par défaut, variante « Nuit » via [data-theme].
+   ========================================================================== */
 
+@theme {
+  --color-om-bg: #F1EBDD;
+  --color-om-ink: #171310;
+  --color-om-accent: #E8501E;
+
+  --font-sans: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
-  --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 :root {
-  --bg-primary: #0A0A0A;
-  --bg-secondary: #111111;
-  --bg-elevated: #1A1A1A;
-  --text-primary: #F5F0EB;
-  --text-secondary: #8A8A8A;
-  --accent-gold: #C9A96E;
-  --accent-cyber: #00E5A0;
-  --accent-danger: #FF4444;
-  --border-subtle: #222222;
-  --gradient-hero: linear-gradient(135deg, #0A0A0A 0%, #1A1512 50%, #0A0A0A 100%);
+  /* --- Tokens MORSE, variante Jour --- */
+  --om-bg: #F1EBDD;
+  --om-bg-veil: rgba(241, 235, 221, 0.94);
+  --om-surface: #ECE4D3;
+  --om-surface-soft: rgba(23, 19, 16, 0.045);
+  --om-ink: #171310;
+  --om-ink-muted: #5E5951;
+  --om-line: rgba(23, 19, 16, 0.14);
+  --om-line-strong: rgba(23, 19, 16, 0.28);
+
+  /* Accent décoratif : réservé aux grands titres, aux traits et aux aplats. */
+  --om-accent: #E8501E;
+  /* Accent lisible : pour tout texte sous 24px (contraste AA sur le fond). */
+  --om-accent-ink: #BC3C0E;
+  /* Encre posée sur un aplat accent. Le texte clair sur orange plafonne à
+     3,7:1, donc jamais AA : c'est l'encre foncée qui va sur l'accent. */
+  --om-on-accent: #171310;
+  --om-on-ink: #F1EBDD;
+  --om-on-ink-muted: rgba(241, 235, 221, 0.66);
+  --om-on-ink-line: rgba(241, 235, 221, 0.2);
+
+  --om-danger: #B3261E;
+
+  --om-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --om-shell: 1400px;
+  --om-gutter: clamp(1.25rem, 5vw, 5rem);
+
+  --font-sans: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
 }
 
-*, *::before, *::after {
+:root[data-theme="nuit"] {
+  --om-bg: #16110D;
+  --om-bg-veil: rgba(22, 17, 13, 0.94);
+  --om-surface: #1E1813;
+  --om-surface-soft: rgba(241, 235, 221, 0.05);
+  --om-ink: #F1EBDD;
+  --om-ink-muted: rgba(241, 235, 221, 0.66);
+  --om-line: rgba(241, 235, 221, 0.18);
+  --om-line-strong: rgba(241, 235, 221, 0.34);
+
+  --om-accent: #F0662E;
+  --om-accent-ink: #F0662E;
+  --om-on-accent: #16110D;
+  --om-on-ink: #16110D;
+  --om-on-ink-muted: rgba(22, 17, 13, 0.72);
+  --om-on-ink-line: rgba(22, 17, 13, 0.24);
+
+  --om-danger: #FF7A6E;
+}
+
+/* Un bloc « encre » prend toujours le fond inverse de la page : sombre en
+   thème Jour, clair en thème Nuit. L'accent doit donc être recalculé pour
+   rester lisible sur le fond du bloc, et non sur celui de la page. */
+.om-inked {
+  /* Fond sombre : l'accent vif passe le AA tel quel. */
+  --om-accent-ink: var(--om-accent);
+}
+
+:root[data-theme="nuit"] .om-inked {
+  /* Fond clair : on reprend le couple accent du thème Jour. */
+  --om-accent: #E8501E;
+  --om-accent-ink: #BC3C0E;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -38,53 +94,78 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  background-color: var(--om-bg);
+  /* Ancrages sous l'en-tête collant */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--om-bg);
+  color: var(--om-ink);
   font-family: var(--font-sans);
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s var(--om-ease), color 0.4s var(--om-ease);
 }
 
-/* Grain overlay */
+/* Grain papier, très discret */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
   z-index: 2;
-  opacity: 0.035;
+  opacity: 0.028;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
 }
 
-/* Typography */
+/* --------------------------------------------------------------------------
+   Typographie
+   -------------------------------------------------------------------------- */
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  line-height: 1.2;
-  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--om-ink);
+  text-wrap: pretty;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 7vw, 6.5rem);
-  font-style: italic;
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
 }
 
 h2 {
-  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.03em;
 }
 
 p {
-  color: var(--text-secondary);
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: var(--om-ink-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* L'italique serif est la signature du design : un mot mis en relief. */
+.om-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--om-accent);
 }
 
 a {
@@ -92,41 +173,90 @@ a {
   text-decoration: none;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
+strong, b {
+  font-weight: 700;
+  color: var(--om-ink);
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+::selection {
+  background: var(--om-accent);
+  color: var(--om-on-accent);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
+:focus-visible {
+  outline: 2px solid var(--om-accent-ink);
+  outline-offset: 3px;
   border-radius: 2px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-gold);
+input, textarea, button, select {
+  font: inherit;
+  color: inherit;
 }
 
-/* Utility classes */
-.label {
-  font-family: var(--font-sans);
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--om-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--om-line-strong);
+  border: 3px solid var(--om-bg);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--om-accent); }
+
+/* --------------------------------------------------------------------------
+   Signature morse
+   -------------------------------------------------------------------------- */
+
+.om-morse {
+  font-family: var(--font-mono);
+  font-size: clamp(0.625rem, 1.2vw, 0.75rem);
   font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.26em;
+  color: var(--om-accent-ink);
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* Filet « titre ---- morse » utilisé en tête de section */
+.om-rule {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.om-rule__line {
+  flex: 1 1 1.5rem;
+  min-width: 1rem;
+  height: 1px;
+  background: var(--om-line);
+}
+
+/* --------------------------------------------------------------------------
+   Utilitaires
+   -------------------------------------------------------------------------- */
+
+.om-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent-gold);
+  color: var(--om-ink-muted);
 }
 
 .mono {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--accent-cyber);
+  letter-spacing: 0.04em;
+  color: var(--om-ink-muted);
 }
 
-/* Animated underline for links */
 .link-underline {
   position: relative;
   display: inline-block;
@@ -139,108 +269,227 @@ a {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--accent-gold);
-  transition: width 0.3s ease;
+  background-color: var(--om-accent);
+  transition: width 0.3s var(--om-ease);
 }
 
 .link-underline:hover::after {
   width: 100%;
 }
 
-/* Buttons */
-.btn-primary {
+/* --------------------------------------------------------------------------
+   Boutons
+   -------------------------------------------------------------------------- */
+
+.om-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  border: 1px solid var(--accent-gold);
-  color: var(--accent-gold);
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.6rem;
+  min-height: 48px;
+  border: 1px solid var(--om-ink);
+  border-radius: 999px;
+  background: var(--om-ink);
+  color: var(--om-on-ink);
   font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   cursor: pointer;
-  background: transparent;
+  transition: transform 0.25s var(--om-ease), background-color 0.25s var(--om-ease), color 0.25s var(--om-ease);
 }
 
-.btn-primary:hover {
-  background-color: var(--accent-gold);
-  color: var(--bg-primary);
-  transform: scale(1.02);
+.om-btn:hover {
+  background: var(--om-accent);
+  border-color: var(--om-accent);
+  color: var(--om-on-accent);
+  transform: translateY(-2px);
 }
 
-.btn-cyber {
+/* Variante discrète, sur fond clair */
+.om-btn--ghost {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  border: 1px solid var(--accent-cyber);
-  color: var(--accent-cyber);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.35rem;
+  min-height: 46px;
+  border: 1px solid var(--om-line-strong);
+  border-radius: 999px;
   background: transparent;
+  color: var(--om-ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.25s var(--om-ease), color 0.25s var(--om-ease), background-color 0.25s var(--om-ease);
 }
 
-.btn-cyber:hover {
-  background-color: var(--accent-cyber);
-  color: var(--bg-primary);
+.om-btn--ghost:hover {
+  border-color: var(--om-accent);
+  color: var(--om-accent-ink);
+  background: var(--om-surface-soft);
 }
 
-/* Section spacing */
-.section {
-  padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 5vw, 5rem);
-  max-width: 1400px;
+/* Bouton accent plein, pour les appels à l'action secondaires */
+/* Sur un bloc encre, les boutons s'inversent */
+.om-inked .om-btn {
+  background: var(--om-accent);
+  border-color: var(--om-accent);
+  color: var(--om-on-accent);
+}
+
+.om-inked .om-btn:hover {
+  background: var(--om-on-ink);
+  border-color: var(--om-on-ink);
+  color: var(--om-ink);
+}
+
+.om-inked .om-btn--ghost {
+  border-color: var(--om-on-ink-line);
+  color: var(--om-on-ink);
+}
+
+.om-inked .om-btn--ghost:hover {
+  border-color: var(--om-on-ink);
+  color: var(--om-on-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Structure
+   -------------------------------------------------------------------------- */
+
+.section,
+.om-section {
+  padding: clamp(4rem, 9vw, 8.5rem) var(--om-gutter);
+  max-width: var(--om-shell);
   margin: 0 auto;
 }
 
-/* Cards */
-.card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  padding: 2rem;
-  transition: all 0.3s ease;
+.om-shell {
+  max-width: var(--om-shell);
+  margin: 0 auto;
+  padding-inline: var(--om-gutter);
 }
 
-.card:hover {
-  border-color: var(--accent-gold);
-  transform: translateY(-4px);
+/* Bloc « encre » : fond foncé, texte clair, comme dans le prototype */
+.om-inked {
+  background: var(--om-ink);
+  color: var(--om-on-ink);
 }
 
-/* GSAP initial states */
+.om-inked h1,
+.om-inked h2,
+.om-inked h3,
+.om-inked h4 {
+  color: var(--om-on-ink);
+}
+
+.om-inked p {
+  color: var(--om-on-ink-muted);
+}
+
+.om-inked .om-eyebrow,
+.om-inked .mono {
+  color: var(--om-on-ink-muted);
+}
+
+.om-inked .om-morse {
+  color: var(--om-accent-ink);
+}
+
+/* Emplacements photo : ratios imposés par le design */
+.om-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--om-line);
+  background: var(--om-surface-soft);
+}
+
+.om-frame > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.om-frame--portrait { aspect-ratio: 4 / 5; }
+.om-frame--scene    { aspect-ratio: 3 / 4; }
+.om-frame--wide     { aspect-ratio: 16 / 9; }
+
+.om-frame__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--om-ink-muted);
+}
+
+.om-inked .om-frame {
+  border-color: var(--om-on-ink-line);
+}
+
+.om-inked .om-frame__placeholder {
+  color: var(--om-on-ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Animations
+   -------------------------------------------------------------------------- */
+
+@keyframes om-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes om-rise {
+  from { opacity: 0; transform: translateY(0.5em); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes om-pop {
+  0%   { opacity: 0; transform: translateY(0.6em) rotate(-2.5deg); }
+  70%  { transform: translateY(-0.06em) rotate(0.6deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(0deg); }
+}
+
+/* États initiaux GSAP (repris par les pages existantes) */
 .gsap-reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
 }
 
 .gsap-clip {
   clip-path: inset(100% 0 0 0);
 }
 
-/* Custom cursor */
-.custom-cursor {
-  width: 12px;
-  height: 12px;
-  background-color: var(--accent-gold);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-  mix-blend-mode: difference;
-}
+/* Filet de sécurité : sans JS, rien ne doit rester invisible. */
+.no-js .gsap-reveal { opacity: 1; transform: none; }
+.no-js .gsap-clip { clip-path: none; }
 
-.custom-cursor.hovering {
-  width: 40px;
-  height: 40px;
-}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 
-@media (pointer: coarse) {
-  .custom-cursor {
-    display: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
+
+  .gsap-reveal { opacity: 1 !important; transform: none !important; }
+  .gsap-clip { clip-path: none !important; }
 }

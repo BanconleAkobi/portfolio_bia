@@ -1,0 +1,121 @@
+---
+import { t } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+import ContactForm from './ContactForm.astro';
+import MorseMark from './MorseMark.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+const copy = tr.home.contact;
+
+const links = [
+  { label: 'lanceos.eu', href: 'https://lanceos.eu' },
+  { label: 'GitHub', href: 'https://github.com/BanconleAkobi' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/banconl%C3%A9-akobi-a88940273' },
+  { label: 'ingenieurbanconle@gmail.com', href: 'mailto:ingenieurbanconle@gmail.com' },
+];
+---
+
+<section class="om-contact" id="contact">
+  <div class="om-contact__grid">
+    <div class="om-contact__intro gsap-reveal">
+      <MorseMark word={copy.eyebrow} class="om-contact__eyebrow" />
+
+      <h2 class="om-contact__title">
+        {copy.title_lead} <em class="om-serif">{copy.title_accent}</em>
+      </h2>
+
+      <nav class="om-contact__links" aria-label={copy.links_label}>
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class="om-contact__link"
+            target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+            rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+          >
+            <span>{link.label}</span>
+            <span class="om-contact__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="om-contact__form gsap-reveal">
+      <ContactForm lang={lang} idPrefix="home-contact" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .om-contact {
+    padding: clamp(4rem, 9vw, 8rem) var(--om-gutter) clamp(2.5rem, 5vw, 4.375rem);
+    border-top: 1px solid var(--om-line);
+    max-width: var(--om-shell);
+    margin: 0 auto;
+  }
+
+  .om-contact__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.75rem, 3.4vw, 3.5rem);
+  }
+
+  .om-contact__intro { min-width: 0; }
+
+  .om-contact__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.34em;
+  }
+
+  .om-contact__title {
+    margin: 1rem 0 0;
+    font-size: clamp(2.2rem, 7vw, 4.6rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    max-width: 16ch;
+  }
+
+  .om-contact__links {
+    display: grid;
+    margin-top: clamp(1.75rem, 3.6vw, 2.75rem);
+  }
+
+  .om-contact__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 48px;
+    padding: 0.875rem 0;
+    border-top: 1px solid var(--om-line);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    color: var(--om-ink);
+    word-break: break-word;
+    transition: color 0.25s var(--om-ease);
+  }
+
+  .om-contact__link:last-child { border-bottom: 1px solid var(--om-line); }
+
+  .om-contact__link:hover { color: var(--om-accent-ink); }
+
+  .om-contact__arrow {
+    color: var(--om-accent-ink);
+    flex: 0 0 auto;
+    transition: transform 0.25s var(--om-ease);
+  }
+
+  .om-contact__link:hover .om-contact__arrow { transform: translateX(4px); }
+
+  .om-contact__form { min-width: 0; }
+
+  @media (min-width: 900px) {
+    .om-contact__grid { grid-template-columns: 7fr 5fr; }
+  }
+</style>

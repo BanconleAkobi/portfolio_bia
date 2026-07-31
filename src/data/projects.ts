@@ -15,12 +15,46 @@ export interface Project {
   image?: string;
 }
 
+/**
+ * Clé stable par catégorie. Les libellés sont traduits côté i18n : c'est la
+ * clé, pas le libellé, qui relie un bouton de filtre à une carte projet.
+ */
+export const CATEGORY_KEYS = {
+  'Cybersécurité': 'cybersecurite',
+  'Web / Full-Stack': 'web',
+  'SaaS': 'saas',
+  'IA / Académique': 'ia',
+  'Infrastructure': 'infra',
+  'Autre': 'autre',
+} as const satisfies Record<ProjectCategory, string>;
+
+export type CategoryKey = (typeof CATEGORY_KEYS)[ProjectCategory];
+
+export function categoryKey(category: ProjectCategory): CategoryKey {
+  return CATEGORY_KEYS[category];
+}
+
 /** Ordre d’affichage sur la page d’accueil (section « Projets phares ») */
 export const homepageFeaturedProjectIds = [
   'lanceos',
   'erp-regeneration',
   'ctf-labs',
   'siem-bucarest',
+] as const;
+
+/**
+ * Sélection affichée dans la grille de l’accueil, sous LanceOS.
+ * La liste complète reste sur la page Projets.
+ */
+export const homepageGridProjectIds = [
+  'siem-bucarest',
+  'ctf-labs',
+  'erp-regeneration',
+  'marketplace-amap',
+  'portail-bloc',
+  'windows-server',
+  'api-k8s-minikube',
+  'smartfone',
 ] as const;
 
 export const projects: Project[] = [

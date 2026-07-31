@@ -1,75 +1,127 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { t } from '../../i18n/utils';
-import { projects } from '../../data/projects';
+import { projects, categoryKey } from '../../data/projects';
 
 const lang = 'en';
 const tr = t(lang);
 const projectsTr = tr.projects_page;
+const filterLabels: Record<string, string> = projectsTr.filters;
+
+/** Catégories réellement représentées, dans l'ordre déclaré en i18n. */
+const presentKeys = new Set(projects.map((p) => categoryKey(p.category)));
+const filters = Object.entries(filterLabels).filter(
+  ([key]) => key === 'all' || presentKeys.has(key as never)
+);
 ---
 
-<BaseLayout lang={lang} title={projectsTr.title} description="All projects by Banconlé AKOBI — SaaS, cybersecurity, full-stack, AI, infrastructure.">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <p class="label gsap-reveal" style="margin-bottom:1rem">{projectsTr.subtitle}</p>
-      <h1 class="page-title gsap-reveal">{projectsTr.title}</h1>
-    </div>
-  </div>
+<BaseLayout
+  lang={lang}
+  title={projectsTr.title}
+  description="All projects by Banconlé AKOBI: SaaS, cybersecurity, full-stack, AI, infrastructure."
+>
+  <PageHero eyebrow={projectsTr.subtitle} title={projectsTr.title} signature="projects" />
 
-  <div class="section">
-    <div class="filters gsap-reveal" role="group" aria-label="Filter by category">
-      {projectsTr.filters.map((filter, i) => (
-        <button class={`filter-btn ${i === 0 ? 'active' : ''}`} data-filter={i === 0 ? 'all' : filter} aria-pressed={i === 0 ? 'true' : 'false'}>
-          {filter}
+  <div class="om-section">
+    <div class="om-filters" role="group" aria-label="Filter projects by category">
+      {filters.map(([key, label], i) => (
+        <button
+          type="button"
+          class:list={['om-filters__btn', i === 0 && 'is-active']}
+          data-filter={key}
+          aria-pressed={i === 0 ? 'true' : 'false'}
+        >
+          {label}
         </button>
       ))}
     </div>
 
-    <div class="projects-grid gsap-stagger" id="projects-grid">
-      {projects.map(project => (
+    <div class="om-grid gsap-stagger" id="projects-grid">
+      {projects.map((project) => (
         <ProjectCard project={project} lang={lang} />
       ))}
     </div>
 
-    <div class="no-results" id="no-results" hidden aria-live="polite">
-      <p class="mono">// no projects in this category</p>
-    </div>
+    <p class="om-empty" id="no-results" hidden aria-live="polite">
+      <span class="mono">// no project in this category</span>
+    </p>
   </div>
 </BaseLayout>
 
 <style>
-  .page-hero { padding: clamp(8rem,12vw,12rem) clamp(1.5rem,5vw,4rem) clamp(2rem,4vw,4rem); border-bottom: 1px solid var(--border-subtle); background: var(--gradient-hero); }
-  .page-hero-inner { max-width: 1400px; margin: 0 auto; }
-  .page-title { font-size: clamp(2.5rem,6vw,5.5rem); font-style: italic; margin-top: 0.5rem; }
-  .filters { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; }
-  .filter-btn { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-secondary); background: transparent; border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; cursor: pointer; transition: all 0.3s ease; min-height: 44px; }
-  .filter-btn:hover, .filter-btn.active { color: var(--accent-gold); border-color: var(--accent-gold); background: rgba(201,169,110,0.05); }
-  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .no-results { text-align: center; padding: 4rem; color: var(--text-secondary); }
-  @media (max-width:1024px) { .projects-grid { grid-template-columns: repeat(2,1fr); } }
-  @media (max-width:640px) { .projects-grid { grid-template-columns: 1fr; } }
+  .om-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: clamp(1.75rem, 4vw, 3rem);
+  }
+
+  .om-filters__btn {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.625rem 0.9rem;
+    min-height: 44px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1px solid var(--om-line);
+    background: transparent;
+    color: var(--om-ink-muted);
+    transition: border-color 0.25s var(--om-ease), color 0.25s var(--om-ease), background-color 0.25s var(--om-ease);
+  }
+
+  .om-filters__btn:hover {
+    border-color: var(--om-line-strong);
+    color: var(--om-ink);
+  }
+
+  .om-filters__btn.is-active {
+    background: var(--om-ink);
+    border-color: var(--om-ink);
+    color: var(--om-on-ink);
+  }
+
+  .om-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: clamp(0.875rem, 2vw, 1.5rem);
+  }
+
+  .om-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
 </style>
 
 <script is:inline>
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-  const noResults = document.getElementById('no-results');
-  const categoryMap = { 'Cybersecurity': 'Cybersécurité', 'Web / Full-Stack': 'Web / Full-Stack', 'SaaS': 'SaaS', 'AI / Academic': 'IA / Académique', 'Infrastructure': 'Infrastructure', 'Other': 'Autre' };
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-      btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
-      const filter = btn.getAttribute('data-filter');
-      const mapped = categoryMap[filter] || filter;
-      let count = 0;
-      projectCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        const show = filter === 'all' || cat === mapped || cat === filter;
-        card.style.display = show ? 'flex' : 'none';
-        if (show) count++;
+  (function () {
+    var buttons = document.querySelectorAll('.om-filters__btn');
+    var cards = document.querySelectorAll('.om-card');
+    var empty = document.getElementById('no-results');
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        var filter = btn.dataset.filter;
+        var visible = 0;
+
+        cards.forEach(function (card) {
+          var show = filter === 'all' || card.dataset.category === filter;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+
+        if (empty) empty.hidden = visible > 0;
       });
-      if (noResults) noResults.hidden = count > 0;
     });
-  });
+  })();
 </script>

@@ -1,7 +1,9 @@
 ---
 import type { Project } from '../data/projects';
+import { categoryKey } from '../data/projects';
 import type { Lang } from '../i18n/utils';
 import { t } from '../i18n/utils';
+import MorseMark from './MorseMark.astro';
 
 interface Props {
   project: Project;
@@ -10,79 +12,66 @@ interface Props {
 
 const { project, lang } = Astro.props;
 const tr = t(lang);
+const filterLabels: Record<string, string> = tr.projects_page.filters;
 
+const key = categoryKey(project.category);
 const title = lang === 'fr' ? project.title : project.titleEn;
 const description = lang === 'fr' ? project.description : project.descriptionEn;
+const categoryLabel = filterLabels[key] ?? project.category;
 ---
 
-<article class="project-card gsap-item" data-category={project.category}>
-  <!-- Image placeholder -->
-  <div class="project-image gsap-clip">
+<article class="om-card gsap-item" data-category={key}>
+  <div class="om-card__shot">
     {project.image ? (
       <img
         src={project.image}
-        alt={`Screenshot du projet ${title}`}
+        alt={title}
         loading="lazy"
+        decoding="async"
         width="800"
         height="450"
-        class="project-img"
       />
     ) : (
-      <div class="project-placeholder" aria-label={`Aperçu du projet ${title}`}>
-        <span class="placeholder-icon mono">&lt;/&gt;</span>
-        <span class="placeholder-text">{title}</span>
-        <!-- TODO: remplacer par screenshot réel -->
-      </div>
+      <span class="om-card__placeholder" aria-hidden="true">{title}</span>
     )}
   </div>
 
-  <!-- Content -->
-  <div class="project-content">
-    <div class="project-meta">
-      <span class="project-category label">{project.category}</span>
-      {project.featured && (
-        <span class="project-featured mono">★ featured</span>
-      )}
+  <div class="om-card__body">
+    <div class="om-card__meta">
+      <span>{categoryLabel}</span>
+      <MorseMark word={title.slice(0, 2)} class="om-card__morse" />
     </div>
 
-    <h3 class="project-title">{title}</h3>
-    <p class="project-desc">{description}</p>
+    <h3 class="om-card__title">{title}</h3>
+    <p class="om-card__desc">{description}</p>
 
-    <div class="project-stack" aria-label="Technologies utilisées">
-      {project.stack.map(tech => (
-        <span class="tech-badge mono">{tech}</span>
-      ))}
-    </div>
+    <ul class="om-card__stack" aria-label={lang === 'fr' ? 'Technologies utilisées' : 'Technologies used'}>
+      {project.stack.map((tech) => <li>{tech}</li>)}
+    </ul>
 
-    <div class="project-links">
+    <div class="om-card__links">
       {project.github && !project.repoEmpty && (
         <a
           href={project.github}
-          class="project-link"
+          class="om-card__link link-underline"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Code source de ${title} sur GitHub`}
+          aria-label={lang === 'fr' ? `Code source de ${title} sur GitHub` : `Source code for ${title} on GitHub`}
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-          </svg>
           {tr.projects_page.cta_code}
+          <span aria-hidden="true">&nbsp;&rarr;</span>
         </a>
       )}
       {project.demo && (
         <a
           href={project.demo}
-          class="project-link project-link--demo"
+          class="om-card__link om-card__link--demo link-underline"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Voir ${title} en ligne`}
+          aria-label={lang === 'fr' ? `Voir ${title} en ligne` : `View ${title} online`}
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
           {tr.projects_page.cta_demo}
+          <span aria-hidden="true">&nbsp;&rarr;</span>
         </a>
       )}
     </div>
@@ -90,144 +79,133 @@ const description = lang === 'fr' ? project.description : project.descriptionEn;
 </article>
 
 <style>
-  .project-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
+  .om-card {
     display: flex;
     flex-direction: column;
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--om-line);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.25s var(--om-ease), transform 0.25s var(--om-ease);
   }
 
-  .project-card:hover {
-    border-color: var(--accent-gold);
-    transform: translateY(-4px);
+  /* Le filtrage masque via l'attribut hidden : il doit battre le display:flex. */
+  .om-card[hidden] { display: none; }
+
+  .om-card:hover {
+    border-color: var(--om-line-strong);
+    transform: translateY(-3px);
   }
 
-  .project-image {
-    width: 100%;
+  .om-card__shot {
+    position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    position: relative;
+    background: var(--om-surface-soft);
+    border-bottom: 1px solid var(--om-line);
   }
 
-  .project-img {
+  .om-card__shot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    object-position: top center;
+    transition: transform 0.5s var(--om-ease);
   }
 
-  .project-card:hover .project-img {
-    transform: scale(1.03);
-  }
+  .om-card:hover .om-card__shot img { transform: scale(1.03); }
 
-  .project-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--bg-elevated) 0%, #0d1117 100%);
+  .om-card__placeholder {
+    position: absolute;
+    inset: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    min-height: 200px;
+    padding: 1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--om-ink-muted);
+    opacity: 0.7;
   }
 
-  .placeholder-icon {
-    font-size: 2rem;
-    color: var(--accent-cyber);
-    opacity: 0.4;
-  }
-
-  .placeholder-text {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    opacity: 0.6;
-  }
-
-  .project-content {
-    padding: 1.5rem;
+  .om-card__body {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     flex: 1;
+    padding: 1.25rem;
   }
 
-  .project-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .project-category {
-    font-size: 0.7rem;
-  }
-
-  .project-featured {
-    font-size: 0.65rem;
-    color: var(--accent-gold);
-  }
-
-  .project-title {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-style: normal;
-    color: var(--text-primary);
-    line-height: 1.3;
-  }
-
-  .project-desc {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .project-stack {
+  .om-card__meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: auto;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.375rem 0.875rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+    color: var(--om-ink-muted);
   }
 
-  .tech-badge {
-    font-size: 0.65rem;
-    color: var(--accent-cyber);
-    background: rgba(0, 229, 160, 0.08);
-    border: 1px solid rgba(0, 229, 160, 0.2);
-    padding: 0.2rem 0.5rem;
-    white-space: nowrap;
+  .om-card__morse { font-size: 0.625rem; letter-spacing: 0.2em; }
+
+  .om-card__title {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    font-weight: 700;
   }
 
-  .project-links {
+  .om-card__desc {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--om-ink-muted);
+  }
+
+  .om-card__stack {
     display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    list-style: none;
+    margin: auto 0 0;
+    padding: 0;
   }
 
-  .project-link {
+  .om-card__stack li {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    color: var(--om-ink-muted);
+    border: 1px solid var(--om-line);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .om-card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .om-card__link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
     min-height: 44px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--om-ink-muted);
+    transition: color 0.25s var(--om-ease);
   }
 
-  .project-link:hover {
-    color: var(--accent-gold);
-  }
-
-  .project-link--demo:hover {
-    color: var(--accent-cyber);
-  }
+  .om-card__link:hover { color: var(--om-ink); }
+  .om-card__link--demo { color: var(--om-accent-ink); }
 </style>

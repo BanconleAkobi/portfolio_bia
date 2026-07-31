@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import MorseMark from '../../../components/MorseMark.astro';
 import { blogPosts } from '../../../data/blog';
 
 export async function getStaticPaths() {
-  return blogPosts.map(post => ({
+  return blogPosts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
@@ -12,108 +13,120 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const lang = 'fr';
 const dateFormatted = new Date(post.date).toLocaleDateString('fr-FR', {
-  year: 'numeric', month: 'long', day: 'numeric'
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
 });
+
+/** Rendu minimal du markdown utilisé dans les articles : paragraphes et gras. */
+const html = post.content
+  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  .split(/\n\n+/)
+  .map((block) => `<p>${block.replace(/\n/g, '<br />')}</p>`)
+  .join('');
 ---
 
-<BaseLayout
-  lang={lang}
-  title={post.title}
-  description={post.excerpt}
->
-  <div class="article-hero">
-    <div class="article-hero-inner">
-      <div class="article-meta gsap-reveal">
-        <span class="label">{post.category}</span>
-        <time class="mono" datetime={post.date}>{dateFormatted}</time>
+<BaseLayout lang={lang} title={post.title} description={post.excerpt}>
+  <article class="om-article">
+    <header class="om-article__head">
+      <div class="om-article__meta">
+        <span>{post.category}</span>
+        <time datetime={post.date}>{dateFormatted}</time>
       </div>
-      <h1 class="article-title gsap-reveal">{post.title}</h1>
-      <p class="article-excerpt gsap-reveal">{post.excerpt}</p>
-    </div>
-  </div>
+      <h1 class="om-article__title">{post.title}</h1>
+      <p class="om-article__excerpt">{post.excerpt}</p>
+      <div class="om-rule om-article__rule">
+        <span class="om-rule__line" aria-hidden="true"></span>
+        <MorseMark word={post.category} />
+      </div>
+    </header>
 
-  <div class="article-body">
-    <div class="article-content gsap-reveal">
-      <div class="prose" set:html={post.content.replace(/\n\n/g, '</p><p>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/^/, '<p>').replace(/$/, '</p>')} />
+    <div class="om-article__body">
+      <div class="om-prose" set:html={html} />
 
-      <div class="article-footer">
-        <a href="/fr/blog" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="19" y1="12" x2="5" y2="12"/>
-            <polyline points="12 19 5 12 12 5"/>
-          </svg>
+      <footer class="om-article__footer">
+        <a href="/fr/blog" class="om-btn--ghost">
+          <span aria-hidden="true">&larr;</span>
           Retour au blog
         </a>
-      </div>
+      </footer>
     </div>
-  </div>
+  </article>
 </BaseLayout>
 
 <style>
-  .article-hero {
-    padding: clamp(8rem, 12vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 4vw, 4rem);
-    border-bottom: 1px solid var(--border-subtle);
-    background: var(--gradient-hero);
-  }
-
-  .article-hero-inner {
-    max-width: 760px;
+  .om-article__head {
+    max-width: 46rem;
     margin: 0 auto;
+    padding: clamp(2.5rem, 7vw, 5rem) var(--om-gutter) clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: 1px solid var(--om-line);
   }
 
-  .article-meta {
+  .om-article__meta {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--om-ink-muted);
   }
 
-  .article-title {
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
-    font-style: italic;
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
+  .om-article__title {
+    margin: 1rem 0 1.25rem;
+    font-size: clamp(1.9rem, 5vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    text-wrap: pretty;
   }
 
-  .article-excerpt {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-  }
-
-  .article-body {
-    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 4rem);
-  }
-
-  .article-content {
-    max-width: 760px;
-    margin: 0 auto;
-  }
-
-  .prose :global(p) {
+  .om-article__excerpt {
+    margin: 0;
     font-size: 1.0625rem;
-    line-height: 1.85;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: var(--om-ink-muted);
   }
 
-  .prose :global(strong) {
-    color: var(--text-primary);
-    font-weight: 600;
+  .om-article__rule { margin-top: 1.5rem; }
+
+  .om-article__body {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) var(--om-gutter);
   }
 
-  .prose :global(code) {
+  .om-prose :global(p) {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--om-ink-muted);
+    margin-bottom: 1.375rem;
+  }
+
+  .om-prose :global(strong) {
+    color: var(--om-ink);
+    font-weight: 700;
+  }
+
+  .om-prose :global(em) {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  .om-prose :global(code) {
     font-family: var(--font-mono);
     font-size: 0.85em;
-    color: var(--accent-cyber);
-    background: rgba(0, 229, 160, 0.08);
-    padding: 0.2em 0.4em;
+    color: var(--om-accent-ink);
+    background: var(--om-surface-soft);
+    border-radius: 3px;
+    padding: 0.15em 0.4em;
   }
 
-  .article-footer {
-    margin-top: 4rem;
+  .om-article__footer {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
     padding-top: 2rem;
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid var(--om-line);
   }
 </style>

@@ -7,94 +7,92 @@ interface Props {
   index: number;
 }
 
-const { date, title, place, desc, index } = Astro.props;
+const { date, title, place, desc } = Astro.props;
 ---
 
-<div class="timeline-item gsap-item" style={`--delay: ${index * 0.1}s`}>
-  <div class="timeline-marker" aria-hidden="true">
-    <div class="timeline-dot"></div>
-    <div class="timeline-line"></div>
+<li class="om-tl gsap-item">
+  <span class="om-tl__marker" aria-hidden="true">
+    <span class="om-tl__dot"></span>
+    <span class="om-tl__line"></span>
+  </span>
+  <div class="om-tl__content">
+    <span class="om-tl__date">{date}</span>
+    <h3 class="om-tl__title">{title}</h3>
+    <p class="om-tl__place">{place}</p>
+    <p class="om-tl__desc">{desc}</p>
   </div>
-  <div class="timeline-content">
-    <time class="timeline-date mono" datetime={date}>{date}</time>
-    <h3 class="timeline-title">{title}</h3>
-    <p class="timeline-place label">{place}</p>
-    <p class="timeline-desc">{desc}</p>
-  </div>
-</div>
+</li>
 
 <style>
-  .timeline-item {
+  .om-tl {
     display: grid;
-    grid-template-columns: 20px 1fr;
-    gap: 1.5rem;
-    position: relative;
+    grid-template-columns: 0.75rem 1fr;
+    gap: 1.25rem;
+    list-style: none;
   }
 
-  .timeline-marker {
+  .om-tl__marker {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 0.4rem;
   }
 
-  .timeline-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--accent-gold);
-    border: 2px solid var(--bg-primary);
-    box-shadow: 0 0 0 2px var(--accent-gold);
+  .om-tl__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 99px;
+    background: var(--om-accent);
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s var(--om-ease);
   }
 
-  .timeline-item:hover .timeline-dot {
-    transform: scale(1.4);
-  }
+  .om-tl:hover .om-tl__dot { transform: scale(1.4); }
 
-  .timeline-line {
+  .om-tl__line {
     flex: 1;
     width: 1px;
-    background: linear-gradient(var(--accent-gold), var(--border-subtle));
+    background: var(--om-line);
     margin-top: 0.5rem;
-    min-height: 40px;
+    min-height: 2.5rem;
   }
 
-  .timeline-item:last-child .timeline-line {
-    display: none;
-  }
+  .om-tl:last-child .om-tl__line { display: none; }
 
-  .timeline-content {
-    padding-bottom: 2.5rem;
+  .om-tl__content {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.3rem;
+    padding-bottom: 2.25rem;
   }
 
-  .timeline-date {
+  .om-tl__date {
+    font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: var(--accent-cyber);
-    margin-bottom: 0.2rem;
-    display: block;
+    letter-spacing: 0.12em;
+    color: var(--om-accent-ink);
   }
 
-  .timeline-title {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    font-style: normal;
-    color: var(--text-primary);
-    line-height: 1.3;
+  .om-tl__title {
+    margin: 0.15rem 0 0;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    font-weight: 600;
   }
 
-  .timeline-place {
-    font-size: 0.7rem;
-    color: var(--accent-gold);
+  .om-tl__place {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    color: var(--om-ink-muted);
   }
 
-  .timeline-desc {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+  .om-tl__desc {
+    margin: 0.25rem 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--om-ink-muted);
   }
 </style>

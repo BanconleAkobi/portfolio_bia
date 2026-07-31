@@ -1,6 +1,7 @@
 ---
 import { t, getLocalePath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
+import MorseMark from './MorseMark.astro';
 
 interface Props {
   lang: Lang;
@@ -18,151 +19,125 @@ const navItems = [
 ];
 ---
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <!-- Col 1: Nav -->
-      <div class="footer-col">
-        <p class="footer-col-title label">{tr.footer.nav_title}</p>
-        <nav aria-label="Navigation footer">
-          {navItems.map(item => (
-            <a href={item.href} class="footer-link link-underline">{item.label}</a>
+<footer class="om-footer">
+  <div class="om-footer__inner">
+    <div class="om-footer__grid">
+      <div class="om-footer__col">
+        <p class="om-eyebrow">{tr.footer.nav_title}</p>
+        <nav aria-label={lang === 'fr' ? 'Navigation de pied de page' : 'Footer navigation'}>
+          {navItems.map((item) => (
+            <a href={item.href} class="om-footer__link link-underline">{item.label}</a>
           ))}
         </nav>
       </div>
 
-      <!-- Col 2: Contact -->
-      <div class="footer-col">
-        <p class="footer-col-title label">{tr.footer.contact_title}</p>
-        <a href="mailto:ingenieurbanconle@gmail.com" class="footer-link link-underline">
+      <div class="om-footer__col">
+        <p class="om-eyebrow">{tr.footer.contact_title}</p>
+        <a href="mailto:ingenieurbanconle@gmail.com" class="om-footer__link link-underline">
           ingenieurbanconle@gmail.com
         </a>
-        <a href="https://lanceos.eu" class="footer-link link-underline" target="_blank" rel="noopener">
+        <a href="https://lanceos.eu" class="om-footer__link link-underline" target="_blank" rel="noopener noreferrer">
           lanceos.eu
         </a>
-        <p class="footer-location">Valenciennes / Versailles, France</p>
+        <p class="om-footer__note">Valenciennes / Versailles, France</p>
       </div>
 
-      <!-- Col 3: Social -->
-      <div class="footer-col">
-        <p class="footer-col-title label">{tr.footer.social_title}</p>
+      <div class="om-footer__col">
+        <p class="om-eyebrow">{tr.footer.social_title}</p>
         <a
           href="https://github.com/BanconleAkobi"
-          class="footer-link link-underline"
+          class="om-footer__link link-underline"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="GitHub de Banconlé AKOBI"
         >
           GitHub
         </a>
         <a
           href="https://www.linkedin.com/in/banconl%C3%A9-akobi-a88940273"
-          class="footer-link link-underline"
+          class="om-footer__link link-underline"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="LinkedIn de Banconlé AKOBI"
         >
           LinkedIn
         </a>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p class="footer-copyright">
-        {tr.footer.copyright} — {tr.footer.tagline}
-      </p>
-      <a
-        href="https://github.com/BanconleAkobi"
-        class="footer-source mono"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        &lt;/code&gt; sur GitHub
-      </a>
+    <div class="om-footer__bottom">
+      <p class="om-footer__note">{tr.footer.copyright}, {tr.footer.tagline}</p>
+      <MorseMark word="MORSE" />
     </div>
   </div>
 </footer>
 
 <style>
-  .footer {
-    border-top: 1px solid var(--border-subtle);
-    margin-top: 6rem;
+  .om-footer {
+    border-top: 1px solid var(--om-line);
+    margin-top: clamp(3rem, 8vw, 6rem);
   }
 
-  .footer-inner {
-    max-width: 1400px;
+  .om-footer__inner {
+    max-width: var(--om-shell);
     margin: 0 auto;
-    padding: 4rem clamp(1.5rem, 5vw, 4rem) 2rem;
+    padding: clamp(2.5rem, 6vw, 4rem) var(--om-gutter) 2rem;
   }
 
-  .footer-grid {
+  .om-footer__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
   }
 
-  .footer-col {
+  .om-footer__col {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    align-items: flex-start;
+    gap: 0.6rem;
   }
 
-  .footer-col-title {
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-link {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    width: fit-content;
-  }
-
-  .footer-link:hover {
-    color: var(--text-primary);
-  }
-
-  .footer-location {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-  }
-
-  .footer-bottom {
+  .om-footer__col nav {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .om-footer__col .om-eyebrow {
+    margin-bottom: 0.35rem;
+  }
+
+  .om-footer__link {
+    font-size: 0.9375rem;
+    color: var(--om-ink-muted);
+    transition: color 0.25s var(--om-ease);
+  }
+
+  .om-footer__link:hover {
+    color: var(--om-ink);
+  }
+
+  .om-footer__note {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    color: var(--om-ink-muted);
+  }
+
+  .om-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-subtle);
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--om-line);
   }
 
-  .footer-copyright {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-  }
-
-  .footer-source {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .footer-source:hover {
-    color: var(--accent-cyber);
-  }
-
-  @media (max-width: 768px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
+  @media (min-width: 720px) {
+    .om-footer__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
     }
   }
 </style>

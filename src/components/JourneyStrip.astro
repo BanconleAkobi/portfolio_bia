@@ -1,0 +1,122 @@
+---
+import { t, getLocalePath } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+import MorseMark from './MorseMark.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+const copy = tr.home.timeline;
+const timeline = tr.about.timeline;
+---
+
+<section class="om-journey" id="parcours">
+  <div class="om-rule om-journey__head gsap-reveal">
+    <h2 class="om-journey__title">{copy.title}</h2>
+    <span class="om-rule__line" aria-hidden="true"></span>
+    <MorseMark word={copy.title} />
+  </div>
+
+  <ol class="om-journey__list">
+    {timeline.map((item) => (
+      <li class="om-journey__row gsap-reveal">
+        <span class="om-journey__date">{item.date}</span>
+        <span class="om-journey__label">
+          <span class="om-journey__role">{item.title}</span>
+          <span class="om-journey__place">{item.place}</span>
+        </span>
+        <span class="om-journey__desc">{item.desc}</span>
+      </li>
+    ))}
+  </ol>
+
+  <div class="om-journey__more gsap-reveal">
+    <a href={getLocalePath(lang, '/about')} class="om-btn--ghost">
+      {copy.all}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .om-journey {
+    padding: clamp(4rem, 9vw, 8rem) var(--om-gutter);
+    max-width: var(--om-shell);
+    margin: 0 auto;
+  }
+
+  .om-journey__head {
+    margin-bottom: clamp(1.875rem, 4vw, 3.25rem);
+  }
+
+  .om-journey__title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+
+  .om-journey__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--om-line);
+  }
+
+  .om-journey__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.375rem;
+    padding: clamp(1.125rem, 2.4vw, 1.75rem) 0;
+    border-bottom: 1px solid var(--om-line);
+  }
+
+  .om-journey__date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--om-accent-ink);
+  }
+
+  .om-journey__label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .om-journey__role {
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--om-ink);
+  }
+
+  .om-journey__place {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--om-ink-muted);
+  }
+
+  .om-journey__desc {
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    color: var(--om-ink-muted);
+  }
+
+  .om-journey__more {
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  @media (min-width: 820px) {
+    .om-journey__row {
+      grid-template-columns: minmax(7rem, 1fr) 3fr minmax(0, 2fr);
+      gap: clamp(0.75rem, 2.5vw, 2rem);
+      align-items: baseline;
+    }
+  }
+</style>

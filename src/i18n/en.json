@@ -6,12 +6,81 @@
     "blog": "Blog",
     "contact": "Contact"
   },
+  "theme": {
+    "toggle_aria": "Switch between the day and night theme",
+    "jour": "Day",
+    "nuit": "Night"
+  },
   "hero": {
     "name": "Banconlé AKOBI",
-    "subtitle": "Computer Science & Cybersecurity Engineer",
-    "tagline": "I build robust, secure systems that last. From cloud architecture to pentesting, from custom ERP to SaaS - with method and ambition.",
-    "cta": "Explore my work",
-    "scroll": "Scroll"
+    "subtitle": "Computer science and cybersecurity engineer",
+    "morse_prefix": "in morse:",
+    "morse_caption": "the title of my first book",
+    "line1": "I code.",
+    "line2": "I write.",
+    "line3_lead": "And above all,",
+    "line3_accent": "I speak.",
+    "intro": "Banconlé AKOBI, computer science and cybersecurity engineer, 4th year at INSA Hauts-de-France.",
+    "meta": "2nd in France at the Inter-INSA x VINCI 2026 public speaking contest. Author of MORSE. Founder of LanceOS.",
+    "cta_primary": "See what I build",
+    "cta_secondary": "or just say hello",
+    "portrait_alt": "Portrait of Banconlé AKOBI",
+    "portrait_caption": "portrait"
+  },
+  "home": {
+    "marquee": [
+      "cybersecurity",
+      "public speaking",
+      "SaaS",
+      "discipline",
+      "LanceOS",
+      "cloud",
+      "pentesting",
+      "full-stack"
+    ],
+    "manifesto": {
+      "eyebrow": "Manifesto",
+      "line": "Technical skill without vision is worth",
+      "accent": "nothing.",
+      "signature": "discipline"
+    },
+    "projects": {
+      "title": "What I build",
+      "count_suffix": "selected projects",
+      "featured_status": "In production",
+      "filters_label": "Filter projects by category",
+      "empty": "no project in this category",
+      "all": "All projects"
+    },
+    "voice": {
+      "eyebrow": "public speaking",
+      "title_lead": "Most engineers run from microphones.",
+      "title_accent": "I step up.",
+      "body": "Winner of the INSA Hauts-de-France public speaking contest, then 2nd in France at the Inter-INSA x VINCI 2026 national final. Technical skill is the foundation, speech is the signature.",
+      "quote_source": "MORSE",
+      "badges": [
+        "author of MORSE",
+        "winner, INSA Hauts-de-France",
+        "2nd in France"
+      ],
+      "photo_scene_alt": "Banconlé AKOBI at the microphone during the national public speaking final",
+      "photo_scene_caption": "national final, 2026",
+      "photo_wide_alt": "Banconlé AKOBI on stage during a public speaking contest",
+      "photo_todo": "TO BE ADDED: stage photo"
+    },
+    "timeline": {
+      "title": "Journey",
+      "all": "The full journey"
+    },
+    "certifications": {
+      "title": "Certifications and recognition"
+    },
+    "contact": {
+      "eyebrow": "contact",
+      "title_lead": "Let's build something, or let me",
+      "title_accent": "speak.",
+      "links_label": "My links"
+    }
   },
   "brief": {
     "title": "In brief",
@@ -132,7 +201,7 @@
       {
         "date": "2022",
         "title": "Scientific Baccalaureate",
-        "place": "Lycée Français de Lomé, Togo",
+        "place": "Lycée Français de Lomé",
         "desc": "Graduated with honors."
       }
     ],
@@ -171,7 +240,15 @@
   "projects_page": {
     "title": "Projects",
     "subtitle": "What I've built, from A to Z",
-    "filters": ["All", "Cybersecurity", "Web / Full-Stack", "SaaS", "AI / Academic", "Infrastructure", "Other"],
+    "filters": {
+      "all": "All",
+      "cybersecurite": "Cybersecurity",
+      "web": "Web / Full-Stack",
+      "saas": "SaaS",
+      "ia": "AI / Academic",
+      "infra": "Infrastructure",
+      "autre": "Other"
+    },
     "cta_code": "View code",
     "cta_demo": "Live"
   },
@@ -192,8 +269,11 @@
     "form_email": "Email",
     "form_subject": "Subject",
     "form_message": "Message",
-    "form_send": "Send message",
-    "form_success": "Your email app should open with the message prefilled. Send the email from there to reach me.",
+    "form_send": "Transmit",
+    "form_sending": "Transmitting",
+    "form_success": "Message transmitted. I reply within 48 hours.",
+    "form_error": "Sending failed. Try again in a moment, or write to me directly at ingenieurbanconle@gmail.com.",
+    "form_honeypot": "Leave this field empty, it filters out bots.",
     "form_placeholder_name": "Your name",
     "form_placeholder_email": "your@email.com",
     "form_placeholder_subject": "What is this about?",

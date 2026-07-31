@@ -1,0 +1,426 @@
+---
+import { t, getLocalePath } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+import { projects, homepageGridProjectIds, categoryKey } from '../data/projects';
+import type { Project } from '../data/projects';
+import MorseMark from './MorseMark.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+const copy = tr.home.projects;
+const filterLabels: Record<string, string> = tr.projects_page.filters;
+
+const byId = (id: string) => projects.find((p) => p.id === id);
+
+const featured = byId('lanceos') as Project;
+const grid = homepageGridProjectIds
+  .map(byId)
+  .filter((p): p is Project => p !== undefined);
+
+/** Catégories réellement présentes dans la sélection, dans l'ordre d'apparition. */
+const presentKeys = [...new Set(grid.map((p) => categoryKey(p.category)))];
+const filters = [{ key: 'all', label: filterLabels.all }].concat(
+  presentKeys.map((key) => ({ key, label: filterLabels[key] ?? key }))
+);
+
+/** Rythme éditorial de la grille : alternance de cartes larges et étroites. */
+const SPANS = [7, 5, 5, 7];
+
+const localized = (p: Project) => ({
+  title: lang === 'fr' ? p.title : p.titleEn,
+  description: lang === 'fr' ? p.description : p.descriptionEn,
+});
+---
+
+<section class="om-projects" id="projets">
+  <div class="om-projects__head gsap-reveal">
+    <h2 class="om-projects__title">{copy.title}</h2>
+    <span class="om-projects__count">
+      {String(grid.length + 1).padStart(2, '0')} {copy.count_suffix}
+    </span>
+  </div>
+
+  <!-- LanceOS en vedette -->
+  <article class="om-featured om-inked gsap-reveal">
+    <div class="om-featured__body">
+      <div class="om-featured__status">
+        <span class="om-featured__live">
+          <span class="om-featured__dot" aria-hidden="true"></span>
+          {copy.featured_status}
+        </span>
+        <span class="om-featured__kind">{featured.category}</span>
+      </div>
+
+      <h3 class="om-featured__name">{localized(featured).title}</h3>
+      <p class="om-featured__desc">{localized(featured).description}</p>
+
+      <ul class="om-featured__stack">
+        {featured.stack.map((tech) => <li>{tech}</li>)}
+      </ul>
+
+      {featured.demo && (
+        <a href={featured.demo} class="om-btn om-featured__cta" target="_blank" rel="noopener noreferrer">
+          {featured.demo.replace('https://', '')}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      )}
+    </div>
+
+    <div class="om-featured__shot">
+      {featured.image ? (
+        <img src={featured.image} alt={`${localized(featured).title}`} loading="lazy" decoding="async" width="1200" height="750" />
+      ) : (
+        <span class="om-frame__placeholder">{localized(featured).title}</span>
+      )}
+    </div>
+  </article>
+
+  <!-- Filtres -->
+  <div class="om-filters gsap-reveal" role="group" aria-label={copy.filters_label}>
+    {filters.map((f, i) => (
+      <button
+        type="button"
+        class:list={['om-filters__btn', i === 0 && 'is-active']}
+        data-filter={f.key}
+        aria-pressed={i === 0 ? 'true' : 'false'}
+      >
+        {f.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Grille -->
+  <div class="om-projects__grid" id="om-projects-grid">
+    {grid.map((p, i) => (
+      <article
+        class="om-project"
+        data-category={categoryKey(p.category)}
+        style={`--om-span:${SPANS[i % SPANS.length]}`}
+      >
+        <div class="om-project__meta">
+          <span>{filterLabels[categoryKey(p.category)] ?? p.category}</span>
+          <MorseMark word={p.title.slice(0, 2)} class="om-project__morse" />
+        </div>
+        <h3 class="om-project__title">{localized(p).title}</h3>
+        <p class="om-project__desc">{localized(p).description}</p>
+        <p class="om-project__stack">{p.stack.join(' / ')}</p>
+        {p.github && !p.repoEmpty && (
+          <a class="om-project__link link-underline" href={p.github} target="_blank" rel="noopener noreferrer">
+            {tr.projects_page.cta_code}
+            <span aria-hidden="true">&nbsp;&rarr;</span>
+          </a>
+        )}
+      </article>
+    ))}
+  </div>
+
+  <p class="om-projects__empty" id="om-projects-empty" hidden aria-live="polite">
+    <span class="mono">// {copy.empty}</span>
+  </p>
+
+  <div class="om-projects__more gsap-reveal">
+    <a href={getLocalePath(lang, '/projects')} class="om-btn--ghost">
+      {copy.all}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .om-projects {
+    padding: 0 var(--om-gutter) clamp(4rem, 9vw, 8rem);
+    max-width: var(--om-shell);
+    margin: 0 auto;
+  }
+
+  .om-projects__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .om-projects__title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    line-height: 1;
+  }
+
+  .om-projects__count {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--om-ink-muted);
+  }
+
+  /* --- Carte vedette --- */
+  .om-featured {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid var(--om-ink);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .om-featured__body {
+    padding: clamp(1.5rem, 3.2vw, 2.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.375rem;
+    min-width: 0;
+  }
+
+  .om-featured__status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .om-featured__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--om-accent);
+    border-radius: 999px;
+    padding: 0.3rem 0.65rem;
+    color: var(--om-on-ink);
+  }
+
+  .om-featured__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 99px;
+    background: var(--om-accent);
+  }
+
+  .om-featured__kind { color: var(--om-on-ink-muted); }
+
+  .om-featured__name {
+    margin: 0;
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+  }
+
+  .om-featured__desc {
+    margin: 0;
+    max-width: 46ch;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
+  .om-featured__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .om-featured__stack li {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--om-on-ink-muted);
+    border: 1px solid var(--om-on-ink-line);
+    border-radius: 999px;
+    padding: 0.375rem 0.7rem;
+  }
+
+  .om-featured__cta { align-self: flex-start; }
+
+  .om-featured__shot {
+    position: relative;
+    min-height: min(56vw, 320px);
+    background: rgba(241, 235, 221, 0.06);
+    border-top: 1px solid var(--om-on-ink-line);
+  }
+
+  .om-featured__shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  /* --- Filtres --- */
+  .om-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: clamp(2rem, 4.5vw, 3.5rem) 0 clamp(1.125rem, 2.5vw, 1.75rem);
+  }
+
+  .om-filters__btn {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.625rem 0.9rem;
+    min-height: 42px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1px solid var(--om-line);
+    background: transparent;
+    color: var(--om-ink-muted);
+    transition: border-color 0.25s var(--om-ease), color 0.25s var(--om-ease), background-color 0.25s var(--om-ease);
+  }
+
+  .om-filters__btn:hover {
+    border-color: var(--om-line-strong);
+    color: var(--om-ink);
+  }
+
+  .om-filters__btn.is-active {
+    background: var(--om-ink);
+    border-color: var(--om-ink);
+    color: var(--om-on-ink);
+  }
+
+  /* --- Grille --- */
+  .om-projects__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(0.875rem, 2vw, 1.625rem);
+  }
+
+  .om-project {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    min-width: 0;
+    border: 1px solid var(--om-line);
+    border-radius: 4px;
+    padding: clamp(1.25rem, 2.4vw, 2rem);
+    transition: border-color 0.25s var(--om-ease);
+  }
+
+  .om-project[hidden] { display: none; }
+
+  .om-project:hover { border-color: var(--om-line-strong); }
+
+  .om-project__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.375rem 0.875rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+    color: var(--om-ink-muted);
+  }
+
+  .om-project__morse { font-size: 0.625rem; letter-spacing: 0.2em; }
+
+  .om-project__title {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+
+  .om-project__desc {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--om-ink-muted);
+  }
+
+  .om-project__stack {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    color: var(--om-ink-muted);
+  }
+
+  .om-project__link {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--om-accent-ink);
+  }
+
+  .om-projects__empty {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .om-projects__more {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 900px) {
+    .om-featured { grid-template-columns: 1fr 1fr; }
+
+    .om-featured__shot {
+      border-top: none;
+      border-left: 1px solid var(--om-on-ink-line);
+    }
+
+    .om-project { grid-column: span var(--om-span, 6); }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var grid = document.getElementById('om-projects-grid');
+    if (!grid) return;
+
+    var buttons = document.querySelectorAll('.om-filters__btn');
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.om-project'));
+    var empty = document.getElementById('om-projects-empty');
+    var SPANS = [7, 5, 5, 7];
+
+    function apply(filter) {
+      var visible = 0;
+      cards.forEach(function (card) {
+        var show = filter === 'all' || card.dataset.category === filter;
+        card.hidden = !show;
+        if (show) {
+          // Le rythme large/étroit se recalcule sur les seules cartes visibles.
+          card.style.setProperty('--om-span', String(SPANS[visible % SPANS.length]));
+          visible++;
+        }
+      });
+      if (empty) empty.hidden = visible > 0;
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
+        apply(btn.dataset.filter || 'all');
+      });
+    });
+  })();
+</script>

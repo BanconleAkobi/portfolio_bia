@@ -1,0 +1,61 @@
+---
+import { t } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const words: string[] = t(lang).home.marquee;
+---
+
+<div class="om-marquee">
+  <div class="om-marquee__track">
+    {[0, 1].map((copy) => (
+      <div class="om-marquee__row" aria-hidden={copy === 1 ? 'true' : undefined}>
+        {words.map((word) => (
+          <>
+            <span>{word}</span>
+            <span class="om-marquee__sep" aria-hidden="true">.-</span>
+          </>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .om-marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--om-line);
+    border-bottom: 1px solid var(--om-line);
+    padding: 0.875rem 0;
+    background: var(--om-bg);
+  }
+
+  .om-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: om-marquee 42s linear infinite;
+  }
+
+  .om-marquee__row {
+    display: flex;
+    gap: 2.125rem;
+    padding-right: 2.125rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--om-ink);
+    white-space: nowrap;
+  }
+
+  .om-marquee__sep { color: var(--om-accent-ink); }
+
+  /* Sans mouvement, le bandeau devient une simple ligne de mots-clés. */
+  @media (prefers-reduced-motion: reduce) {
+    .om-marquee__track { animation: none; }
+  }
+</style>

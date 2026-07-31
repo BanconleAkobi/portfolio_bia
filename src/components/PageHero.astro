@@ -1,0 +1,47 @@
+---
+import MorseMark from './MorseMark.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  /** Mot transcrit en morse dans le filet, sous le titre. */
+  signature?: string;
+}
+
+const { eyebrow, title, signature } = Astro.props;
+---
+
+<div class="om-pagehero">
+  <div class="om-pagehero__inner">
+    <p class="om-eyebrow">{eyebrow}</p>
+    <h1 class="om-pagehero__title">{title}</h1>
+    <div class="om-rule om-pagehero__rule">
+      <span class="om-rule__line" aria-hidden="true"></span>
+      <MorseMark word={signature ?? title} />
+    </div>
+  </div>
+</div>
+
+<style>
+  .om-pagehero {
+    padding: clamp(2.5rem, 7vw, 5.5rem) var(--om-gutter) clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: 1px solid var(--om-line);
+  }
+
+  .om-pagehero__inner {
+    max-width: var(--om-shell);
+    margin: 0 auto;
+  }
+
+  .om-pagehero__title {
+    margin: 0.75rem 0 0;
+    font-size: clamp(2.6rem, 9vw, 6.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+    font-weight: 800;
+  }
+
+  .om-pagehero__rule {
+    margin-top: clamp(1.25rem, 3vw, 2rem);
+  }
+</style>

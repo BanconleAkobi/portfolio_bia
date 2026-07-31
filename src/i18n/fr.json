@@ -6,12 +6,81 @@
     "blog": "Blog",
     "contact": "Contact"
   },
+  "theme": {
+    "toggle_aria": "Basculer entre le thème jour et le thème nuit",
+    "jour": "Jour",
+    "nuit": "Nuit"
+  },
   "hero": {
     "name": "Banconlé AKOBI",
-    "subtitle": "Ingénieur Informatique & Cybersécurité",
-    "tagline": "Je construis des systèmes robustes, sécurisés et qui durent. De l'architecture cloud au pentesting, de l'ERP sur mesure au SaaS - avec méthode et ambition.",
-    "cta": "Découvrir mon parcours",
-    "scroll": "Défiler"
+    "subtitle": "Ingénieur informatique et cybersécurité",
+    "morse_prefix": "en morse :",
+    "morse_caption": "le titre de mon premier livre",
+    "line1": "Je code.",
+    "line2": "J'écris.",
+    "line3_lead": "Et surtout,",
+    "line3_accent": "je parle.",
+    "intro": "Banconlé AKOBI, ingénieur informatique et cybersécurité, 4e année à l'INSA Hauts-de-France.",
+    "meta": "2e de France au concours d'éloquence Inter-INSA x VINCI 2026. Auteur de MORSE. Fondateur de LanceOS.",
+    "cta_primary": "Voir ce que je construis",
+    "cta_secondary": "ou juste discuter",
+    "portrait_alt": "Portrait de Banconlé AKOBI",
+    "portrait_caption": "portrait"
+  },
+  "home": {
+    "marquee": [
+      "cybersécurité",
+      "éloquence",
+      "SaaS",
+      "discipline",
+      "LanceOS",
+      "cloud",
+      "pentesting",
+      "full-stack"
+    ],
+    "manifesto": {
+      "eyebrow": "Manifeste",
+      "line": "La technique sans vision ne vaut",
+      "accent": "rien.",
+      "signature": "discipline"
+    },
+    "projects": {
+      "title": "Ce que je construis",
+      "count_suffix": "projets sélectionnés",
+      "featured_status": "En production",
+      "filters_label": "Filtrer les projets par catégorie",
+      "empty": "aucun projet dans cette catégorie",
+      "all": "Tous les projets"
+    },
+    "voice": {
+      "eyebrow": "éloquence",
+      "title_lead": "La plupart des ingénieurs fuient les micros.",
+      "title_accent": "J'y monte.",
+      "body": "Vainqueur du concours d'éloquence de l'INSA Hauts-de-France, puis 2e de France à la finale nationale Inter-INSA x VINCI 2026. La technique est le socle, la parole est la signature.",
+      "quote_source": "MORSE",
+      "badges": [
+        "auteur de MORSE",
+        "vainqueur INSA Hauts-de-France",
+        "2e de France"
+      ],
+      "photo_scene_alt": "Banconlé AKOBI au micro lors de la finale nationale d'éloquence",
+      "photo_scene_caption": "finale nationale, 2026",
+      "photo_wide_alt": "Banconlé AKOBI sur scène pendant un concours d'éloquence",
+      "photo_todo": "À COMPLÉTER : photo de scène"
+    },
+    "timeline": {
+      "title": "Parcours",
+      "all": "Le parcours détaillé"
+    },
+    "certifications": {
+      "title": "Certifications et reconnaissances"
+    },
+    "contact": {
+      "eyebrow": "contact",
+      "title_lead": "On construit quelque chose, ou vous me faites",
+      "title_accent": "parler.",
+      "links_label": "Mes liens"
+    }
   },
   "brief": {
     "title": "En bref",
@@ -138,7 +207,7 @@
       {
         "date": "2022",
         "title": "Baccalauréat Scientifique",
-        "place": "Lycée Français de Lomé, Togo",
+        "place": "Lycée Français de Lomé",
         "desc": "Mention Très Bien."
       }
     ],
@@ -177,7 +246,15 @@
   "projects_page": {
     "title": "Projets",
     "subtitle": "Ce que j'ai construit, de A à Z",
-    "filters": ["Tous", "Cybersécurité", "Web / Full-Stack", "SaaS", "IA / Académique", "Infrastructure", "Autre"],
+    "filters": {
+      "all": "Tous",
+      "cybersecurite": "Cybersécurité",
+      "web": "Web / Full-Stack",
+      "saas": "SaaS",
+      "ia": "IA / Académique",
+      "infra": "Infrastructure",
+      "autre": "Autre"
+    },
     "cta_code": "Voir le code",
     "cta_demo": "Live"
   },
@@ -198,8 +275,11 @@
     "form_email": "Email",
     "form_subject": "Sujet",
     "form_message": "Message",
-    "form_send": "Envoyer le message",
-    "form_success": "Votre messagerie devrait s'ouvrir avec le message prérempli. Envoyez l'e-mail depuis votre client pour me joindre.",
+    "form_send": "Transmettre",
+    "form_sending": "Transmission en cours",
+    "form_success": "Message transmis. Je réponds sous 48 heures.",
+    "form_error": "L'envoi a échoué. Réessayez dans un instant, ou écrivez-moi directement à ingenieurbanconle@gmail.com.",
+    "form_honeypot": "Laissez ce champ vide, il sert à filtrer les robots.",
     "form_placeholder_name": "Votre nom",
     "form_placeholder_email": "votre@email.com",
     "form_placeholder_subject": "De quoi s'agit-il ?",

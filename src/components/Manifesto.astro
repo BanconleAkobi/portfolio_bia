@@ -1,0 +1,55 @@
+---
+import { t } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+import MorseMark from './MorseMark.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const manifesto = t(lang).home.manifesto;
+---
+
+<section class="om-manifesto" id="manifeste">
+  <p class="om-eyebrow gsap-reveal">{manifesto.eyebrow}</p>
+  <p class="om-manifesto__line gsap-reveal">
+    {manifesto.line} <em class="om-serif">{manifesto.accent}</em>
+  </p>
+  <div class="om-rule om-manifesto__rule gsap-reveal">
+    <MorseMark word={manifesto.signature} />
+    <span class="om-rule__line" aria-hidden="true"></span>
+    <span class="om-manifesto__word">{manifesto.signature}</span>
+  </div>
+</section>
+
+<style>
+  .om-manifesto {
+    padding: clamp(4rem, 10vw, 9.5rem) var(--om-gutter);
+    max-width: var(--om-shell);
+    margin: 0 auto;
+  }
+
+  .om-manifesto__line {
+    margin: clamp(1.5rem, 4vw, 2.75rem) 0 0;
+    max-width: 20ch;
+    font-size: clamp(2.2rem, 6.4vw, 5.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    color: var(--om-ink);
+    text-wrap: pretty;
+  }
+
+  .om-manifesto__rule {
+    margin-top: clamp(2rem, 5vw, 3.75rem);
+  }
+
+  .om-manifesto__word {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    color: var(--om-ink-muted);
+    white-space: nowrap;
+  }
+</style>

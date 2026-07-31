@@ -1,0 +1,204 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { t } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+import MorseMark from './MorseMark.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+const voice = tr.home.voice;
+
+/**
+ * Emplacements photo de la section. Déposez les fichiers aux chemins ci-dessous
+ * et ils remplacent automatiquement le repère « À COMPLÉTER » au prochain build.
+ *   public/images/voix/scene-3-4.jpg   (ratio 3:4, portrait de scène)
+ *   public/images/voix/scene-16-9.jpg  (ratio 16:9, plan large)
+ */
+const SLOTS = {
+  scene: '/images/voix/scene-3-4.jpg',
+  wide: '/images/voix/scene-16-9.jpg',
+};
+
+const exists = (publicPath: string) =>
+  fs.existsSync(path.join(process.cwd(), 'public', publicPath.replace(/^\//, '')));
+
+const sceneSrc = exists(SLOTS.scene) ? SLOTS.scene : null;
+const wideSrc = exists(SLOTS.wide) ? SLOTS.wide : null;
+---
+
+<section class="om-voice om-inked" id="voix">
+  <div class="om-voice__grid">
+    <div class="om-voice__text">
+      <div class="om-rule om-voice__eyebrow">
+        <MorseMark word={voice.eyebrow} />
+        <span class="om-voice__eyebrow-word">{voice.eyebrow}</span>
+      </div>
+
+      <h2 class="om-voice__title">
+        {voice.title_lead} <em class="om-serif">{voice.title_accent}</em>
+      </h2>
+
+      <div class="om-voice__body">
+        <p class="om-voice__lead">{voice.body}</p>
+
+        <blockquote class="om-voice__quote">
+          <p>{tr.quote.text}</p>
+        </blockquote>
+        <p class="om-voice__source">{tr.quote.author}, {voice.quote_source}</p>
+      </div>
+
+      <ul class="om-voice__badges">
+        {voice.badges.map((badge: string) => <li>{badge}</li>)}
+      </ul>
+    </div>
+
+    <div class="om-voice__media">
+      <!-- Photo de scène, ratio 3:4 -->
+      <figure class="om-voice__figure">
+        <div class="om-frame om-frame--scene">
+          {sceneSrc ? (
+            <img src={sceneSrc} alt={voice.photo_scene_alt} loading="lazy" decoding="async" width="900" height="1200" />
+          ) : (
+            <span class="om-frame__placeholder">{voice.photo_todo}<br />3:4</span>
+          )}
+        </div>
+        <figcaption class="om-rule om-voice__caption">
+          <span>{voice.photo_scene_caption}</span>
+          <span class="om-rule__line" aria-hidden="true"></span>
+        </figcaption>
+      </figure>
+
+      <!-- Plan large, ratio 16:9 -->
+      <div class="om-frame om-frame--wide om-voice__wide">
+        {wideSrc ? (
+          <img src={wideSrc} alt={voice.photo_wide_alt} loading="lazy" decoding="async" width="1600" height="900" />
+        ) : (
+          <span class="om-frame__placeholder">{voice.photo_todo}<br />16:9</span>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .om-voice {
+    padding: clamp(4rem, 9vw, 8rem) var(--om-gutter);
+  }
+
+  .om-voice__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 3.4vw, 3.25rem);
+    align-items: start;
+    max-width: var(--om-shell);
+    margin: 0 auto;
+  }
+
+  .om-voice__text { min-width: 0; }
+
+  .om-voice__eyebrow {
+    margin-bottom: clamp(1.375rem, 3vw, 2.25rem);
+  }
+
+  .om-voice__eyebrow-word {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    color: var(--om-on-ink-muted);
+  }
+
+  .om-voice__title {
+    margin: 0;
+    font-size: clamp(2.2rem, 7vw, 5rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    max-width: 18ch;
+  }
+
+  .om-voice__body {
+    display: grid;
+    gap: 1.375rem;
+    margin-top: clamp(1.75rem, 3.6vw, 2.75rem);
+    max-width: 52ch;
+  }
+
+  .om-voice__lead {
+    margin: 0;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: 1.5;
+    color: var(--om-on-ink);
+  }
+
+  .om-voice__quote {
+    margin: 0;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--om-accent);
+  }
+
+  .om-voice__quote p {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    color: var(--om-on-ink);
+  }
+
+  .om-voice__source {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    color: var(--om-on-ink-muted);
+  }
+
+  .om-voice__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    list-style: none;
+    margin: clamp(1.75rem, 3.6vw, 2.5rem) 0 0;
+    padding: 0;
+  }
+
+  .om-voice__badges li {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    border: 1px solid var(--om-on-ink-line);
+    border-radius: 999px;
+    padding: 0.5rem 0.8rem;
+    color: var(--om-on-ink);
+  }
+
+  .om-voice__media { min-width: 0; }
+
+  .om-voice__figure { margin: 0; }
+
+  .om-voice__caption {
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    color: var(--om-on-ink-muted);
+  }
+
+  .om-voice__caption .om-rule__line { background: var(--om-on-ink-line); }
+
+  .om-voice__wide {
+    margin-top: clamp(0.875rem, 2vw, 1.375rem);
+  }
+
+  @media (min-width: 900px) {
+    .om-voice__grid {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
+</style>

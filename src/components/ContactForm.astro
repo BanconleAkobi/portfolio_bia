@@ -4,253 +4,269 @@ import type { Lang } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
+  /** Préfixe d'identifiants, pour que deux formulaires puissent cohabiter. */
+  idPrefix?: string;
 }
 
-const { lang } = Astro.props;
+const { lang, idPrefix = 'contact' } = Astro.props;
 const tr = t(lang);
+const c = tr.contact_page;
+
+const id = (field: string) => `${idPrefix}-${field}`;
+
+/**
+ * Envoi via Netlify Forms, sans backend.
+ *
+ * Le site est généré en statique par Astro : ce formulaire est donc présent
+ * tel quel dans le HTML livré, et le bot de build Netlify le détecte au
+ * déploiement. Aucun formulaire statique caché supplémentaire n'est nécessaire.
+ *
+ * Il reste une chose à faire côté dashboard Netlify, une seule fois :
+ * Forms > Form notifications > Add notification > Email notification,
+ * vers ingenieurbanconle@gmail.com.
+ *
+ * La soumission part en fetch POST vers l'URL de la page courante, ce qui
+ * évite tout rechargement et permet d'afficher un état de succès ou d'erreur.
+ */
+const FORM_NAME = 'contact';
 ---
 
 <form
-  class="contact-form"
-  id="contact-form"
-  data-lang={lang}
-  data-recipient="ingenieurbanconle@gmail.com"
-  data-default-subject={lang === 'fr' ? 'Message depuis le portfolio' : 'Message from portfolio'}
+  class="om-form"
+  id={id('form')}
+  name={FORM_NAME}
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  novalidate
 >
+  <!-- Requis par Netlify pour rattacher la soumission au bon formulaire -->
+  <input type="hidden" name="form-name" value={FORM_NAME} />
+  <input type="hidden" name="lang" value={lang} />
 
-  <div class="form-row">
-    <div class="form-group">
-      <label for="name" class="form-label">{tr.contact_page.form_name} *</label>
+  <!-- Piège à robots : invisible et hors du parcours clavier -->
+  <p class="om-form__honeypot" aria-hidden="true">
+    <label>
+      {c.form_honeypot}
+      <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  <div class="om-form__row">
+    <div class="om-form__field">
+      <label class="om-form__label" for={id('name')}>{c.form_name} *</label>
       <input
         type="text"
-        id="name"
+        id={id('name')}
         name="name"
-        class="form-input"
-        placeholder={tr.contact_page.form_placeholder_name}
+        class="om-form__input"
+        placeholder={c.form_placeholder_name}
         required
         autocomplete="name"
-        aria-required="true"
       />
     </div>
-    <div class="form-group">
-      <label for="email" class="form-label">{tr.contact_page.form_email} *</label>
+
+    <div class="om-form__field">
+      <label class="om-form__label" for={id('email')}>{c.form_email} *</label>
       <input
         type="email"
-        id="email"
+        id={id('email')}
         name="email"
-        class="form-input"
-        placeholder={tr.contact_page.form_placeholder_email}
+        class="om-form__input"
+        placeholder={c.form_placeholder_email}
         required
         autocomplete="email"
-        aria-required="true"
       />
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="subject" class="form-label">{tr.contact_page.form_subject}</label>
+  <div class="om-form__field">
+    <label class="om-form__label" for={id('subject')}>{c.form_subject}</label>
     <input
       type="text"
-      id="subject"
+      id={id('subject')}
       name="subject"
-      class="form-input"
-      placeholder={tr.contact_page.form_placeholder_subject}
+      class="om-form__input"
+      placeholder={c.form_placeholder_subject}
       autocomplete="off"
     />
   </div>
 
-  <div class="form-group">
-    <label for="message" class="form-label">{tr.contact_page.form_message} *</label>
+  <div class="om-form__field">
+    <label class="om-form__label" for={id('message')}>{c.form_message} *</label>
     <textarea
-      id="message"
+      id={id('message')}
       name="message"
-      class="form-input form-textarea"
-      placeholder={tr.contact_page.form_placeholder_message}
+      class="om-form__input om-form__textarea"
+      placeholder={c.form_placeholder_message}
       required
       rows="6"
-      aria-required="true"
     ></textarea>
   </div>
 
-  <button type="submit" class="btn-primary form-submit" id="submit-btn">
-    {tr.contact_page.form_send}
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <line x1="22" y1="2" x2="11" y2="13"/>
-      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-    </svg>
+  <button type="submit" class="om-btn om-form__submit" data-idle={c.form_send} data-sending={c.form_sending}>
+    <span data-submit-label>{c.form_send}</span>
+    <span class="om-form__submit-morse" aria-hidden="true">.--</span>
   </button>
 
-  <div class="form-success" id="form-success" aria-live="polite" role="alert" hidden>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <polyline points="20 6 9 17 4 12"/>
-    </svg>
-    {tr.contact_page.form_success}
-  </div>
+  <p class="om-form__status" data-status role="status" aria-live="polite" hidden></p>
 </form>
 
 <style>
-  .hidden {
-    display: none;
-  }
-
-  .contact-form {
+  .om-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0.875rem;
   }
 
-  .form-row {
+  .om-form__honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .om-form__row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
   }
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
+  .om-form__field {
+    display: grid;
     gap: 0.5rem;
   }
 
-  .form-label {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+  .om-form__label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: var(--om-ink-muted);
   }
 
-  .form-input {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-primary);
-    padding: 0.875rem 1rem;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    transition: border-color 0.3s ease;
-    outline: none;
+  .om-form__input {
     width: 100%;
+    min-height: 48px;
+    padding: 0.875rem;
+    background: transparent;
+    border: 1px solid var(--om-line);
+    border-radius: 3px;
+    color: var(--om-ink);
+    /* 16px minimum : évite le zoom automatique sur iOS */
+    font-size: 1rem;
+    transition: border-color 0.25s var(--om-ease);
   }
 
-  .form-input::placeholder {
-    color: var(--text-secondary);
-    opacity: 0.5;
+  .om-form__input::placeholder {
+    color: var(--om-ink-muted);
+    opacity: 0.65;
   }
 
-  .form-input:focus {
-    border-color: var(--accent-gold);
+  .om-form__input:focus {
+    border-color: var(--om-accent);
   }
 
-  .form-input:invalid:not(:placeholder-shown) {
-    border-color: var(--accent-danger);
+  /* Le rouge n'apparaît qu'après une tentative d'envoi, pas pendant la frappe. */
+  .om-form.is-validated .om-form__input:invalid {
+    border-color: var(--om-danger);
   }
 
-  .form-textarea {
+  .om-form__textarea {
     resize: vertical;
-    min-height: 140px;
+    min-height: 8.75rem;
+    line-height: 1.55;
   }
 
-  .form-submit {
+  .om-form__submit {
+    justify-self: start;
     align-self: flex-start;
-    width: auto;
+    margin-top: 0.25rem;
   }
 
-  .form-success {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
-    border: 1px solid var(--accent-cyber);
-    color: var(--accent-cyber);
-    font-size: 0.9rem;
-    animation: fadeIn 0.5s ease;
+  .om-form__submit[disabled] {
+    opacity: 0.6;
+    cursor: progress;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  .om-form__submit-morse {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
   }
 
-  @media (max-width: 600px) {
-    .form-row {
-      grid-template-columns: 1fr;
-    }
+  .om-form__status {
+    margin: 0;
+    padding: 0.875rem 1rem;
+    border-radius: 3px;
+    border: 1px solid currentColor;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .om-form__status[hidden] { display: none; }
+  .om-form__status[data-tone='ok'] { color: var(--om-accent-ink); }
+  .om-form__status[data-tone='error'] { color: var(--om-danger); }
+
+  @media (min-width: 560px) {
+    .om-form__row { grid-template-columns: 1fr 1fr; }
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ formId: id('form'), messages: { ok: c.form_success, error: c.form_error } }}>
   (function () {
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('form-success');
-    const submitBtn = document.getElementById('submit-btn');
-    const sendLabel = submitBtn ? submitBtn.innerHTML : '';
+    var form = document.getElementById(formId);
+    if (!form) return;
 
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!form || !submitBtn) return;
+    var submit = form.querySelector('.om-form__submit');
+    var submitLabel = form.querySelector('[data-submit-label]');
+    var status = form.querySelector('[data-status]');
 
+    function show(tone, text) {
+      if (!status) return;
+      status.dataset.tone = tone;
+      status.textContent = text;
+      status.hidden = false;
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      form.classList.add('is-validated');
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      const fd = new FormData(form);
-      const name = String(fd.get('name') || '').trim();
-      const email = String(fd.get('email') || '').trim();
-      const subjectRaw = String(fd.get('subject') || '').trim();
-      const message = String(fd.get('message') || '').trim();
-      const lang = form.dataset.lang || 'fr';
-      const recipient = form.dataset.recipient || 'ingenieurbanconle@gmail.com';
-      const defaultSubject = form.dataset.defaultSubject || (lang === 'fr' ? 'Message depuis le portfolio' : 'Message from portfolio');
-      const topic = subjectRaw || defaultSubject;
-      const subjectLine = topic + ' — ' + name + ' <' + email + '>';
+      if (status) status.hidden = true;
 
-      const body = message;
-
-      const mailto =
-        'mailto:' +
-        recipient +
-        '?subject=' +
-        encodeURIComponent(subjectLine) +
-        '&body=' +
-        encodeURIComponent(body);
-
-      if (mailto.length > 1800) {
-        window.alert(
-          lang === 'fr'
-            ? 'Le message est trop long pour un lien mail. Raccourcissez le texte ou écrivez directement à ' + recipient
-            : 'Message is too long for a mail link. Shorten the text or write directly to ' + recipient
-        );
-        return;
+      if (submit) {
+        submit.disabled = true;
+        if (submitLabel) submitLabel.textContent = submit.dataset.sending || '';
       }
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = '…';
-
-      const openMailto = function () {
-        const useNewTab = window.matchMedia('(pointer: fine)').matches;
-        if (useNewTab) {
-          const a = document.createElement('a');
-          a.href = mailto;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        } else {
-          window.location.href = mailto;
-        }
-      };
-      openMailto();
-
-      if (success) {
-        success.hidden = false;
-      }
-
-      setTimeout(function () {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = sendLabel;
-      }, 800);
+      fetch(window.location.pathname, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          form.reset();
+          form.classList.remove('is-validated');
+          show('ok', messages.ok);
+        })
+        .catch(function () {
+          show('error', messages.error);
+        })
+        .finally(function () {
+          if (submit) {
+            submit.disabled = false;
+            if (submitLabel) submitLabel.textContent = submit.dataset.idle || '';
+          }
+        });
     });
   })();
 </script>
