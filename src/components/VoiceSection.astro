@@ -1,6 +1,6 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import { t } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 import MorseMark from './MorseMark.astro';
@@ -14,21 +14,35 @@ const tr = t(lang);
 const voice = tr.home.voice;
 
 /**
- * Emplacements photo de la section. Déposez les fichiers aux chemins ci-dessous
- * et ils remplacent automatiquement le repère « À COMPLÉTER » au prochain build.
- *   public/images/voix/scene-3-4.jpg   (ratio 3:4, portrait de scène)
- *   public/images/voix/scene-16-9.jpg  (ratio 16:9, plan large)
+ * Trois moments, trois petits blocs de vignettes. Les fichiers vivent dans
+ * src/assets/voix/ : Astro les redimensionne et les convertit en webp au build,
+ * ce que public/ ne permet pas. Le préfixe du nom de fichier fait le
+ * regroupement, ajouter une photo à un groupe se réduit donc à la déposer là.
  */
-const SLOTS = {
-  scene: '/images/voix/scene-3-4.jpg',
-  wide: '/images/voix/scene-16-9.jpg',
-};
+const files = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/voix/*.{png,jpg,jpeg,webp,avif}',
+  { eager: true }
+);
 
-const exists = (publicPath: string) =>
-  fs.existsSync(path.join(process.cwd(), 'public', publicPath.replace(/^\//, '')));
+function group(prefix: string): ImageMetadata[] {
+  return Object.entries(files)
+    .filter(([path]) => path.includes(`/${prefix}-`))
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, mod]) => mod.default);
+}
 
-const sceneSrc = exists(SLOTS.scene) ? SLOTS.scene : null;
-const wideSrc = exists(SLOTS.wide) ? SLOTS.wide : null;
+/**
+ * `focus` cadre le recadrage carré : les portraits ont le visage haut dans
+ * l'image, les photos de groupe l'ont au milieu. C'est de la mise en page,
+ * donc ça reste ici et pas dans les fichiers de traduction.
+ */
+const groups = [
+  { key: 'ecole', images: group('parlerecole'), focus: '28%' },
+  { key: 'insahdf', images: group('insahdf'), focus: '34%' },
+  { key: 'finale', images: group('finale'), focus: '46%' },
+]
+  .map((g) => ({ ...g, ...voice.groups[g.key] }))
+  .filter((g) => g.images.length > 0);
 ---
 
 <section class="om-voice om-inked" id="voix">
@@ -58,29 +72,32 @@ const wideSrc = exists(SLOTS.wide) ? SLOTS.wide : null;
     </div>
 
     <div class="om-voice__media">
-      <!-- Photo de scène, ratio 3:4 -->
-      <figure class="om-voice__figure">
-        <div class="om-frame om-frame--scene">
-          {sceneSrc ? (
-            <img src={sceneSrc} alt={voice.photo_scene_alt} loading="lazy" decoding="async" width="900" height="1200" />
-          ) : (
-            <span class="om-frame__placeholder">{voice.photo_todo}<br />3:4</span>
-          )}
-        </div>
-        <figcaption class="om-rule om-voice__caption">
-          <span>{voice.photo_scene_caption}</span>
-          <span class="om-rule__line" aria-hidden="true"></span>
-        </figcaption>
-      </figure>
+      {groups.map((g) => (
+        <figure class="om-gal">
+          <figcaption class="om-gal__head">
+            <span class="om-gal__label">{g.label}</span>
+            <span class="om-gal__meta">{g.meta}</span>
+          </figcaption>
 
-      <!-- Plan large, ratio 16:9 -->
-      <div class="om-frame om-frame--wide om-voice__wide">
-        {wideSrc ? (
-          <img src={wideSrc} alt={voice.photo_wide_alt} loading="lazy" decoding="async" width="1600" height="900" />
-        ) : (
-          <span class="om-frame__placeholder">{voice.photo_todo}<br />16:9</span>
-        )}
-      </div>
+          <div class="om-gal__strip" data-count={g.images.length} style={`--om-focus:${g.focus}`}>
+            {g.images.map((img, i) => (
+              <div class="om-gal__thumb">
+                {/* Vignette d'environ 160px : 220px en 1x, 440px en 2x, rien de plus. */}
+                <Image
+                  src={img}
+                  alt={`${g.alt} (${i + 1})`}
+                  width={220}
+                  densities={[1, 2]}
+                  format="webp"
+                  quality={70}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
+        </figure>
+      ))}
     </div>
   </div>
 </section>
@@ -178,23 +195,65 @@ const wideSrc = exists(SLOTS.wide) ? SLOTS.wide : null;
     color: var(--om-on-ink);
   }
 
-  .om-voice__media { min-width: 0; }
+  /* --- Blocs de vignettes --- */
+  .om-voice__media {
+    min-width: 0;
+    display: grid;
+    gap: clamp(1.25rem, 2.4vw, 1.75rem);
+  }
 
-  .om-voice__figure { margin: 0; }
+  .om-gal { margin: 0; }
 
-  .om-voice__caption {
-    margin-top: 0.75rem;
+  .om-gal__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .om-gal__label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--om-on-ink);
+  }
+
+  .om-gal__meta {
     font-family: var(--font-mono);
     font-size: 0.625rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     color: var(--om-on-ink-muted);
   }
 
-  .om-voice__caption .om-rule__line { background: var(--om-on-ink-line); }
-
-  .om-voice__wide {
-    margin-top: clamp(0.875rem, 2vw, 1.375rem);
+  /* Autant de colonnes que de photos : deux ou trois selon le groupe. */
+  .om-gal__strip {
+    display: grid;
+    grid-template-columns: repeat(var(--om-cols, 2), 1fr);
+    gap: 6px;
   }
+
+  .om-gal__strip[data-count='3'] { --om-cols: 3; }
+
+  .om-gal__thumb {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--om-on-ink-line);
+    background: rgba(241, 235, 221, 0.06);
+  }
+
+  .om-gal__thumb :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center var(--om-focus, 35%);
+    transition: transform 0.4s var(--om-ease);
+  }
+
+  .om-gal:hover .om-gal__thumb :global(img) { transform: scale(1.04); }
 
   @media (min-width: 900px) {
     .om-voice__grid {
