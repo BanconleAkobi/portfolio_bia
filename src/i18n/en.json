@@ -307,7 +307,7 @@
   "contact_page": {
     "title": "Contact",
     "subtitle": "A project, an opportunity, a conversation?",
-    "intro": "Available for freelance missions, internships/apprenticeships, or simply to discuss a tech project. I respond within 48 hours.",
+    "intro": "Available for freelance missions, internships/apprenticeships, or simply to discuss a tech project. I respond within 24 hours.",
     "email_label": "Email",
     "location_label": "Location",
     "location": "Valenciennes / Versailles, France",
@@ -317,7 +317,7 @@
     "form_message": "Message",
     "form_send": "Transmit",
     "form_sending": "Transmitting",
-    "form_success": "Message transmitted. I reply within 48 hours.",
+    "form_success": "Message transmitted. I reply within 24 hours.",
     "form_error": "Sending failed. Try again in a moment, or write to me directly at ingenieurbanconle@gmail.com.",
     "form_honeypot": "Leave this field empty, it filters out bots.",
     "form_placeholder_name": "Your name",

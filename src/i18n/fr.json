@@ -307,7 +307,7 @@
   "contact_page": {
     "title": "Contact",
     "subtitle": "Un projet, une opportunité, une discussion ?",
-    "intro": "Je suis disponible pour des missions freelance, des stages/alternances ou simplement échanger sur un projet tech. Réponse sous 48h.",
+    "intro": "Je suis disponible pour des missions freelance, des stages/alternances ou simplement échanger sur un projet tech. Réponse sous 24 heures.",
     "email_label": "Email",
     "location_label": "Localisation",
     "location": "Valenciennes / Versailles, France",
@@ -317,7 +317,7 @@
     "form_message": "Message",
     "form_send": "Transmettre",
     "form_sending": "Transmission en cours",
-    "form_success": "Message transmis. Je réponds sous 48 heures.",
+    "form_success": "Message transmis. Je réponds sous 24 heures.",
     "form_error": "L'envoi a échoué. Réessayez dans un instant, ou écrivez-moi directement à ingenieurbanconle@gmail.com.",
     "form_honeypot": "Laissez ce champ vide, il sert à filtrer les robots.",
     "form_placeholder_name": "Votre nom",
