@@ -167,7 +167,7 @@
   "about": {
     "title": "About",
     "subtitle": "Engineer, author, speaker",
-    "bio": "Becoming an expert in tomorrow's systems, somewhere between AI and cybersecurity. I want nothing more than to be a Swiss army knife companies can rely on.\n\nI like the technical side, but I like project management even more. I run some alone, like LanceOS, my own platform, and others as a team, because succeeding together is still what I find most satisfying.\n\nLanceOS, then: a web application for French freelancers and independent workers. Its promise fits in one sentence, it does not replace Indy. Were you expecting more? Most independent workers already use Indy, Tiime or Abby. LanceOS does not try to replace them, it brings the essentials together in one place: client tracking, which is the heart of the platform, engagements, and invoicing as an option.\n\nOn the experience side, I do not stop at my own projects. I am an IT and cybersecurity engineering apprentice, where I run and build web and AI projects. I was also a cybersecurity analyst on an international internship in Bucharest, between April and August 2026. Those two grounds are where my core skills come from: monitoring and incident response, web development, application security and compliance, and automation.\n\nIn short: I like understanding how things work and taking complicated problems apart. I have touched a fair range of subjects, from cybersecurity to websites, through migrations, automation, systems integration and application development.\n\nAnd there is more than the technical side. Public speaking matters a great deal to me: learning, passing on, defending an idea, carrying a project that stands up. At 18 I published MORSE, a book on discipline and working on oneself. One day I would like to step onto a TEDx stage as a speaker.\n\nOutside all that: manga, content creation, basketball and entrepreneurship.",
+    "bio": "Becoming an expert in tomorrow's systems, somewhere between AI and cybersecurity. I want nothing more than to be a Swiss army knife companies can rely on.\n\nI like the technical side, but I like project management even more. I run some alone, like LanceOS, my own platform, and others as a team, because succeeding together is still what I find most satisfying.\n\nLanceOS, then: a web application for French freelancers and independent workers. Its promise fits in one sentence, it does not replace Indy. Were you expecting more? Most independent workers already use Indy, Tiime or Abby. LanceOS does not try to replace them, it brings the essentials together in one place: client tracking, which is the heart of the platform, engagements, and invoicing as an option.\n\nOn the experience side, I do not stop at my own projects. I am an IT and cybersecurity engineering apprentice, where I run and build web and AI projects. I was also a cybersecurity analyst on an international internship in Bucharest, between April and August 2026. Those two grounds are where my core skills come from: monitoring and incident response, web development, application security and compliance, and automation.\n\nIn short: I like understanding how things work and taking complicated problems apart. I have touched a fair range of subjects, from cybersecurity to websites, through migrations, automation, systems integration and application development.\n\nAnd there is more than the technical side. Public speaking matters a great deal to me: learning, passing on, defending an idea, carrying a project that stands up. At 18 I published MORSE, a book on discipline and working on oneself. One day I would like to step onto a TEDx stage as a speaker.\n\nOutside all that: running, with a 10 km Foulée Valenciennoise finished in 49 minutes, basketball, entrepreneurship, and a lot of reading, usually in English.",
     "timeline_title": "Journey",
     "timeline": [
       {
@@ -246,9 +246,9 @@
       },
       {
         "date": "2022",
-        "title": "Scientific Baccalaureate",
-        "place": "Lycée Français de Lomé",
-        "desc": "Graduated with highest honours."
+        "title": "French general Baccalaureate",
+        "place": "Mathematics and Physics majors",
+        "desc": "Graduated with highest honours. 20/20 in mathematics and 20/20 in physics."
       }
     ],
     "values_title": "Values & Philosophy",
