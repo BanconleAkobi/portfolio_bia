@@ -17,6 +17,7 @@ const filterLabels: Record<string, string> = tr.projects_page.filters;
 const key = categoryKey(project.category);
 const title = lang === 'fr' ? project.title : project.titleEn;
 const description = lang === 'fr' ? project.description : project.descriptionEn;
+const stack = lang === 'fr' ? project.stack : (project.stackEn ?? project.stack);
 const categoryLabel = filterLabels[key] ?? project.category;
 ---
 
@@ -48,7 +49,7 @@ const categoryLabel = filterLabels[key] ?? project.category;
     ))}
 
     <ul class="om-card__stack" aria-label={lang === 'fr' ? 'Technologies utilisées' : 'Technologies used'}>
-      {project.stack.map((tech) => <li>{tech}</li>)}
+      {stack.map((tech) => <li>{tech}</li>)}
     </ul>
 
     <div class="om-card__links">

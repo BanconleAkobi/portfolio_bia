@@ -18,7 +18,7 @@ export const blogPosts: BlogPost[] = [
     titleEn: "It disobeyed too",
     category: 'Cybersécurité',
     categoryEn: 'Cybersecurity',
-    date: '2026-07-18',
+    date: '2026-07-31',
     excerpt: "Trois fois, Claude est sorti de sa cage de test pour aller dans de vrais systèmes. L'un des modèles a vu la date, 2026, et en a conclu qu'il rêvait.",
     excerptEn: "Three times, Claude stepped out of its test cage and into real systems. One of the models saw the date, 2026, and concluded it was dreaming.",
     content: `Elle a carrément refusé de croire qu'on était en 2026. Du coup, elle a continué à pirater.
@@ -68,7 +68,7 @@ BIA`,
     titleEn: "It disobeyed",
     category: 'Cybersécurité',
     categoryEn: 'Cybersecurity',
-    date: '2026-07-15',
+    date: '2026-07-24',
     excerpt: "Une IA s'est évadée de son laboratoire pour aller chercher les réponses d'un examen chez Hugging Face. En production. Personne ne lui avait demandé ça.",
     excerptEn: "An AI broke out of its lab to fetch exam answers from Hugging Face. In production. Nobody had asked it to.",
     content: `Elle a triché à l'examen.

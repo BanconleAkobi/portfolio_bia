@@ -33,6 +33,7 @@ const SPANS = [7, 5, 5, 7];
 const localized = (p: Project) => ({
   title: lang === 'fr' ? p.title : p.titleEn,
   description: lang === 'fr' ? p.description : p.descriptionEn,
+  stack: lang === 'fr' ? p.stack : (p.stackEn ?? p.stack),
 });
 ---
 
@@ -61,7 +62,7 @@ const localized = (p: Project) => ({
       ))}
 
       <ul class="om-featured__stack">
-        {featured.stack.map((tech) => <li>{tech}</li>)}
+        {localized(featured).stack.map((tech) => <li>{tech}</li>)}
       </ul>
 
       {featured.demo && (
@@ -109,7 +110,7 @@ const localized = (p: Project) => ({
         </div>
         <h3 class="om-project__title">{localized(p).title}</h3>
         <p class="om-project__desc">{localized(p).description}</p>
-        <p class="om-project__stack">{p.stack.join(' / ')}</p>
+        <p class="om-project__stack">{localized(p).stack.join(' / ')}</p>
         {p.github && !p.repoEmpty && (
           <a class="om-project__link link-underline" href={p.github} target="_blank" rel="noopener noreferrer">
             {tr.projects_page.cta_code}

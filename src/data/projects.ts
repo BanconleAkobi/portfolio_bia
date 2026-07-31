@@ -7,6 +7,8 @@ export interface Project {
   description: string;
   descriptionEn: string;
   stack: string[];
+  /** Traduction de `stack`, quand elle contient autre chose que des noms propres. */
+  stackEn?: string[];
   category: ProjectCategory;
   github?: string;
   demo?: string;
@@ -64,7 +66,8 @@ export const projects: Project[] = [
     titleEn: 'LanceOS',
     description: "Plateforme de gestion de projets pour freelances et indépendants. Là où leurs missions se lancent, se suivent et se règlent.\n\nGérez vos projets et laissez vos clients suivre chaque jalon. Vos factures, d'Indy ou d'ailleurs, s'y rangent aussi. Hébergé sur des serveurs français.",
     descriptionEn: 'Project management platform for freelancers and independent workers. Where their engagements start, get tracked and get settled.\n\nRun your projects and let your clients follow every milestone. Your invoices, from Indy or anywhere else, file themselves in too. Hosted on French servers.',
-    stack: ['Next.js', 'Scaleway'],
+    stack: ['Next.js', 'Scaleway', 'Conformité RGPD'],
+    stackEn: ['Next.js', 'Scaleway', 'GDPR compliance'],
     category: 'SaaS',
     demo: 'https://lanceos.eu',
     featured: true,
@@ -106,6 +109,7 @@ export const projects: Project[] = [
     description: "Gestion d'une infrastructure cloud en production : optimisation des coûts, montée en charge et automatisation des sauvegardes.",
     descriptionEn: 'Management of a production cloud infrastructure: cost optimization, scaling, and backup automation.',
     stack: ['Scaleway', 'Linux', 'Automatisation'],
+    stackEn: ['Scaleway', 'Linux', 'Automation'],
     category: 'Infrastructure',
   },
   {
@@ -146,6 +150,7 @@ export const projects: Project[] = [
     description: "Analyse quotidienne des alertes de sécurité sous Splunk, puis réplication de toute l'architecture sous Wazuh pour diviser la facture. Rédaction de la documentation SOC et Wazuh à destination des futurs analystes. Stage chez EasyDo Digital Technologies, Bucarest.",
     descriptionEn: 'Daily security alert triage in Splunk, then a full replication of the architecture on Wazuh to cut the bill. Wrote the SOC and Wazuh documentation for the analysts who follow. Internship at EasyDo Digital Technologies, Bucharest.',
     stack: ['Splunk', 'Wazuh', 'SOC', 'Réponse à incident'],
+    stackEn: ['Splunk', 'Wazuh', 'SOC', 'Incident response'],
     category: 'Cybersécurité',
     featured: true,
   },
