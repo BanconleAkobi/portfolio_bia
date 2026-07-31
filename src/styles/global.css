@@ -97,6 +97,11 @@ html {
   background-color: var(--om-bg);
   /* Ancrages sous l'en-tête collant */
   scroll-padding-top: 5.5rem;
+  /* Filet de sécurité, pas un correctif : posé sur body seul il ne retient
+     rien, html reste scrollable et on gagne une bande vide à droite. `clip`
+     plutôt que `hidden` pour ne pas créer de conteneur de défilement, qui
+     casserait le position:sticky de l'en-tête. */
+  overflow-x: clip;
 }
 
 body {
@@ -218,8 +223,12 @@ img {
   font-weight: 500;
   letter-spacing: 0.26em;
   color: var(--om-accent-ink);
-  white-space: nowrap;
-  flex: 0 0 auto;
+  /* Le morse est une texture de points et de traits : se replier sur deux
+     lignes ne lui coûte rien, alors qu'un nowrap pousse la page. Transcrit,
+     « Cybersécurité » fait 368px, soit plus large qu'un écran de téléphone. */
+  min-width: 0;
+  overflow-wrap: anywhere;
+  flex: 0 1 auto;
 }
 
 /* Filet « titre ---- morse » utilisé en tête de section */

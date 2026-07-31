@@ -95,24 +95,26 @@ const units = toUnits(WORD);
   .om-hero__main { min-width: 0; }
 
   /* --- Bande morse --- */
+  /* La bande fait 17 signes indivisibles : à taille fixe elle mesurait 410px
+     et débordait sur mobile. Chaque signe suit donc la largeur d'écran. */
   .om-hero__strip {
     display: flex;
     align-items: center;
-    gap: 6px;
-    height: 22px;
+    gap: clamp(3px, 1.1vw, 6px);
+    height: clamp(16px, 4vw, 22px);
   }
 
   .om-hero__unit {
     flex: 0 0 auto;
-    height: 9px;
+    height: clamp(6px, 1.7vw, 9px);
     border-radius: 99px;
     background: var(--om-accent);
     transition: background-color 0.18s ease, transform 0.18s ease;
   }
 
-  .om-hero__unit--dot  { width: 9px; }
-  .om-hero__unit--dash { width: 30px; }
-  .om-hero__unit--gap  { width: 16px; background: transparent; }
+  .om-hero__unit--dot  { width: clamp(5px, 1.7vw, 9px); }
+  .om-hero__unit--dash { width: clamp(16px, 5.8vw, 30px); }
+  .om-hero__unit--gap  { width: clamp(8px, 3vw, 16px); background: transparent; }
 
   /* L'état « éteint » n'existe que si le script prend la main. */
   .om-hero__strip.is-animating .om-hero__unit:not(.is-lit) {

@@ -132,6 +132,12 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     letter-spacing: 0.32em;
   }
 
+  /* Sous 420px, le nom, le morse et les trois actions ne tiennent plus sur
+     une ligne. Le morse est décoratif, c'est lui qui cède. */
+  @media (max-width: 419px) {
+    .om-logo__morse { display: none; }
+  }
+
   .om-nav {
     display: none;
     align-items: center;
