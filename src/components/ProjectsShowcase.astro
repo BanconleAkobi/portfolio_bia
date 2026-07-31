@@ -56,7 +56,9 @@ const localized = (p: Project) => ({
       </div>
 
       <h3 class="om-featured__name">{localized(featured).title}</h3>
-      <p class="om-featured__desc">{localized(featured).description}</p>
+      {localized(featured).description.split('\n\n').map((para) => (
+        <p class="om-featured__desc">{para}</p>
+      ))}
 
       <ul class="om-featured__stack">
         {featured.stack.map((tech) => <li>{tech}</li>)}

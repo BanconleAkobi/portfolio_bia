@@ -13,7 +13,7 @@ const about = tr.about;
 <BaseLayout
   lang={lang}
   title={about.title}
-  description="Banconlé AKOBI: 4th-year engineer at INSA Hauts-de-France, IT Manager, founder of LanceOS. Cybersecurity, development, public speaking."
+  description="Banconlé AKOBI: computer science and cybersecurity engineer on a work-study programme, 5th year at INSA, founder of LanceOS. Cybersecurity, development, public speaking."
 >
   <PageHero eyebrow={about.subtitle} title={about.title} signature="journey" />
 
@@ -63,7 +63,14 @@ const about = tr.about;
     </div>
     <ol class="om-timeline gsap-stagger">
       {about.timeline.map((item, i) => (
-        <TimelineItem date={item.date} title={item.title} place={item.place} desc={item.desc} index={i} />
+        <TimelineItem
+          date={item.date}
+          title={item.title}
+          place={item.place}
+          desc={item.desc}
+          index={i}
+          logos={'logos' in item ? item.logos : []}
+        />
       ))}
     </ol>
   </section>

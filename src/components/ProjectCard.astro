@@ -43,7 +43,9 @@ const categoryLabel = filterLabels[key] ?? project.category;
     </div>
 
     <h3 class="om-card__title">{title}</h3>
-    <p class="om-card__desc">{description}</p>
+    {description.split('\n\n').map((para) => (
+      <p class="om-card__desc">{para}</p>
+    ))}
 
     <ul class="om-card__stack" aria-label={lang === 'fr' ? 'Technologies utilisées' : 'Technologies used'}>
       {project.stack.map((tech) => <li>{tech}</li>)}

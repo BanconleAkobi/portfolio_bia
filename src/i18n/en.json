@@ -13,14 +13,14 @@
   },
   "hero": {
     "name": "Banconlé AKOBI",
-    "subtitle": "Computer science and cybersecurity engineer",
+    "subtitle": "Computer science and cybersecurity engineer, work-study",
     "morse_prefix": "in morse:",
     "morse_caption": "the title of my first book",
     "line1": "I code.",
     "line2": "I write.",
     "line3_lead": "And above all,",
     "line3_accent": "I speak.",
-    "intro": "Banconlé AKOBI, computer science and cybersecurity engineer, 4th year at INSA Hauts-de-France.",
+    "intro": "Banconlé AKOBI, computer science and cybersecurity engineer on a work-study programme, 5th year at INSA.",
     "meta": "2nd in France at the Inter-INSA x VINCI 2026 public speaking contest. Author of MORSE. Founder of LanceOS.",
     "cta_primary": "See what I build",
     "cta_secondary": "or just say hello",
@@ -54,19 +54,33 @@
     },
     "voice": {
       "eyebrow": "public speaking",
-      "title_lead": "Most engineers run from microphones.",
+      "title_lead": "Run from the microphone? No.",
       "title_accent": "I step up.",
-      "body": "Winner of the INSA Hauts-de-France public speaking contest, then 2nd in France at the Inter-INSA x VINCI 2026 national final. Technical skill is the foundation, speech is the signature.",
+      "body": "Winner of the INSA Hauts-de-France public speaking contest in November 2025, then 2nd in France out of eight finalists at the Inter-INSA x VINCI national final in January 2026. Technical skill is the foundation, speech is the signature.",
       "quote_source": "MORSE",
       "badges": [
         "author of MORSE",
         "winner, INSA Hauts-de-France",
-        "2nd in France"
+        "2nd in France",
+        "next stop, TEDx"
       ],
-      "photo_scene_alt": "Banconlé AKOBI at the microphone during the national public speaking final",
-      "photo_scene_caption": "national final, 2026",
-      "photo_wide_alt": "Banconlé AKOBI on stage during a public speaking contest",
-      "photo_todo": "TO BE ADDED: stage photo"
+      "groups": {
+        "ecole": {
+          "label": "Speaking up at school",
+          "meta": "INSA, lecture hall and classroom",
+          "alt": "Banconlé AKOBI speaking in front of his cohort at INSA"
+        },
+        "insahdf": {
+          "label": "INSA Hauts-de-France public speaking contest",
+          "meta": "winner, November 2025",
+          "alt": "Banconlé AKOBI at the INSA Hauts-de-France public speaking contest"
+        },
+        "finale": {
+          "label": "Inter-INSA x VINCI national final",
+          "meta": "2nd in France, January 2026",
+          "alt": "Banconlé AKOBI at the Inter-INSA x VINCI national public speaking final"
+        }
+      }
     },
     "timeline": {
       "title": "Journey",
@@ -87,18 +101,18 @@
     "items": [
       {
         "num": "01",
-        "title": "4th-year engineering student",
-        "desc": "INSA Hauts-de-France, specialization in Cybersecurity & Cloud"
+        "title": "5th-year engineering student",
+        "desc": "INSA, specializing in computer science and cybersecurity, on a work-study programme"
       },
       {
         "num": "02",
-        "title": "IT Manager @ SEMR",
-        "desc": "Apprenticeship - Scaleway infrastructure, ERP, e-commerce smartfone.fr & magicrecycle.com"
+        "title": "IT and cybersecurity engineering apprentice",
+        "desc": "MagicRecycle.com / Mobisolutions: ERP, e-commerce migrations, Scaleway infrastructure"
       },
       {
         "num": "03",
         "title": "Founder of LanceOS",
-        "desc": "All-in-one SaaS for freelancers - launched March 2026 at lanceos.eu"
+        "desc": "SaaS for France-based independent workers, at lanceos.eu"
       }
     ]
   },
@@ -123,8 +137,8 @@
       },
       {
         "icon": "shopping-bag",
-        "title": "E-commerce & PrestaShop",
-        "desc": "Major migrations, custom modules, Alma payment integration, SEO and mobile UX."
+        "title": "E-commerce and migrations",
+        "desc": "Major PrestaShop migrations, custom modules, payment integrations, SEO and mobile UX."
       },
       {
         "icon": "brain",
@@ -134,7 +148,7 @@
       {
         "icon": "mic",
         "title": "Eloquence & Communication",
-        "desc": "Winner of the INSA Hauts-de-France eloquence contest 2025-2026; 2nd place nationally - Inter-INSA x VINCI 2026. Author of MORSE, a book on personal discipline."
+        "desc": "Winner of the INSA Hauts-de-France public speaking contest in November 2025, 2nd in France at Inter-INSA x VINCI in January 2026. Author of MORSE, a book on discipline."
       }
     ]
   },
@@ -152,57 +166,89 @@
   },
   "about": {
     "title": "About",
-    "subtitle": "Engineer, author, builder",
-    "bio": "4th-year engineering student at INSA Hauts-de-France, pursuing a work-study engineering degree in computer science and cybersecurity (2024–2027). I work at the intersection of cybersecurity, full-stack development, and cloud architecture. Through my apprenticeship at SEMR (smartfone.fr / magicrecycle.com), I lead the Regeneration ERP, Scaleway infrastructure, and major e-commerce migrations.\n\nOn the ground: LanceOS (SaaS for freelancers), CTF practice (TryHackMe, 100+ challenges), and SIEM deployment (internship in Bucharest - Splunk, Wazuh).\n\nBeyond code, I authored a book on personal discipline (MORSE), won the INSA Hauts-de-France eloquence contest 2025-2026, and placed 2nd nationally at Inter-INSA x VINCI 2026.\n\nThree words: curious, organized, creative. One conviction: technical skill without vision is worthless.",
+    "subtitle": "Engineer, author, speaker",
+    "bio": "Becoming an expert in tomorrow's systems, somewhere between AI and cybersecurity. I want nothing more than to be a Swiss army knife companies can rely on.\n\nI like the technical side, but I like project management even more. I run some alone, like LanceOS, my own platform, and others as a team, because succeeding together is still what I find most satisfying.\n\nLanceOS, then: a web application for French freelancers and independent workers. Its promise fits in one sentence, it does not replace Indy. Were you expecting more? Most independent workers already use Indy, Tiime or Abby. LanceOS does not try to replace them, it brings the essentials together in one place: client tracking, which is the heart of the platform, engagements, and invoicing as an option.\n\nOn the experience side, I do not stop at my own projects. I am an IT and cybersecurity engineering apprentice, where I run and build web and AI projects. I was also a cybersecurity analyst on an international internship in Bucharest, between April and August 2026. Those two grounds are where my core skills come from: monitoring and incident response, web development, application security and compliance, and automation.\n\nIn short: I like understanding how things work and taking complicated problems apart. I have touched a fair range of subjects, from cybersecurity to websites, through migrations, automation, systems integration and application development.\n\nAnd there is more than the technical side. Public speaking matters a great deal to me: learning, passing on, defending an idea, carrying a project that stands up. At 18 I published MORSE, a book on discipline and working on oneself. One day I would like to step onto a TEDx stage as a speaker.\n\nOutside all that: manga, content creation, basketball and entrepreneurship.",
     "timeline_title": "Journey",
     "timeline": [
       {
-        "date": "May 2026 – Present",
-        "title": "Cybersecurity Internship",
-        "place": "EasyDo Digital Technologies - Bucharest, Romania",
-        "desc": "Splunk & Wazuh SIEM deployment, threat analysis, pentesting. Splunk certifications obtained."
+        "date": "April 2026 – August 2026",
+        "title": "Cybersecurity Analyst, internship",
+        "place": "EasyDo Digital Technologies, Bucharest, Romania",
+        "desc": "Daily security alert triage in Splunk. Built a full SOC on Wazuh by replicating the entire architecture, to cut the bill. Wrote the SOC and Wazuh documentation.",
+        "logos": [
+          "easydo"
+        ]
       },
       {
-        "date": "Jan 2026",
-        "title": "2nd place - National Eloquence Contest",
-        "place": "Inter-INSA x VINCI - La Défense, Paris",
-        "desc": "National finalist among engineers from France's INSA schools."
+        "date": "Jan. 2026 – Present",
+        "title": "Founder of LanceOS",
+        "place": "Versailles, Île-de-France",
+        "desc": "A platform for France-based independent workers: client, contract and project tracking, a client portal and automations. lanceos.eu",
+        "logos": [
+          "lanceos"
+        ]
       },
       {
-        "date": "Mar 2026",
-        "title": "LanceOS Launch",
-        "place": "lanceos.eu",
-        "desc": "All-in-one SaaS for freelancers: invoicing, CRM, project management."
+        "date": "Jan. 2026",
+        "title": "Finalist, Inter-INSA public speaking contest",
+        "place": "VINCI, La Défense, Île-de-France",
+        "desc": "Ranked 2nd out of eight finalists. Topic: should business replace the state on inclusion?",
+        "logos": [
+          "vinci",
+          "insa"
+        ]
       },
       {
-        "date": "Nov 2025",
-        "title": "1st prize - INSA HdF Eloquence Contest",
-        "place": "Valenciennes - 4th edition",
-        "desc": "1st prize at the internal INSA Hauts-de-France eloquence contest."
+        "date": "Nov. 2025",
+        "title": "Winner, INSA Hauts-de-France public speaking contest, 4th edition",
+        "place": "Valenciennes, Hauts-de-France",
+        "desc": "Topic: does neurodivergence belong in the workplace? Speaking in public, engineers can do that too.",
+        "logos": [
+          "insa"
+        ]
       },
       {
-        "date": "Sept 2024 – Present",
-        "title": "IT Manager Apprentice",
-        "place": "SEMR MagicRecycle / Smartfone.fr - Versailles",
-        "desc": "Scaleway infrastructure, Regeneration ERP, PrestaShop migrations, payment integrations."
+        "date": "Sept. 2024 – Present",
+        "title": "IT and cybersecurity engineering apprentice",
+        "place": "MagicRecycle.com / Mobisolutions, Le Chesnay-Rocquencourt",
+        "desc": "Project management, development of a PHP/Symfony ERP integrated with the PrestaShop and OpenSi APIs, a blog back-office for SEO, migration of three PrestaShop platforms to 8.2, Scaleway cloud infrastructure.",
+        "logos": [
+          "magicrecycle"
+        ]
       },
       {
-        "date": "Jul 2023 – Aug 2025",
-        "title": "CTF & Bug Bounty",
-        "place": "TryHackMe - Junior Pentester path",
-        "desc": "100+ challenges solved. Junior Penetration Tester path completed."
+        "date": "Sept. 2024 – 2027",
+        "title": "Engineering degree (work-study, master's level)",
+        "place": "INSA Hauts-de-France, Valenciennes",
+        "desc": "Engineering cycle under an apprenticeship contract, specializing in computer science and cybersecurity.",
+        "logos": [
+          "insa"
+        ]
+      },
+      {
+        "date": "July 2023 – August 2025",
+        "title": "CTF and bug bounty",
+        "place": "TryHackMe, Junior Penetration Tester path",
+        "desc": "Vulnerability analysis, initial access and compromise, privilege escalation, security auditing and hardening. 100+ challenges solved.",
+        "logos": [
+          "tryhackme",
+          "hackthebox"
+        ]
       },
       {
         "date": "2022 – 2024",
-        "title": "Bachelor's in Computer Science",
-        "place": "UPHF - Valenciennes",
-        "desc": "Graduated with honors."
+        "title": "Two-year computer science degree",
+        "place": "UPHF, Valenciennes",
+        "desc": "Graduated with highest honours.",
+        "logos": [
+          "uphf"
+        ]
       },
       {
         "date": "2022",
         "title": "Scientific Baccalaureate",
         "place": "Lycée Français de Lomé",
-        "desc": "Graduated with honors."
+        "desc": "Graduated with highest honours."
       }
     ],
     "values_title": "Values & Philosophy",
@@ -225,16 +271,16 @@
     ],
     "certifications_title": "Certifications & Recognition",
     "certifications": [
-      "ISC2 Security CC",
+      "ISC2 Certified in Cybersecurity",
       "TryHackMe Junior Penetration Tester",
       "Splunk Technical Selling Foundations (85%)",
-      "Splunk SEI - 3 certifications",
-      "GDPR certification (online course - ANSI website)",
-      "Udemy - Ethical Hacking",
-      "Udemy - Building a robust Symfony backend",
-      "2nd place nationally - Inter-INSA x VINCI 2026",
-      "Winner - INSA Hauts-de-France eloquence contest 2025-2026",
-      "Author of MORSE"
+      "Splunk SEI, 3 certifications",
+      "GDPR certification, ANSI online course",
+      "Udemy, Ethical Hacking",
+      "Udemy, building a robust Symfony backend",
+      "2nd in France, Inter-INSA x VINCI 2026",
+      "Winner, INSA Hauts-de-France public speaking contest 2025",
+      "Author of the book MORSE"
     ]
   },
   "projects_page": {
@@ -280,7 +326,6 @@
     "form_placeholder_message": "Describe your project or request..."
   },
   "footer": {
-    "tagline": "Crafted with precision",
     "nav_title": "Navigation",
     "contact_title": "Quick contact",
     "social_title": "Social",

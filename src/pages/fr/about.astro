@@ -13,7 +13,7 @@ const about = tr.about;
 <BaseLayout
   lang={lang}
   title={about.title}
-  description="Banconlé AKOBI : ingénieur 4e année INSA Hauts-de-France, IT Manager, fondateur de LanceOS. Cybersécurité, développement, éloquence."
+  description="Banconlé AKOBI : ingénieur informatique et cybersécurité en alternance, 5e année à l'INSA, fondateur de LanceOS. Cybersécurité, développement, éloquence."
 >
   <PageHero eyebrow={about.subtitle} title={about.title} signature="parcours" />
 
@@ -63,7 +63,14 @@ const about = tr.about;
     </div>
     <ol class="om-timeline gsap-stagger">
       {about.timeline.map((item, i) => (
-        <TimelineItem date={item.date} title={item.title} place={item.place} desc={item.desc} index={i} />
+        <TimelineItem
+          date={item.date}
+          title={item.title}
+          place={item.place}
+          desc={item.desc}
+          index={i}
+          logos={'logos' in item ? item.logos : []}
+        />
       ))}
     </ol>
   </section>
