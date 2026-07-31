@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-01-15',
     excerpt: "Les outils IA automatisent de plus en plus la détection de vulnérabilités. Est-ce la fin du bug bounty humain, ou le début d'une nouvelle collaboration ?",
     excerptEn: "AI tools are increasingly automating vulnerability detection. Is this the end of human bug bounty, or the beginning of a new collaboration?",
-    content: `L'essor des outils d'IA spécialisés en sécurité — de GPT-4 à des modèles fine-tunés sur des corpus de CVE — soulève une question légitime : est-ce que les chercheurs en sécurité vont être remplacés ?
+    content: `L'essor des outils d'IA spécialisés en sécurité, de GPT-4 à des modèles fine-tunés sur des corpus de CVE, soulève une question légitime : est-ce que les chercheurs en sécurité vont être remplacés ?
 
 **Ce que l'IA fait bien**
 
@@ -57,8 +57,8 @@ AI will kill bug bounty for basic vulnerabilities. It will democratize access to
     category: 'Dev',
     categoryEn: 'Dev',
     date: '2025-01-08',
-    excerpt: "Après 2 ans de Laravel, le passage à Symfony en alternance a été un choc — puis une révélation. Retour sur ce que chaque framework m'a appris.",
-    excerptEn: "After 2 years of Laravel, switching to Symfony in my apprenticeship was a shock — then a revelation. A look at what each framework taught me.",
+    excerpt: "Après 2 ans de Laravel, le passage à Symfony en alternance a été un choc, puis une révélation. Retour sur ce que chaque framework m'a appris.",
+    excerptEn: "After 2 years of Laravel, switching to Symfony in my apprenticeship was a shock, then a revelation. A look at what each framework taught me.",
     content: `Deux ans de Laravel en freelance. Un contrat d'alternance avec Symfony au menu. J'ai pesté. Puis j'ai compris.
 
 **Laravel : la productivité d'abord**
@@ -189,8 +189,8 @@ Flutter. Rendering consistency and performance justify learning Dart.`,
     category: 'Cybersécurité',
     categoryEn: 'Cybersecurity',
     date: '2024-11-25',
-    excerpt: "Exercice de red team sur mon propre projet. Résultats surprenants — même pour quelqu'un qui se croit prudent.",
-    excerptEn: "Red team exercise on my own project. Surprising results — even for someone who thinks they're careful.",
+    excerpt: "Exercice de red team sur mon propre projet. Résultats surprenants, même pour quelqu'un qui se croit prudent.",
+    excerptEn: "Red team exercise on my own project. Surprising results, even for someone who thinks they're careful.",
     content: `J'ai pris une semaine pour auditer un de mes projets Symfony avec les mêmes outils qu'en CTF : Burp Suite, OWASP ZAP, revue manuelle du code.
 
 **Ce que j'ai trouvé**
@@ -237,7 +237,7 @@ None of these vulnerabilities is "advanced." All are documented in the OWASP Top
 
 **Ce que j'ai fait**
 
-- Migration PrestaShop 1.7.7 → 1.7.8 (sans casser la prod — victoire)
+- Migration PrestaShop 1.7.7 → 1.7.8 (sans casser la prod, victoire)
 - Intégration paiement Alma (2x/3x/4x/10x)
 - Module custom BlockDomTom (restriction DOM-TOM)
 - Début d'ERP sur mesure en Symfony
@@ -253,12 +253,12 @@ Documenter dès le premier jour. Vraiment.
 
 **Ce qui arrive ensuite**
 
-Stage cybersécurité à Bucarest — Splunk, Wazuh, pentest en environnement entreprise réel.`,
+Stage cybersécurité à Bucarest : Splunk, Wazuh, pentest en environnement entreprise réel.`,
     contentEn: `6 months at SEMR (smartfone.fr, magicrecycle.com). Mission: IT Manager apprentice. Reality: much broader than expected.
 
 **What I did**
 
-- PrestaShop 1.7.7 → 1.7.8 migration (without breaking production — victory)
+- PrestaShop 1.7.7 → 1.7.8 migration (without breaking production, victory)
 - Alma payment integration (2x/3x/4x/10x)
 - Custom BlockDomTom module (DOM-TOM restriction)
 - Beginning of custom Symfony ERP
@@ -270,6 +270,6 @@ The difference between "I can code" and "I can manage a production system." Real
 
 **What's next**
 
-Cybersecurity internship in Bucharest — Splunk, Wazuh, pentesting in a real enterprise environment.`,
+Cybersecurity internship in Bucharest: Splunk, Wazuh, pentesting in a real enterprise environment.`,
   },
 ];
