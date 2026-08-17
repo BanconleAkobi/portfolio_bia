@@ -1,5 +1,5 @@
 ---
-import { t, getLocalePath } from '../i18n/utils';
+import { t, getLocalePath, getWritingPath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 import MorseMark from './MorseMark.astro';
 
@@ -14,6 +14,7 @@ const navItems = [
   { href: getLocalePath(lang, '/'), label: tr.nav.home },
   { href: getLocalePath(lang, '/about'), label: tr.nav.about },
   { href: getLocalePath(lang, '/projects'), label: tr.nav.projects },
+  { href: getWritingPath(lang), label: tr.nav.writing },
   { href: getLocalePath(lang, '/blog'), label: tr.nav.blog },
   { href: getLocalePath(lang, '/contact'), label: tr.nav.contact },
 ];

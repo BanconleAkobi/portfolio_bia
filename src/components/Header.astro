@@ -1,5 +1,5 @@
 ---
-import { t, getLocalePath, getOtherLang } from '../i18n/utils';
+import { t, getLocalePath, getOtherLang, getWritingPath, getAlternatePath } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 import MorseMark from './MorseMark.astro';
 
@@ -11,12 +11,13 @@ const { lang } = Astro.props;
 const tr = t(lang);
 const otherLang = getOtherLang(lang);
 const currentPath = Astro.url.pathname;
-const otherLangPath = currentPath.replace(`/${lang}`, `/${otherLang}`);
+const otherLangPath = getAlternatePath(currentPath, otherLang);
 const homePath = getLocalePath(lang, '/');
 
 const navItems = [
   { href: getLocalePath(lang, '/about'), label: tr.nav.about },
   { href: getLocalePath(lang, '/projects'), label: tr.nav.projects },
+  { href: getWritingPath(lang), label: tr.nav.writing },
   { href: getLocalePath(lang, '/blog'), label: tr.nav.blog },
 ];
 

@@ -4,7 +4,8 @@
     "about": "À propos",
     "projects": "Projets",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "writing": "Écriture"
   },
   "theme": {
     "toggle_aria": "Basculer entre le thème jour et le thème nuit",
@@ -297,6 +298,38 @@
     },
     "cta_code": "Voir le code",
     "cta_demo": "Live"
+  },
+  "writing": {
+    "title": "Écriture",
+    "subtitle": "Écrire ce que je pratique",
+    "lead": "Ingénieur cybersécurité de métier. J'écris sur ce que je pratique, donc la technique est juste et le texte reste lisible. Pas d'approximation pour faire joli, pas de jargon pour faire savant.",
+    "meta_description": "Banconlé AKOBI, ingénieur cybersécurité : articles techniques, retours d'expérience, documentation et vulgarisation cyber.",
+    "published_title": "Articles publiés",
+    "published_outlet": "Support",
+    "formats_title": "Ce que je peux écrire",
+    "formats": [
+      {
+        "title": "Articles de blog techniques",
+        "desc": "Un sujet, une démonstration, des commandes qui fonctionnent. Relu pour que rien ne soit faux."
+      },
+      {
+        "title": "Retours d'expérience",
+        "desc": "Ce qui a été monté, ce qui a cassé, ce qu'on en retient. Écrit depuis le terrain, pas depuis la documentation."
+      },
+      {
+        "title": "Documentation",
+        "desc": "Architecture, procédures, prise en main. Destinée à quelqu'un qui arrive et doit être autonome."
+      },
+      {
+        "title": "Vulgarisation cyber",
+        "desc": "Expliquer une menace ou une pratique à des lecteurs qui ne sont pas du métier, sans la déformer."
+      }
+    ],
+    "work_title": "Travailler ensemble",
+    "work_body": "Un sujet en tête, une documentation à reprendre, une série d'articles à tenir ? Écrivez-moi, je réponds sous 24 heures.",
+    "work_rate_label": "Tarif",
+    "work_rate": "TODO: à compléter",
+    "work_cta": "Me contacter"
   },
   "blog_page": {
     "title": "Blog",

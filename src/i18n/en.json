@@ -4,7 +4,8 @@
     "about": "About",
     "projects": "Projects",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "writing": "Writing"
   },
   "theme": {
     "toggle_aria": "Switch between the day and night theme",
@@ -297,6 +298,38 @@
     },
     "cta_code": "View code",
     "cta_demo": "Live"
+  },
+  "writing": {
+    "title": "Writing",
+    "subtitle": "Writing what I practise",
+    "lead": "Cybersecurity engineer by trade. I write about what I practise, so the technical side holds up and the text stays readable. No hand waving to look good, no jargon to sound clever.",
+    "meta_description": "Banconlé AKOBI, cybersecurity engineer: technical articles, field reports, documentation and cyber explainers.",
+    "published_title": "Published articles",
+    "published_outlet": "Outlet",
+    "formats_title": "What I can write",
+    "formats": [
+      {
+        "title": "Technical blog articles",
+        "desc": "One subject, one demonstration, commands that actually work. Reviewed so that nothing in it is wrong."
+      },
+      {
+        "title": "Field reports",
+        "desc": "What was built, what broke, what it taught. Written from the ground, not from the documentation."
+      },
+      {
+        "title": "Documentation",
+        "desc": "Architecture, procedures, onboarding. Written for whoever arrives next and has to work unaided."
+      },
+      {
+        "title": "Cyber explainers",
+        "desc": "Explaining a threat or a practice to readers outside the field, without distorting it."
+      }
+    ],
+    "work_title": "Working together",
+    "work_body": "A subject in mind, documentation to take over, a series of articles to keep running? Write to me, I reply within 24 hours.",
+    "work_rate_label": "Rate",
+    "work_rate": "TODO: to be filled in",
+    "work_cta": "Contact me"
   },
   "blog_page": {
     "title": "Blog",

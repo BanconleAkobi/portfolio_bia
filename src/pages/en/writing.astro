@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import MorseMark from '../../components/MorseMark.astro';
+import { t, getLocalePath } from '../../i18n/utils';
+import { publishedArticles } from '../../data/writing';
+
+const lang = 'en';
+const tr = t(lang);
+const w = tr.writing;
+
+const dateFormat = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
+---
+
+<BaseLayout lang={lang} title={w.title} description={w.meta_description}>
+  <PageHero eyebrow={w.subtitle} title={w.title} signature="writing" />
+
+  <section class="om-section om-writing">
+    <p class="om-writing__lead gsap-reveal">{w.lead}</p>
+  </section>
+
+  {/* La section ne s'affiche que s'il y a quelque chose à montrer, plutôt
+      qu'un bloc vide. Voir le TODO dans src/data/writing.ts. */}
+  {publishedArticles.length > 0 && (
+    <section class="om-section">
+      <div class="om-rule om-head gsap-reveal">
+        <h2 class="om-head__title">{w.published_title}</h2>
+        <span class="om-rule__line" aria-hidden="true"></span>
+        <MorseMark word="articles" />
+      </div>
+      <ul class="om-articles gsap-stagger">
+        {publishedArticles.map((article) => (
+          <li class="om-articles__item gsap-item">
+            <a href={article.url} class="om-articles__link" target="_blank" rel="noopener noreferrer">
+              <span class="om-articles__title">{article.titleEn}</span>
+              <span class="om-articles__meta">
+                {article.outlet}, <time datetime={article.date}>{dateFormat(article.date)}</time>
+              </span>
+              <span class="om-articles__arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="om-section">
+    <div class="om-rule om-head gsap-reveal">
+      <h2 class="om-head__title">{w.formats_title}</h2>
+      <span class="om-rule__line" aria-hidden="true"></span>
+      <MorseMark word="formats" />
+    </div>
+    <ul class="om-formats gsap-stagger">
+      {w.formats.map((format) => (
+        <li class="om-formats__card gsap-item">
+          <MorseMark word={format.title.split(' ')[0]} class="om-formats__morse" />
+          <h3 class="om-formats__title">{format.title}</h3>
+          <p class="om-formats__desc">{format.desc}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="om-section">
+    <div class="om-rule om-head gsap-reveal">
+      <h2 class="om-head__title">{w.work_title}</h2>
+      <span class="om-rule__line" aria-hidden="true"></span>
+      <MorseMark word="together" />
+    </div>
+    <div class="om-work gsap-reveal">
+      <p class="om-work__body">{w.work_body}</p>
+      {/* Le tarif ne s'affiche qu'une fois renseigné. Tant que la valeur porte
+          le marqueur TODO, la ligne reste hors de la page : un visiteur ne doit
+          pas lire « à compléter » sur un site en production. */}
+      {!w.work_rate.startsWith('TODO:') && (
+        <p class="om-work__rate">
+          <span class="om-eyebrow">{w.work_rate_label}</span>
+          <span>{w.work_rate}</span>
+        </p>
+      )}
+      <a href={getLocalePath(lang, '/contact')} class="om-btn">
+        {w.work_cta}
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .om-head {
+    margin-bottom: clamp(1.5rem, 3.5vw, 2.75rem);
+  }
+
+  .om-head__title {
+    margin: 0;
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+
+  .om-writing {
+    padding-bottom: 0;
+  }
+
+  .om-writing__lead {
+    max-width: 52ch;
+    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    color: var(--om-ink);
+  }
+
+  /* --- Articles publiés --- */
+  .om-articles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--om-line);
+  }
+
+  .om-articles__link {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    padding: 1.125rem 0.25rem;
+    border-bottom: 1px solid var(--om-line);
+    transition: color 0.25s var(--om-ease);
+  }
+
+  .om-articles__link:hover { color: var(--om-accent-ink); }
+
+  .om-articles__title {
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .om-articles__meta {
+    grid-column: 1;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    color: var(--om-ink-muted);
+  }
+
+  .om-articles__arrow {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    align-self: center;
+    color: var(--om-accent-ink);
+    transition: transform 0.25s var(--om-ease);
+  }
+
+  .om-articles__link:hover .om-articles__arrow { transform: translateX(4px); }
+
+  /* --- Formats --- */
+  .om-formats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: clamp(0.875rem, 2vw, 1.5rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .om-formats__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: clamp(1.25rem, 2.4vw, 1.75rem);
+    border: 1px solid var(--om-line);
+    border-radius: 4px;
+    transition: border-color 0.25s var(--om-ease);
+  }
+
+  .om-formats__card:hover { border-color: var(--om-line-strong); }
+
+  .om-formats__morse { font-size: 0.625rem; letter-spacing: 0.22em; }
+
+  .om-formats__title {
+    margin: 0.25rem 0 0;
+    font-size: 1.15rem;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .om-formats__desc {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--om-ink-muted);
+  }
+
+  /* --- Travailler ensemble --- */
+  .om-work {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 52ch;
+  }
+
+  .om-work__body {
+    margin: 0;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .om-work__rate {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.875rem 0;
+    border-top: 1px solid var(--om-line);
+    border-bottom: 1px solid var(--om-line);
+    width: 100%;
+    font-size: 0.9375rem;
+    color: var(--om-ink);
+  }
+</style>
