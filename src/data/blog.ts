@@ -1,5 +1,11 @@
 export interface BlogPost {
   slug: string;
+  /**
+   * Article dépublié. Il reste dans le fichier pour être réécrit plus tard,
+   * mais ne produit aucune page : il est donc absent de la liste, du sitemap
+   * et inaccessible par URL directe.
+   */
+  draft?: boolean;
   title: string;
   titleEn: string;
   category: string;
@@ -142,6 +148,7 @@ BIA`,
   },
   {
     slug: 'ia-va-tuer-bug-bounty',
+    draft: true,
     title: "L'IA va-t-elle tuer le Bug Bounty ?",
     titleEn: "Will AI Kill Bug Bounty?",
     category: 'Cybersécurité',
@@ -178,6 +185,7 @@ AI will kill bug bounty for basic vulnerabilities. It will democratize access to
   },
   {
     slug: 'pourquoi-quitte-laravel-pour-symfony',
+    draft: true,
     title: "Pourquoi j'ai quitté Laravel pour Symfony",
     titleEn: "Why I Left Laravel for Symfony",
     category: 'Dev',
@@ -222,6 +230,7 @@ Laravel for fast solo projects. Symfony for long-term team projects. Both deserv
   },
   {
     slug: 'scaleway-vs-aws-retour-experience',
+    draft: true,
     title: "Scaleway vs AWS : retour d'expérience terrain",
     titleEn: "Scaleway vs AWS: Field Experience",
     category: 'Cloud',
@@ -266,6 +275,7 @@ Scaleway. Seriously. The price-to-performance ratio and GDPR compliance win out 
   },
   {
     slug: 'flutter-vs-react-native-verdict',
+    draft: true,
     title: "Flutter vs React Native : le verdict d'un dev backend",
     titleEn: "Flutter vs React Native: A Backend Dev's Verdict",
     category: 'Dev',
@@ -310,6 +320,7 @@ Flutter. Rendering consistency and performance justify learning Dart.`,
   },
   {
     slug: 'j-ai-penteste-mon-site-7-failles',
+    draft: true,
     title: "J'ai pentesté mon propre site : 7 failles trouvées",
     titleEn: "I Pentested My Own Site: 7 Vulnerabilities Found",
     category: 'Cybersécurité',
@@ -352,6 +363,7 @@ None of these vulnerabilities is "advanced." All are documented in the OWASP Top
   },
   {
     slug: '6-mois-alternance-cybersecurite-bilan',
+    draft: true,
     title: "6 mois d'alternance en cybersécurité : bilan",
     titleEn: "6 Months of Cybersecurity Apprenticeship: A Review",
     category: 'Carrière',
@@ -399,3 +411,9 @@ The difference between "I can code" and "I can manage a production system." Real
 Cybersecurity internship in Bucharest: Splunk, Wazuh, pentesting in a real enterprise environment.`,
   },
 ];
+
+/**
+ * Les articles réellement publiés, du plus récent au plus ancien.
+ * Toute surface qui expose le blog doit partir d'ici, jamais de `blogPosts`.
+ */
+export const publishedPosts: BlogPost[] = blogPosts.filter((post) => !post.draft);

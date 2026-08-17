@@ -3,13 +3,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import BlogCard from '../../../components/BlogCard.astro';
 import { t } from '../../../i18n/utils';
-import { blogPosts } from '../../../data/blog';
+import { publishedPosts } from '../../../data/blog';
 
 const lang = 'fr';
 const tr = t(lang);
 const blog = tr.blog_page;
 
-const [featured, ...rest] = blogPosts;
+const [featured, ...rest] = publishedPosts;
 ---
 
 <BaseLayout

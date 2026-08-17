@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import MorseMark from '../../../components/MorseMark.astro';
-import { blogPosts } from '../../../data/blog';
+import { publishedPosts } from '../../../data/blog';
 
 export async function getStaticPaths() {
-  return blogPosts.map((post) => ({
+  return publishedPosts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
