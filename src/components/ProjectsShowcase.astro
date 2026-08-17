@@ -109,7 +109,9 @@ const localized = (p: Project) => ({
           <MorseMark word={p.title.slice(0, 2)} class="om-project__morse" />
         </div>
         <h3 class="om-project__title">{localized(p).title}</h3>
-        <p class="om-project__desc">{localized(p).description}</p>
+        {/* Sur la grille, seul le premier paragraphe : les cartes gardent une
+            hauteur comparable. La description complète est sur la page Projets. */}
+        <p class="om-project__desc">{localized(p).description.split('\n\n')[0]}</p>
         <p class="om-project__stack">{localized(p).stack.join(' / ')}</p>
         {p.github && !p.repoEmpty && (
           <a class="om-project__link link-underline" href={p.github} target="_blank" rel="noopener noreferrer">
