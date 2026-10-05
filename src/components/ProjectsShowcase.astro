@@ -112,7 +112,9 @@ const localized = (p: Project) => ({
         {/* Sur la grille, seul le premier paragraphe : les cartes gardent une
             hauteur comparable. La description complète est sur la page Projets. */}
         <p class="om-project__desc">{localized(p).description.split('\n\n')[0]}</p>
-        <p class="om-project__stack">{localized(p).stack.join(' / ')}</p>
+        {localized(p).stack.length > 0 && (
+          <p class="om-project__stack">{localized(p).stack.join(' / ')}</p>
+        )}
         {p.github && !p.repoEmpty && (
           <a class="om-project__link link-underline" href={p.github} target="_blank" rel="noopener noreferrer">
             {tr.projects_page.cta_code}

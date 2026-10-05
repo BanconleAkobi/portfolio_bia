@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { t } from '../../i18n/utils';
-import { projects, categoryKey } from '../../data/projects';
+import { visibleProjects, categoryKey } from '../../data/projects';
 
 const lang = 'en';
 const tr = t(lang);
@@ -11,7 +11,7 @@ const projectsTr = tr.projects_page;
 const filterLabels: Record<string, string> = projectsTr.filters;
 
 /** Catégories réellement représentées, dans l'ordre déclaré en i18n. */
-const presentKeys = new Set(projects.map((p) => categoryKey(p.category)));
+const presentKeys = new Set(visibleProjects.map((p) => categoryKey(p.category)));
 const filters = Object.entries(filterLabels).filter(
   ([key]) => key === 'all' || presentKeys.has(key as never)
 );
@@ -39,7 +39,7 @@ const filters = Object.entries(filterLabels).filter(
     </div>
 
     <div class="om-grid gsap-stagger" id="projects-grid">
-      {projects.map((project) => (
+      {visibleProjects.map((project) => (
         <ProjectCard project={project} lang={lang} />
       ))}
     </div>

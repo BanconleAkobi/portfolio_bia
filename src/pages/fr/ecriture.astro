@@ -70,15 +70,6 @@ const dateFormat = (iso: string) =>
     </div>
     <div class="om-work gsap-reveal">
       <p class="om-work__body">{w.work_body}</p>
-      {/* Le tarif ne s'affiche qu'une fois renseigné. Tant que la valeur porte
-          le marqueur TODO, la ligne reste hors de la page : un visiteur ne doit
-          pas lire « à compléter » sur un site en production. */}
-      {!w.work_rate.startsWith('TODO:') && (
-        <p class="om-work__rate">
-          <span class="om-eyebrow">{w.work_rate_label}</span>
-          <span>{w.work_rate}</span>
-        </p>
-      )}
       <a href={getLocalePath(lang, '/contact')} class="om-btn">
         {w.work_cta}
         <span aria-hidden="true">&rarr;</span>
@@ -208,19 +199,5 @@ const dateFormat = (iso: string) =>
     margin: 0;
     font-size: 1.0625rem;
     line-height: 1.6;
-  }
-
-  .om-work__rate {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.75rem;
-    margin: 0;
-    padding: 0.875rem 0;
-    border-top: 1px solid var(--om-line);
-    border-bottom: 1px solid var(--om-line);
-    width: 100%;
-    font-size: 0.9375rem;
-    color: var(--om-ink);
   }
 </style>

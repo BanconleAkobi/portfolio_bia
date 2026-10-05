@@ -48,9 +48,11 @@ const categoryLabel = filterLabels[key] ?? project.category;
       <p class="om-card__desc">{para}</p>
     ))}
 
-    <ul class="om-card__stack" aria-label={lang === 'fr' ? 'Technologies utilisées' : 'Technologies used'}>
-      {stack.map((tech) => <li>{tech}</li>)}
-    </ul>
+    {stack.length > 0 && (
+      <ul class="om-card__stack" aria-label={lang === 'fr' ? 'Technologies utilisées' : 'Technologies used'}>
+        {stack.map((tech) => <li>{tech}</li>)}
+      </ul>
+    )}
 
     <div class="om-card__links">
       {project.github && !project.repoEmpty && (

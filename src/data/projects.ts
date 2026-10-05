@@ -1,4 +1,4 @@
-export type ProjectCategory = 'Cybersécurité' | 'Web / Full-Stack' | 'SaaS' | 'IA / Académique' | 'Infrastructure' | 'Autre';
+export type ProjectCategory = 'Cybersécurité' | 'Web / Full-Stack' | 'SaaS' | 'Infrastructure' | 'Mobile' | 'IA';
 
 export interface Project {
   id: string;
@@ -10,6 +10,11 @@ export interface Project {
   /** Traduction de `stack`, quand elle contient autre chose que des noms propres. */
   stackEn?: string[];
   category: ProjectCategory;
+  /**
+   * Projet retiré de l'affichage. Il reste dans le fichier pour être repris
+   * plus tard, mais n'apparaît ni dans la grille ni dans les filtres.
+   */
+  hidden?: boolean;
   github?: string;
   demo?: string;
   featured?: boolean;
@@ -25,9 +30,9 @@ export const CATEGORY_KEYS = {
   'Cybersécurité': 'cybersecurite',
   'Web / Full-Stack': 'web',
   'SaaS': 'saas',
-  'IA / Académique': 'ia',
   'Infrastructure': 'infra',
-  'Autre': 'autre',
+  'Mobile': 'mobile',
+  'IA': 'ia',
 } as const satisfies Record<ProjectCategory, string>;
 
 export type CategoryKey = (typeof CATEGORY_KEYS)[ProjectCategory];
@@ -49,39 +54,80 @@ export const homepageFeaturedProjectIds = [
  * La liste complète reste sur la page Projets.
  */
 export const homepageGridProjectIds = [
+  'cybersecurite-ia',
   'soc-easydo',
   'ctf-labs',
   'erp-ecommerce',
-  'marketplace-amap',
+  'pecule',
   'migrations-prestashop',
   'infra-scaleway',
-  'windows-server',
-  'api-k8s-minikube',
+  'site-portfolio',
 ] as const;
 
 export const projects: Project[] = [
+  {
+    id: 'cybersecurite-ia',
+    title: "Cybersécurité de l'IA",
+    titleEn: 'AI cybersecurity',
+    description: "Sécurisation des usages de l'intelligence artificielle dans le secteur de l'assurance : audit, cartographie des usages, campagnes de sensibilisation, mise en place de solutions de sécurisation et conformité au RGPD. Alternance chez Groupe IBS, Lille.",
+    descriptionEn: "Securing artificial intelligence usage in the insurance sector: auditing, usage mapping, awareness campaigns, rollout of security solutions and GDPR compliance. Apprenticeship at Groupe IBS, Lille.",
+    // Volontairement générique : le détail des outils et des flux audités
+    // relève du client et n'a pas à figurer sur un site public.
+    stack: ['Audit', 'Cartographie', 'Sensibilisation', 'Conformité RGPD'],
+    stackEn: ['Auditing', 'Mapping', 'Awareness', 'GDPR compliance'],
+    category: 'Cybersécurité',
+  },
+  {
+    id: 'pecule',
+    title: 'Pécule, apprendre à investir',
+    titleEn: 'Pécule, learning to invest',
+    description: "Application mobile d'initiation à l'investissement. Simulation d'actifs, mini-cours et explications sur les actions, les ETF et les crypto-actifs, avec les calculs associés et une interface animée. Projet réalisé dans le cadre de la formation.",
+    descriptionEn: 'Mobile application introducing investment. Asset simulation, short courses and explanations covering stocks, ETFs and crypto assets, with the matching calculations and an animated interface. Built as part of the engineering programme.',
+    stack: ['Flutter', 'Android Studio', 'Android et iOS'],
+    stackEn: ['Flutter', 'Android Studio', 'Android and iOS'],
+    category: 'Mobile',
+  },
+  {
+    id: 'serveur-nas',
+    title: 'Serveur NAS',
+    titleEn: 'NAS server',
+    description: "Mise en place d'un serveur de stockage en réseau en entreprise : installation, partages, droits d'accès et sauvegardes.",
+    descriptionEn: 'Rollout of a network attached storage server in production: installation, shares, access rights and backups.',
+    stack: ['NAS', 'Linux', 'Sauvegardes'],
+    stackEn: ['NAS', 'Linux', 'Backups'],
+    category: 'Infrastructure',
+  },
+  {
+    id: 'modelisation-abms',
+    title: 'Modélisation multi-agents',
+    titleEn: 'Agent-based modelling',
+    description: "Modélisation orientée agents (ABMS) sous NetLogo : définition des comportements, des règles d'interaction et observation des dynamiques qui en émergent. Projet en cours.",
+    descriptionEn: 'Agent-based modelling (ABMS) in NetLogo: defining behaviours and interaction rules, then observing the dynamics that emerge from them. Work in progress.',
+    stack: ['NetLogo', 'ABMS', 'Simulation'],
+    category: 'IA',
+  },
+  {
+    id: 'site-portfolio',
+    title: 'Ce portfolio',
+    titleEn: 'This portfolio',
+    description: "Site statique bilingue, conçu et développé de bout en bout : design system sur mesure, thème clair et sombre, images optimisées au build, formulaire sans backend et balisage SEO complet.",
+    descriptionEn: 'Bilingual static site, designed and built end to end: a bespoke design system, light and dark themes, build-time image optimization, a backend-free contact form and complete SEO markup.',
+    stack: ['Astro', 'TypeScript', 'Netlify'],
+    category: 'Web / Full-Stack',
+    demo: 'https://banconle.fr',
+  },
   {
     id: 'lanceos',
     title: 'LanceOS',
     titleEn: 'LanceOS',
     description: "Plateforme de gestion de projets pour freelances et indépendants. Là où leurs missions se lancent, se suivent et se règlent.\n\nGérez vos projets et laissez vos clients suivre chaque jalon. Vos factures, d'Indy ou d'ailleurs, s'y rangent aussi. Hébergé sur des serveurs français.\n\nAudit de sécurité de 204 tests passé sur l'application, intégration continue via GitHub Actions.",
     descriptionEn: 'Project management platform for freelancers and independent workers. Where their engagements start, get tracked and get settled.\n\nRun your projects and let your clients follow every milestone. Your invoices, from Indy or anywhere else, file themselves in too. Hosted on French servers.\n\nA 204-test security audit passed on the application, continuous integration through GitHub Actions.',
-    stack: ['Next.js', 'TypeScript', 'Docker', 'OVH', 'Conformité RGPD'],
-    stackEn: ['Next.js', 'TypeScript', 'Docker', 'OVH', 'GDPR compliance'],
+    stack: ['Next.js', 'TypeScript', 'Conformité RGPD'],
+    stackEn: ['Next.js', 'TypeScript', 'GDPR compliance'],
     category: 'SaaS',
     demo: 'https://lanceos.eu',
     featured: true,
     image: '/images/projects/lanceos.png',
-  },
-  {
-    id: 'marketplace-amap',
-    title: 'Marketplace AMAP',
-    titleEn: 'AMAP Marketplace',
-    description: 'Marketplace distribuée pour une AMAP. Architecture MongoDB shardée, double frontend consommateur/producteur, API REST Spring Boot, orchestré via Docker Compose. Projet de groupe 4A ICy FISA.',
-    descriptionEn: 'Distributed marketplace for a local farm collective. Sharded MongoDB architecture, dual consumer/producer frontend, Spring Boot REST API, orchestrated via Docker Compose. Group project, 4th-year FISA.',
-    stack: ['Spring Boot', 'Java 17', 'MongoDB', 'React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Docker Compose'],
-    category: 'Web / Full-Stack',
-    github: 'https://github.com/BanconleAkobi/project_bdd',
   },
   {
     id: 'erp-ecommerce',
@@ -106,8 +152,8 @@ export const projects: Project[] = [
     id: 'infra-scaleway',
     title: 'Infrastructure cloud Scaleway',
     titleEn: 'Scaleway cloud infrastructure',
-    description: "Gestion d'une infrastructure cloud en production : optimisation des coûts, montée en charge et automatisation des sauvegardes.",
-    descriptionEn: 'Management of a production cloud infrastructure: cost optimization, scaling, and backup automation.',
+    description: "Gestion et supervision d'une infrastructure cloud en production : optimisation des coûts, montée en charge et automatisation des sauvegardes.",
+    descriptionEn: 'Management and monitoring of a production cloud infrastructure: cost optimization, scaling, and backup automation.',
     stack: ['Scaleway', 'Linux', 'Automatisation'],
     stackEn: ['Scaleway', 'Linux', 'Automation'],
     category: 'Infrastructure',
@@ -119,7 +165,7 @@ export const projects: Project[] = [
     description: 'Agent IA pour le jeu Othello/Reversi avec algorithme Minimax et élagage Alpha-Beta. Évaluation heuristique des positions de plateau.',
     descriptionEn: 'AI agent for Othello/Reversi with Minimax algorithm and Alpha-Beta pruning. Heuristic board position evaluation.',
     stack: ['Python', 'Minimax', 'Alpha-Beta Pruning'],
-    category: 'IA / Académique',
+    category: 'IA',
     github: 'https://github.com/BanconleAkobi/TP_IA_Othello',
     image: '/images/projects/othello.jpg',
   },
@@ -130,7 +176,7 @@ export const projects: Project[] = [
     description: 'Implémentation de l\'algorithme Q-Learning pour résolution de problèmes de navigation/décision. TP d\'apprentissage par renforcement FISA 4A.',
     descriptionEn: 'Q-Learning algorithm implementation for navigation/decision problems. Reinforcement learning lab, 4th-year FISA.',
     stack: ['Python', 'Q-Learning', 'Reinforcement Learning'],
-    category: 'IA / Académique',
+    category: 'IA',
     github: 'https://github.com/BanconleAkobi/Q_learning',
     repoEmpty: true,
   },
@@ -141,7 +187,7 @@ export const projects: Project[] = [
     description: 'Implémentation d\'un mini Enterprise Service Bus avec communication asynchrone via RabbitMQ. Routage de messages, files d\'attente et intégration inter-services.',
     descriptionEn: 'Mini Enterprise Service Bus with asynchronous messaging via RabbitMQ. Message routing, queues, and inter-service integration.',
     stack: ['Java', 'RabbitMQ', 'Message Architecture'],
-    category: 'IA / Académique',
+    category: 'Infrastructure',
   },
   {
     id: 'soc-easydo',
@@ -173,7 +219,8 @@ export const projects: Project[] = [
     description: 'Implémentation du jeu Tron en local avec moteur de collision, rendu graphique temps réel et gestion des inputs joueurs.',
     descriptionEn: 'Local Tron game implementation with collision engine, real-time graphics, and player input management.',
     stack: ['Java', 'JavaFX', 'Spring Boot'],
-    category: 'Autre',
+    hidden: true,
+    category: 'Web / Full-Stack',
   },
   {
     id: 'ticket-manager',
@@ -192,7 +239,7 @@ export const projects: Project[] = [
     description: 'Application de chat client-serveur multi-utilisateurs avec programmation socket bas niveau.',
     descriptionEn: 'Multi-user client-server chat application using low-level socket programming.',
     stack: ['C', 'Sockets', 'TCP/IP'],
-    category: 'Autre',
+    category: 'Infrastructure',
     github: 'https://github.com/BanconleAkobi/C_Chat',
   },
   {
@@ -202,7 +249,7 @@ export const projects: Project[] = [
     description: 'Site d\'accompagnement des personnes handicapées lors d\'un festival. Projet Creathon axé accessibilité web.',
     descriptionEn: 'Website assisting people with disabilities at a festival. Creathon project focused on web accessibility.',
     stack: ['HTML', 'CSS', 'Web Design'],
-    category: 'Autre',
+    category: 'Web / Full-Stack',
     github: 'https://github.com/BanconleAkobi/Creathon_project',
     image: '/images/projects/creathon.png',
   },
@@ -232,6 +279,12 @@ export const projects: Project[] = [
     description: 'Travaux pratiques : exploration et modélisation de données avec RStudio, expérimentations sous Weka (classifieurs, prétraitement).',
     descriptionEn: 'Labs: data exploration and modeling with RStudio, experiments in Weka (classifiers, preprocessing).',
     stack: ['R', 'RStudio', 'Weka', 'Data mining'],
-    category: 'IA / Académique',
+    category: 'IA',
   },
 ];
+
+/**
+ * Les projets réellement exposés. Toute surface qui liste des projets doit
+ * partir d'ici, jamais de `projects`.
+ */
+export const visibleProjects: Project[] = projects.filter((project) => !project.hidden);
