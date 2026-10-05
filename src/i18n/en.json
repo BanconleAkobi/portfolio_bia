@@ -181,12 +181,12 @@
         ],
         "branches": [
           {
-            "date": "Sept. 2024 – Oct. 2026",
-            "title": "IT and cybersecurity engineering apprentice",
-            "place": "MagicRecycle.com / Mobisolutions, Le Chesnay-Rocquencourt",
-            "desc": "Web development day to day: design and maintenance of a PHP/Symfony ERP integrated with the PrestaShop and OpenSi APIs, a blog back-office for SEO, migration of three PrestaShop platforms to 8.2. Also project management and Scaleway cloud infrastructure.",
+            "date": "Since Oct. 2026",
+            "title": "Cybersecurity and AI apprentice",
+            "place": "Groupe IBS, Lille",
+            "desc": "Fifth year of apprenticeship, in the insurance sector. AI cybersecurity: auditing, mapping, awareness campaigns, rollout of security solutions and GDPR compliance.",
             "logos": [
-              "magicrecycle"
+              "ibs"
             ]
           },
           {
@@ -199,12 +199,12 @@
             ]
           },
           {
-            "date": "Since Oct. 2026",
-            "title": "Cybersecurity and AI apprentice",
-            "place": "Groupe IBS, Lille",
-            "desc": "Fifth year of apprenticeship, in the insurance sector. AI cybersecurity: auditing, mapping, awareness campaigns, rollout of security solutions and GDPR compliance.",
+            "date": "Sept. 2024 – Oct. 2026",
+            "title": "IT and cybersecurity engineering apprentice",
+            "place": "MagicRecycle.com / Mobisolutions, Le Chesnay-Rocquencourt",
+            "desc": "Web development day to day: design and maintenance of a PHP/Symfony ERP integrated with the PrestaShop and OpenSi APIs, a blog back-office for SEO, migration of three PrestaShop platforms to 8.2. Also project management and Scaleway cloud infrastructure.",
             "logos": [
-              "ibs"
+              "magicrecycle"
             ]
           }
         ]

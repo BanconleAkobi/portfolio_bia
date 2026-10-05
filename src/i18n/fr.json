@@ -181,12 +181,12 @@
         ],
         "branches": [
           {
-            "date": "Sept. 2024 – Oct. 2026",
-            "title": "Alternant ingénieur IT et cybersécurité",
-            "place": "MagicRecycle.com / Mobisolutions, Le Chesnay-Rocquencourt",
-            "desc": "Développement web au quotidien : conception et maintenance d'un ERP en PHP/Symfony intégré aux API PrestaShop et OpenSi, back-office de blog pour le SEO, migration de trois plateformes PrestaShop vers la 8.2. Également gestion de projets et infrastructure cloud Scaleway.",
+            "date": "Depuis oct. 2026",
+            "title": "Alternant cybersécurité et IA",
+            "place": "Groupe IBS, Lille",
+            "desc": "Cinquième année d'alternance dans le secteur de l'assurance. Cybersécurité de l'IA : audit, cartographie, campagnes de sensibilisation, mise en place de solutions de sécurisation et conformité au RGPD.",
             "logos": [
-              "magicrecycle"
+              "ibs"
             ]
           },
           {
@@ -199,12 +199,12 @@
             ]
           },
           {
-            "date": "Depuis oct. 2026",
-            "title": "Alternant cybersécurité et IA",
-            "place": "Groupe IBS, Lille",
-            "desc": "Cinquième année d'alternance dans le secteur de l'assurance. Cybersécurité de l'IA : audit, cartographie, campagnes de sensibilisation, mise en place de solutions de sécurisation et conformité au RGPD.",
+            "date": "Sept. 2024 – Oct. 2026",
+            "title": "Alternant ingénieur IT et cybersécurité",
+            "place": "MagicRecycle.com / Mobisolutions, Le Chesnay-Rocquencourt",
+            "desc": "Développement web au quotidien : conception et maintenance d'un ERP en PHP/Symfony intégré aux API PrestaShop et OpenSi, back-office de blog pour le SEO, migration de trois plateformes PrestaShop vers la 8.2. Également gestion de projets et infrastructure cloud Scaleway.",
             "logos": [
-              "ibs"
+              "magicrecycle"
             ]
           }
         ]
