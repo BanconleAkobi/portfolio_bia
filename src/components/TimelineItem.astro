@@ -1,32 +1,60 @@
 ---
 import OrgLogo from './OrgLogo.astro';
 
-interface Props {
+export interface TimelineEntry {
   date: string;
   title: string;
   place: string;
   desc: string;
-  index: number;
-  /** Clés des organisations à illustrer sur la ligne. */
   logos?: string[];
 }
 
-const { date, title, place, desc, logos = [] } = Astro.props;
+interface Props extends TimelineEntry {
+  index: number;
+  /**
+   * Étapes rattachées à cette ligne. La formation porte ainsi les contrats
+   * et le stage qui se déroulent pendant elle, dans une seconde colonne
+   * séparée par un filet, au lieu de les éparpiller dans la liste.
+   */
+  branches?: TimelineEntry[];
+}
+
+const { date, title, place, desc, logos = [], branches = [] } = Astro.props;
+const hasBranches = branches.length > 0;
 ---
 
-<li class="om-tl gsap-item">
+<li class:list={['om-tl', hasBranches && 'om-tl--split']}>
   <span class="om-tl__marker" aria-hidden="true">
     <span class="om-tl__dot"></span>
     <span class="om-tl__line"></span>
   </span>
-  <div class="om-tl__content">
-    <span class="om-tl__date">{date}</span>
-    <h3 class="om-tl__title">{title}</h3>
-    <p class="om-tl__place">
-      <OrgLogo keys={logos} />
-      <span>{place}</span>
-    </p>
-    <p class="om-tl__desc">{desc}</p>
+
+  <div class="om-tl__body">
+    <div class="om-tl__content gsap-item">
+      <span class="om-tl__date">{date}</span>
+      <h3 class="om-tl__title">{title}</h3>
+      <p class="om-tl__place">
+        <OrgLogo keys={logos} />
+        <span>{place}</span>
+      </p>
+      <p class="om-tl__desc">{desc}</p>
+    </div>
+
+    {hasBranches && (
+      <ol class="om-tl__branches">
+        {branches.map((branch) => (
+          <li class="om-tl__branch gsap-item">
+            <span class="om-tl__date">{branch.date}</span>
+            <h4 class="om-tl__branch-title">{branch.title}</h4>
+            <p class="om-tl__place">
+              <OrgLogo keys={branch.logos ?? []} />
+              <span>{branch.place}</span>
+            </p>
+            <p class="om-tl__desc">{branch.desc}</p>
+          </li>
+        ))}
+      </ol>
+    )}
   </div>
 </li>
 
@@ -66,11 +94,17 @@ const { date, title, place, desc, logos = [] } = Astro.props;
 
   .om-tl:last-child .om-tl__line { display: none; }
 
+  .om-tl__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    padding-bottom: 2.25rem;
+  }
+
   .om-tl__content {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    padding-bottom: 2.25rem;
   }
 
   .om-tl__date {
@@ -105,5 +139,65 @@ const { date, title, place, desc, logos = [] } = Astro.props;
     font-size: 0.9375rem;
     line-height: 1.55;
     color: var(--om-ink-muted);
+  }
+
+  /* --- Seconde colonne : les étapes vécues pendant la formation --- */
+  .om-tl__branches {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .om-tl__branch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    /* Chaque étape s'accroche au filet qui sépare les deux colonnes. */
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .om-tl__branch::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.75rem;
+    height: 1px;
+    background: var(--om-line);
+  }
+
+  .om-tl__branch-title {
+    margin: 0.15rem 0 0;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--om-ink);
+  }
+
+  @media (min-width: 900px) {
+    /* La formation à gauche, ce qu'elle a contenu à droite, un filet entre
+       les deux. En dessous de 900px les colonnes s'empilent et le filet
+       passe à gauche des étapes, ce qui garde la hiérarchie lisible. */
+    .om-tl--split .om-tl__body {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+      align-items: start;
+    }
+
+    .om-tl--split .om-tl__branches {
+      border-left: 1px solid var(--om-line);
+      padding-left: clamp(1.25rem, 2.5vw, 2rem);
+    }
+
+    .om-tl--split .om-tl__branch {
+      padding-left: 0;
+    }
+
+    .om-tl--split .om-tl__branch::before {
+      display: none;
+    }
   }
 </style>

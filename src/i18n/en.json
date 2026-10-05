@@ -107,8 +107,8 @@
       },
       {
         "num": "02",
-        "title": "IT and cybersecurity engineering apprentice",
-        "desc": "MagicRecycle.com / Mobisolutions: ERP, e-commerce migrations, Scaleway infrastructure"
+        "title": "Cybersecurity and AI apprentice",
+        "desc": "Groupe IBS, Lille: auditing, AI usage mapping, security rollout and GDPR compliance"
       },
       {
         "num": "03",
@@ -123,18 +123,18 @@
     "items": [
       {
         "icon": "shield",
-        "title": "Cybersecurity & Pentesting",
-        "desc": "Splunk, Wazuh, Kali Linux, Burp Suite, TryHackMe Junior Penetration Tester. Log analysis, SIEM, CTF."
+        "title": "Cybersecurity and SOC",
+        "desc": "Splunk, Wazuh, Kali Linux, Burp Suite. Alert triage, incident response, auditing and hardening. TryHackMe Junior Penetration Tester path, 100+ challenges."
       },
       {
         "icon": "code",
-        "title": "Full-Stack Development",
+        "title": "Full-stack development",
         "desc": "Next.js, Symfony, Spring Boot, React, TypeScript. From REST APIs to polished editorial frontends."
       },
       {
         "icon": "cloud",
-        "title": "Cloud Architecture & DevOps",
-        "desc": "Scaleway, Docker Compose, CI/CD, sharded MongoDB, infrastructure migrations."
+        "title": "Infrastructure and cloud",
+        "desc": "Scaleway, containerization, Kubernetes orchestration, backup automation, monitoring and cost control."
       },
       {
         "icon": "shopping-bag",
@@ -143,12 +143,12 @@
       },
       {
         "icon": "brain",
-        "title": "AI & Machine Learning",
-        "desc": "Minimax, Q-Learning, game heuristics. Python, academic and applied approaches."
+        "title": "AI and AI security",
+        "desc": "Auditing and mapping of AI usage, awareness, security rollout and GDPR compliance. On the model side: Minimax, Q-Learning, agent-based modelling."
       },
       {
         "icon": "mic",
-        "title": "Eloquence & Communication",
+        "title": "Public speaking",
         "desc": "Winner of the INSA Hauts-de-France public speaking contest in November 2025, 2nd in France at Inter-INSA x VINCI in January 2026. Author of MORSE, a book on discipline."
       }
     ]
@@ -168,16 +168,45 @@
   "about": {
     "title": "About",
     "subtitle": "Engineer, author, speaker",
-    "bio": "Becoming an expert in tomorrow's systems, somewhere between AI and cybersecurity. I want nothing more than to be a Swiss army knife companies can rely on.\n\nI like the technical side, but I like project management even more. I run some alone, like LanceOS, my own platform, and others as a team, because succeeding together is still what I find most satisfying.\n\nLanceOS, then: a web application for French freelancers and independent workers. Its promise fits in one sentence, it does not replace Indy. Were you expecting more? Most independent workers already use Indy, Tiime or Abby. LanceOS does not try to replace them, it brings the essentials together in one place: client tracking, which is the heart of the platform, engagements, and invoicing as an option.\n\nOn the experience side, I do not stop at my own projects. I am an IT and cybersecurity engineering apprentice, where I run and build web and AI projects. I was also a cybersecurity analyst on an international internship in Bucharest, between April and August 2026. Those two grounds are where my core skills come from: monitoring and incident response, web development, application security and compliance, and automation.\n\nIn short: I like understanding how things work and taking complicated problems apart. I have touched a fair range of subjects, from cybersecurity to websites, through migrations, automation, systems integration and application development.\n\nAnd there is more than the technical side. Public speaking matters a great deal to me: learning, passing on, defending an idea, carrying a project that stands up. At 18 I published MORSE, a book on discipline and working on oneself. One day I would like to step onto a TEDx stage as a speaker.\n\nOutside all that: running, with a 10 km Foulée Valenciennoise finished in 49 minutes, basketball, entrepreneurship, and a lot of reading, usually in English.",
+    "bio": "Becoming an expert in tomorrow's systems, somewhere between AI and cybersecurity. I want nothing more than to be a Swiss army knife companies can rely on.\n\nI like the technical side, but I like project management even more. I run some alone, like LanceOS, my own platform, and others as a team, because succeeding together is still what I find most satisfying.\n\nLanceOS, then: a web application for French freelancers and independent workers. Its promise fits in one sentence, it does not replace Indy. Were you expecting more? Most independent workers already use Indy, Tiime or Abby. LanceOS does not try to replace them, it brings the essentials together in one place: client tracking, which is the heart of the platform, engagements, and invoicing as an option.\n\nOn the experience side, I do not stop at my own projects. Two years of apprenticeship in web development and infrastructure, then a cybersecurity analyst internship abroad, in Bucharest between April and August 2026, closed with an excellent assessment from my supervisors. Since October 2026 I have been in my fifth apprenticeship year at Groupe IBS, in Lille, working on AI cybersecurity: auditing, usage mapping, awareness, security rollout and GDPR compliance. Those grounds are where my core skills come from: monitoring and incident response, web development, application security and compliance, and automation.\n\nIn short: I like understanding how things work and taking complicated problems apart. I have touched a fair range of subjects, from cybersecurity to websites, through migrations, automation, systems integration and application development.\n\nAnd there is more than the technical side. Public speaking matters a great deal to me: learning, passing on, defending an idea, carrying a project that stands up. At 18 I published MORSE, a book on discipline and working on oneself. One day I would like to step onto a TEDx stage as a speaker.\n\nOutside all that: running, with a 10 km Foulée Valenciennoise finished in 49 minutes, basketball, entrepreneurship, and a lot of reading, usually in English.",
     "timeline_title": "Journey",
     "timeline": [
       {
-        "date": "April 2026 – August 2026",
-        "title": "Cybersecurity Analyst, internship",
-        "place": "EasyDo Digital Technologies, Bucharest, Romania",
-        "desc": "Daily security alert triage in Splunk. Built a full SOC on Wazuh by replicating the entire architecture, to cut the bill. Wrote the SOC and Wazuh documentation.",
+        "date": "Sept. 2024 – 2027",
+        "title": "Engineering degree (work-study, master's level)",
+        "place": "INSA Hauts-de-France, Valenciennes",
+        "desc": "Engineering cycle under an apprenticeship contract, specializing in computer science and cybersecurity.",
         "logos": [
-          "easydo"
+          "insa"
+        ],
+        "branches": [
+          {
+            "date": "Sept. 2024 – Oct. 2026",
+            "title": "IT and cybersecurity engineering apprentice",
+            "place": "MagicRecycle.com / Mobisolutions, Le Chesnay-Rocquencourt",
+            "desc": "Web development day to day: design and maintenance of a PHP/Symfony ERP integrated with the PrestaShop and OpenSi APIs, a blog back-office for SEO, migration of three PrestaShop platforms to 8.2. Also project management and Scaleway cloud infrastructure.",
+            "logos": [
+              "magicrecycle"
+            ]
+          },
+          {
+            "date": "April 2026 – August 2026",
+            "title": "Cybersecurity analyst",
+            "place": "EasyDo Digital Technologies, Bucharest",
+            "desc": "Mandatory international internship of the engineering cycle, closed with an excellent assessment from the supervisors. Daily alert triage in Splunk, deployment of a Wazuh SIEM running alongside it, SOC architecture documentation.",
+            "logos": [
+              "easydo"
+            ]
+          },
+          {
+            "date": "Since Oct. 2026",
+            "title": "Cybersecurity and AI apprentice",
+            "place": "Groupe IBS, Lille",
+            "desc": "Fifth year of apprenticeship, in the insurance sector. AI cybersecurity: auditing, mapping, awareness campaigns, rollout of security solutions and GDPR compliance.",
+            "logos": [
+              "ibs"
+            ]
+          }
         ]
       },
       {
@@ -204,24 +233,6 @@
         "title": "Winner, INSA Hauts-de-France public speaking contest, 4th edition",
         "place": "Valenciennes, Hauts-de-France",
         "desc": "Topic: does neurodivergence belong in the workplace? Speaking in public, engineers can do that too.",
-        "logos": [
-          "insa"
-        ]
-      },
-      {
-        "date": "Sept. 2024 – Present",
-        "title": "IT and cybersecurity engineering apprentice",
-        "place": "MagicRecycle.com / Mobisolutions, Le Chesnay-Rocquencourt",
-        "desc": "Project management, development of a PHP/Symfony ERP integrated with the PrestaShop and OpenSi APIs, a blog back-office for SEO, migration of three PrestaShop platforms to 8.2, Scaleway cloud infrastructure.",
-        "logos": [
-          "magicrecycle"
-        ]
-      },
-      {
-        "date": "Sept. 2024 – 2027",
-        "title": "Engineering degree (work-study, master's level)",
-        "place": "INSA Hauts-de-France, Valenciennes",
-        "desc": "Engineering cycle under an apprenticeship contract, specializing in computer science and cybersecurity.",
         "logos": [
           "insa"
         ]
@@ -292,9 +303,9 @@
       "cybersecurite": "Cybersecurity",
       "web": "Web / Full-Stack",
       "saas": "SaaS",
-      "ia": "AI / Academic",
       "infra": "Infrastructure",
-      "autre": "Other"
+      "mobile": "Mobile",
+      "ia": "AI"
     },
     "cta_code": "View code",
     "cta_demo": "Live"
@@ -327,8 +338,6 @@
     ],
     "work_title": "Working together",
     "work_body": "A subject in mind, documentation to take over, a series of articles to keep running? Write to me, I reply within 24 hours.",
-    "work_rate_label": "Rate",
-    "work_rate": "TODO: to be filled in",
     "work_cta": "Contact me"
   },
   "blog_page": {

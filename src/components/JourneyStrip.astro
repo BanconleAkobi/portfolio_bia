@@ -11,7 +11,19 @@ interface Props {
 const { lang } = Astro.props;
 const tr = t(lang);
 const copy = tr.home.timeline;
-const timeline = tr.about.timeline;
+
+/**
+ * L'accueil est un résumé : les étapes rattachées à la formation y sont
+ * aplaties en lignes ordinaires, légèrement décalées. La mise en deux
+ * colonnes est réservée à la page Parcours détaillé.
+ */
+const timeline = tr.about.timeline.flatMap((item) => {
+  const branches = 'branches' in item ? item.branches : [];
+  return [
+    { ...item, nested: false },
+    ...branches.map((branch) => ({ ...branch, nested: true })),
+  ];
+});
 ---
 
 <section class="om-journey" id="parcours">
@@ -23,7 +35,7 @@ const timeline = tr.about.timeline;
 
   <ol class="om-journey__list">
     {timeline.map((item) => (
-      <li class="om-journey__row gsap-reveal">
+      <li class:list={['om-journey__row', 'gsap-reveal', item.nested && 'om-journey__row--nested']}>
         <span class="om-journey__date">{item.date}</span>
         <span class="om-journey__label">
           <span class="om-journey__role">{item.title}</span>
@@ -78,6 +90,13 @@ const timeline = tr.about.timeline;
     border-bottom: 1px solid var(--om-line);
   }
 
+  /* Une étape rattachée se lit comme un sous-niveau, sans puce ni filet
+     supplémentaire : un simple retrait et un libellé plus discret. */
+  .om-journey__row--nested .om-journey__role {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-weight: 500;
+  }
+
   .om-journey__date {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -121,6 +140,10 @@ const timeline = tr.about.timeline;
   }
 
   @media (min-width: 820px) {
+    .om-journey__row--nested {
+      padding-left: clamp(1rem, 3vw, 2.5rem);
+    }
+
     .om-journey__row {
       grid-template-columns: minmax(7rem, 1fr) 3fr minmax(0, 2fr);
       gap: clamp(0.75rem, 2.5vw, 2rem);
