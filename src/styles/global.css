@@ -6,9 +6,9 @@
    ========================================================================== */
 
 @theme {
-  --color-om-bg: #F1EBDD;
-  --color-om-ink: #171310;
-  --color-om-accent: #E8501E;
+  --color-om-bg: #F4F4F5;
+  --color-om-ink: #111113;
+  --color-om-accent: #4338CA;
 
   --font-sans: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
@@ -16,26 +16,25 @@
 }
 
 :root {
-  /* --- Tokens MORSE, variante Jour --- */
-  --om-bg: #F1EBDD;
-  --om-bg-veil: rgba(241, 235, 221, 0.94);
-  --om-surface: #ECE4D3;
-  --om-surface-soft: rgba(23, 19, 16, 0.045);
-  --om-ink: #171310;
-  --om-ink-muted: #5E5951;
-  --om-line: rgba(23, 19, 16, 0.14);
-  --om-line-strong: rgba(23, 19, 16, 0.28);
+  /* --- Thème clair : gris froid neutre, accent indigo --- */
+  --om-bg: #F4F4F5;
+  --om-bg-veil: rgba(244, 244, 245, 0.94);
+  --om-surface: #FFFFFF;
+  --om-surface-soft: rgba(17, 17, 19, 0.04);
+  --om-ink: #111113;
+  --om-ink-muted: #56565E;
+  --om-line: rgba(17, 17, 19, 0.12);
+  --om-line-strong: rgba(17, 17, 19, 0.26);
 
-  /* Accent décoratif : réservé aux grands titres, aux traits et aux aplats. */
-  --om-accent: #E8501E;
-  /* Accent lisible : pour tout texte sous 24px (contraste AA sur le fond). */
-  --om-accent-ink: #BC3C0E;
-  /* Encre posée sur un aplat accent. Le texte clair sur orange plafonne à
-     3,7:1, donc jamais AA : c'est l'encre foncée qui va sur l'accent. */
-  --om-on-accent: #171310;
-  --om-on-ink: #F1EBDD;
-  --om-on-ink-muted: rgba(241, 235, 221, 0.66);
-  --om-on-ink-line: rgba(241, 235, 221, 0.2);
+  /* L'indigo passe le AA partout sur ce fond, y compris en petit texte :
+     une seule valeur suffit là où l'orange en demandait deux. */
+  --om-accent: #4338CA;
+  --om-accent-ink: #4338CA;
+  --om-on-accent: #FFFFFF;
+
+  --om-on-ink: #F4F4F5;
+  --om-on-ink-muted: rgba(244, 244, 245, 0.66);
+  --om-on-ink-line: rgba(244, 244, 245, 0.2);
 
   --om-danger: #B3261E;
 
@@ -50,37 +49,42 @@
 }
 
 :root[data-theme="nuit"] {
-  --om-bg: #16110D;
-  --om-bg-veil: rgba(22, 17, 13, 0.94);
-  --om-surface: #1E1813;
-  --om-surface-soft: rgba(241, 235, 221, 0.05);
-  --om-ink: #F1EBDD;
-  --om-ink-muted: rgba(241, 235, 221, 0.66);
-  --om-line: rgba(241, 235, 221, 0.18);
-  --om-line-strong: rgba(241, 235, 221, 0.34);
+  --om-bg: #0F0F11;
+  --om-bg-veil: rgba(15, 15, 17, 0.94);
+  --om-surface: #17171A;
+  --om-surface-soft: rgba(244, 244, 245, 0.05);
+  --om-ink: #F2F2F3;
+  --om-ink-muted: #9C9CA6;
+  --om-line: rgba(244, 244, 245, 0.16);
+  --om-line-strong: rgba(244, 244, 245, 0.32);
 
-  --om-accent: #F0662E;
-  --om-accent-ink: #F0662E;
-  --om-on-accent: #16110D;
-  --om-on-ink: #16110D;
-  --om-on-ink-muted: rgba(22, 17, 13, 0.72);
-  --om-on-ink-line: rgba(22, 17, 13, 0.24);
+  /* L'indigo brut tombe à 2,4:1 sur fond sombre : il s'éclaircit. */
+  --om-accent: #A5B4FC;
+  --om-accent-ink: #A5B4FC;
+  --om-on-accent: #0F0F11;
 
-  --om-danger: #FF7A6E;
+  --om-on-ink: #0F0F11;
+  --om-on-ink-muted: rgba(15, 15, 17, 0.72);
+  --om-on-ink-line: rgba(15, 15, 17, 0.24);
+
+  --om-danger: #FF8A80;
 }
 
 /* Un bloc « encre » prend toujours le fond inverse de la page : sombre en
    thème Jour, clair en thème Nuit. L'accent doit donc être recalculé pour
    rester lisible sur le fond du bloc, et non sur celui de la page. */
 .om-inked {
-  /* Fond sombre : l'accent vif passe le AA tel quel. */
-  --om-accent-ink: var(--om-accent);
+  /* Fond sombre : l'indigo s'éclaircit, 9,5:1. */
+  --om-accent: #A5B4FC;
+  --om-accent-ink: #A5B4FC;
+  --om-on-accent: #0F0F11;
 }
 
 :root[data-theme="nuit"] .om-inked {
-  /* Fond clair : on reprend le couple accent du thème Jour. */
-  --om-accent: #E8501E;
-  --om-accent-ink: #BC3C0E;
+  /* Fond clair : on reprend l'indigo du thème Jour, 7,2:1. */
+  --om-accent: #4338CA;
+  --om-accent-ink: #4338CA;
+  --om-on-accent: #FFFFFF;
 }
 
 *,

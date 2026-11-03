@@ -47,7 +47,7 @@ const enUrl = new URL(getAlternatePath(Astro.url.pathname, 'en'), Astro.site).hr
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#F1EBDD" id="theme-color-meta" />
+  <meta name="theme-color" content="#F4F4F5" id="theme-color-meta" />
 
   <title>{pageTitle}</title>
   <meta name="description" content={pageDesc} />
@@ -97,7 +97,7 @@ const enUrl = new URL(getAlternatePath(Astro.url.pathname, 'en'), Astro.site).hr
         if (saved === 'nuit' || saved === 'jour') root.dataset.theme = saved;
       } catch (e) { /* stockage indisponible : on garde « jour » */ }
       var meta = document.getElementById('theme-color-meta');
-      if (meta) meta.setAttribute('content', root.dataset.theme === 'nuit' ? '#16110D' : '#F1EBDD');
+      if (meta) meta.setAttribute('content', root.dataset.theme === 'nuit' ? '#0F0F11' : '#F4F4F5');
     })();
   </script>
 
