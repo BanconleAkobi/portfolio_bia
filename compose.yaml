@@ -1,0 +1,21 @@
+name: portfolio
+
+services:
+  dev:
+    build: .
+    command: npm run dev -- --host --allowed-hosts .orb.local
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  preview:
+    profiles: [preview]
+    build: .
+    command: sh -c "npm run build && npm run preview -- --host --allowed-hosts .orb.local"
+    ports:
+      - "4322:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
