@@ -305,7 +305,7 @@ Voir section 2.
 |---|---|---|
 | `profile.jpeg` | 1,9 Mo | **Jamais référencé nulle part.** Suppression pure. |
 | `projects/creathon.png` | 1,5 Mo | Une carte projet |
-| `projects/lanceos.png` | 1,3 Mo | La carte vedette de l'accueil |
+| `projects/lanceos.webp` | 97 Ko | La carte vedette de l'accueil |
 | `og-image.png` | 760 Ko | Image de partage |
 
 Déplacer ces fichiers vers `src/assets/` et les référencer par import les

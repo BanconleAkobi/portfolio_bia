@@ -127,7 +127,7 @@ export const projects: Project[] = [
     category: 'SaaS',
     demo: 'https://lanceos.eu',
     featured: true,
-    image: '/images/projects/lanceos.png',
+    image: '/images/projects/lanceos.webp',
   },
   {
     id: 'erp-ecommerce',

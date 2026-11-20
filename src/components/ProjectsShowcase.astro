@@ -75,7 +75,7 @@ const localized = (p: Project) => ({
 
     <div class="om-featured__shot">
       {featured.image ? (
-        <img src={featured.image} alt={`${localized(featured).title}`} loading="lazy" decoding="async" width="1200" height="750" />
+        <img src={featured.image} alt={`${localized(featured).title}`} loading="lazy" decoding="async" width="2000" height="1093" />
       ) : (
         <span class="om-frame__placeholder">{localized(featured).title}</span>
       )}
@@ -263,7 +263,7 @@ const localized = (p: Project) => ({
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: top left;
   }
 
   /* --- Filtres --- */
