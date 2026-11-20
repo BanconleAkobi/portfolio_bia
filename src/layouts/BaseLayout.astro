@@ -47,7 +47,7 @@ const enUrl = new URL(getAlternatePath(Astro.url.pathname, 'en'), Astro.site).hr
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#F4F4F5" id="theme-color-meta" />
+  <meta name="theme-color" content="#F4F5F7" id="theme-color-meta" />
 
   <title>{pageTitle}</title>
   <meta name="description" content={pageDesc} />
@@ -76,28 +76,28 @@ const enUrl = new URL(getAlternatePath(Astro.url.pathname, 'en'), Astro.site).hr
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!--
-    Polices variables : Bricolage Grotesque (axes opsz + wght en une seule
-    ressource), Instrument Serif pour l'italique de signature, JetBrains Mono
-    pour le morse et les micro-libellés.
+    Space Grotesk pour les titres et le texte, JetBrains Mono pour le morse
+    et les micro-libellés.
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Thème appliqué avant peinture, pour éviter tout flash -->
+  <!-- Thème appliqué avant peinture, pour éviter tout flash. Le choix
+       enregistré prime, à défaut on suit le réglage de l'appareil. -->
   <script is:inline>
     (function () {
       var root = document.documentElement;
       root.classList.remove('no-js');
-      try {
-        var saved = localStorage.getItem('om-theme');
-        if (saved === 'nuit' || saved === 'jour') root.dataset.theme = saved;
-      } catch (e) { /* stockage indisponible : on garde « jour » */ }
+      var saved = null;
+      try { saved = localStorage.getItem('om-theme'); } catch (e) { /* stockage indisponible */ }
+      var prefersNuit = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = saved === 'nuit' || saved === 'jour' ? saved : (prefersNuit ? 'nuit' : 'jour');
       var meta = document.getElementById('theme-color-meta');
-      if (meta) meta.setAttribute('content', root.dataset.theme === 'nuit' ? '#0F0F11' : '#F4F4F5');
+      if (meta) meta.setAttribute('content', root.dataset.theme === 'nuit' ? '#0B0D10' : '#F4F5F7');
     })();
   </script>
 
@@ -195,8 +195,8 @@ const enUrl = new URL(getAlternatePath(Astro.url.pathname, 'en'), Astro.site).hr
       top: 0;
       z-index: 9999;
       padding: 0.85rem 1.25rem;
-      background: var(--om-ink);
-      color: var(--om-on-ink);
+      background: var(--om-accent);
+      color: var(--om-on-accent);
       font-family: var(--font-mono);
       font-size: 0.75rem;
       letter-spacing: 0.16em;

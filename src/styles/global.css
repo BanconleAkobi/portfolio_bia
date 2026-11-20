@@ -1,90 +1,60 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   MORSE - Système de design
-   Palette chaude « Jour » par défaut, variante « Nuit » via [data-theme].
+   SIGNAL - Système de design
+   Thème « Jour » clair et « Nuit » sombre via [data-theme], accent ambre.
    ========================================================================== */
 
 @theme {
-  --color-om-bg: #F4F4F5;
-  --color-om-ink: #111113;
-  --color-om-accent: #4338CA;
+  --color-om-bg: #F4F5F7;
+  --color-om-ink: #0E1116;
+  --color-om-accent: #F2B33D;
 
-  --font-sans: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 :root {
-  /* --- Thème clair : gris froid neutre, accent indigo --- */
-  --om-bg: #F4F4F5;
-  --om-bg-veil: rgba(244, 244, 245, 0.94);
+  --om-bg: #F4F5F7;
+  --om-bg-veil: rgba(244, 245, 247, 0.94);
   --om-surface: #FFFFFF;
-  --om-surface-soft: rgba(17, 17, 19, 0.04);
-  --om-ink: #111113;
-  --om-ink-muted: #56565E;
-  --om-line: rgba(17, 17, 19, 0.12);
-  --om-line-strong: rgba(17, 17, 19, 0.26);
+  --om-surface-soft: rgba(14, 17, 22, 0.04);
+  --om-ink: #0E1116;
+  --om-ink-soft: #2E343C;
+  --om-ink-muted: #5B636E;
+  --om-line: rgba(14, 17, 22, 0.12);
+  --om-line-strong: rgba(14, 17, 22, 0.24);
 
-  /* L'indigo passe le AA partout sur ce fond, y compris en petit texte :
-     une seule valeur suffit là où l'orange en demandait deux. */
-  --om-accent: #4338CA;
-  --om-accent-ink: #4338CA;
-  --om-on-accent: #FFFFFF;
-
-  --om-on-ink: #F4F4F5;
-  --om-on-ink-muted: rgba(244, 244, 245, 0.66);
-  --om-on-ink-line: rgba(244, 244, 245, 0.2);
+  /* L'ambre vif sert aux aplats. Sur fond clair il tombe sous 2:1 en texte,
+     d'où une teinte foncée réservée aux textes et liens (5,9:1). */
+  --om-accent: #F2B33D;
+  --om-accent-ink: #79591E;
+  --om-on-accent: #0B0D10;
 
   --om-danger: #B3261E;
 
   --om-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --om-shell: 1400px;
-  --om-gutter: clamp(1.25rem, 5vw, 5rem);
+  --om-shell: 1280px;
+  --om-gutter: clamp(1.25rem, 5vw, 4rem);
 
-  --font-sans: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-
 }
 
 :root[data-theme="nuit"] {
-  --om-bg: #0F0F11;
-  --om-bg-veil: rgba(15, 15, 17, 0.94);
-  --om-surface: #17171A;
-  --om-surface-soft: rgba(244, 244, 245, 0.05);
-  --om-ink: #F2F2F3;
-  --om-ink-muted: #9C9CA6;
-  --om-line: rgba(244, 244, 245, 0.16);
-  --om-line-strong: rgba(244, 244, 245, 0.32);
+  --om-bg: #0B0D10;
+  --om-bg-veil: rgba(11, 13, 16, 0.94);
+  --om-surface: #12161B;
+  --om-surface-soft: rgba(232, 234, 237, 0.05);
+  --om-ink: #E8EAED;
+  --om-ink-soft: #C9CED4;
+  --om-ink-muted: #9AA3AE;
+  --om-line: rgba(232, 234, 237, 0.12);
+  --om-line-strong: rgba(232, 234, 237, 0.22);
 
-  /* L'indigo brut tombe à 2,4:1 sur fond sombre : il s'éclaircit. */
-  --om-accent: #A5B4FC;
-  --om-accent-ink: #A5B4FC;
-  --om-on-accent: #0F0F11;
-
-  --om-on-ink: #0F0F11;
-  --om-on-ink-muted: rgba(15, 15, 17, 0.72);
-  --om-on-ink-line: rgba(15, 15, 17, 0.24);
+  --om-accent-ink: #F2B33D;
 
   --om-danger: #FF8A80;
-}
-
-/* Un bloc « encre » prend toujours le fond inverse de la page : sombre en
-   thème Jour, clair en thème Nuit. L'accent doit donc être recalculé pour
-   rester lisible sur le fond du bloc, et non sur celui de la page. */
-.om-inked {
-  /* Fond sombre : l'indigo s'éclaircit, 9,5:1. */
-  --om-accent: #A5B4FC;
-  --om-accent-ink: #A5B4FC;
-  --om-on-accent: #0F0F11;
-}
-
-:root[data-theme="nuit"] .om-inked {
-  /* Fond clair : on reprend l'indigo du thème Jour, 7,2:1. */
-  --om-accent: #4338CA;
-  --om-accent-ink: #4338CA;
-  --om-on-accent: #FFFFFF;
 }
 
 *,
@@ -120,26 +90,13 @@ body {
   transition: background-color 0.4s var(--om-ease), color 0.4s var(--om-ease);
 }
 
-/* Grain papier, très discret */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 128px 128px;
-}
-
 /* --------------------------------------------------------------------------
    Typographie
    -------------------------------------------------------------------------- */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.035em;
   color: var(--om-ink);
@@ -148,8 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: clamp(2.6rem, 8vw, 6rem);
-  font-weight: 800;
-  line-height: 0.9;
+  line-height: 0.94;
   letter-spacing: -0.045em;
 }
 
@@ -163,18 +119,15 @@ h3 {
 }
 
 p {
-  color: var(--om-ink-muted);
+  color: var(--om-ink-soft);
   font-size: 1rem;
   line-height: 1.65;
 }
 
-/* L'italique serif est la signature du design : un mot mis en relief. */
-.om-serif {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--om-accent);
+/* Le mot mis en relief d'un titre, signature du design. */
+.om-accent-word {
+  font-style: normal;
+  color: var(--om-accent-ink);
 }
 
 a {
@@ -301,22 +254,20 @@ img {
   gap: 0.75rem;
   padding: 0.9rem 1.6rem;
   min-height: 48px;
-  border: 1px solid var(--om-ink);
+  border: 1px solid var(--om-accent);
   border-radius: 999px;
-  background: var(--om-ink);
-  color: var(--om-on-ink);
+  background: var(--om-accent);
+  color: var(--om-on-accent);
   font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   cursor: pointer;
-  transition: transform 0.25s var(--om-ease), background-color 0.25s var(--om-ease), color 0.25s var(--om-ease);
+  transition: transform 0.25s var(--om-ease), filter 0.25s var(--om-ease);
 }
 
 .om-btn:hover {
-  background: var(--om-accent);
-  border-color: var(--om-accent);
-  color: var(--om-on-accent);
+  filter: brightness(1.08);
   transform: translateY(-2px);
 }
 
@@ -346,30 +297,6 @@ img {
   background: var(--om-surface-soft);
 }
 
-/* Bouton accent plein, pour les appels à l'action secondaires */
-/* Sur un bloc encre, les boutons s'inversent */
-.om-inked .om-btn {
-  background: var(--om-accent);
-  border-color: var(--om-accent);
-  color: var(--om-on-accent);
-}
-
-.om-inked .om-btn:hover {
-  background: var(--om-on-ink);
-  border-color: var(--om-on-ink);
-  color: var(--om-ink);
-}
-
-.om-inked .om-btn--ghost {
-  border-color: var(--om-on-ink-line);
-  color: var(--om-on-ink);
-}
-
-.om-inked .om-btn--ghost:hover {
-  border-color: var(--om-on-ink);
-  color: var(--om-on-ink);
-}
-
 /* --------------------------------------------------------------------------
    Structure
    -------------------------------------------------------------------------- */
@@ -385,32 +312,6 @@ img {
   max-width: var(--om-shell);
   margin: 0 auto;
   padding-inline: var(--om-gutter);
-}
-
-/* Bloc « encre » : fond foncé, texte clair, comme dans le prototype */
-.om-inked {
-  background: var(--om-ink);
-  color: var(--om-on-ink);
-}
-
-.om-inked h1,
-.om-inked h2,
-.om-inked h3,
-.om-inked h4 {
-  color: var(--om-on-ink);
-}
-
-.om-inked p {
-  color: var(--om-on-ink-muted);
-}
-
-.om-inked .om-eyebrow,
-.om-inked .mono {
-  color: var(--om-on-ink-muted);
-}
-
-.om-inked .om-morse {
-  color: var(--om-accent-ink);
 }
 
 /* Emplacements photo : ratios imposés par le design */
@@ -447,22 +348,9 @@ img {
   color: var(--om-ink-muted);
 }
 
-.om-inked .om-frame {
-  border-color: var(--om-on-ink-line);
-}
-
-.om-inked .om-frame__placeholder {
-  color: var(--om-on-ink-muted);
-}
-
 /* --------------------------------------------------------------------------
    Animations
    -------------------------------------------------------------------------- */
-
-@keyframes om-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 
 @keyframes om-rise {
   from { opacity: 0; transform: translateY(0.5em); }

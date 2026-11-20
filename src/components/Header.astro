@@ -122,7 +122,7 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
 
   .om-logo__name {
     font-size: 1.0625rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--om-ink);
     white-space: nowrap;
@@ -162,8 +162,8 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   }
 
   .om-nav__pill {
-    color: var(--om-ink);
-    border: 1px solid var(--om-ink);
+    color: var(--om-accent-ink);
+    border: 1px solid var(--om-accent-ink);
     border-radius: 999px;
     padding: 0.6rem 1rem;
     transition: background-color 0.25s var(--om-ease), color 0.25s var(--om-ease);
@@ -171,8 +171,9 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
 
   .om-nav__pill:hover,
   .om-nav__pill.is-active {
-    background: var(--om-ink);
-    color: var(--om-on-ink);
+    background: var(--om-accent);
+    border-color: var(--om-accent);
+    color: var(--om-on-accent);
   }
 
   .om-header__actions {
@@ -302,7 +303,7 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     function syncToggle() {
       var isNuit = root.dataset.theme === 'nuit';
       if (toggle) toggle.setAttribute('aria-pressed', String(isNuit));
-      if (meta) meta.setAttribute('content', isNuit ? '#0F0F11' : '#F4F4F5');
+      if (meta) meta.setAttribute('content', isNuit ? '#0B0D10' : '#F4F5F7');
     }
     syncToggle();
 

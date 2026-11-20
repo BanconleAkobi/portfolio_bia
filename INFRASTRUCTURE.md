@@ -175,7 +175,7 @@ domaines tiers** pour s'afficher et s'animer correctement :
 
 | Domaine | Ce qui en vient | Si indisponible |
 |---|---|---|
-| `fonts.googleapis.com` et `fonts.gstatic.com` | Bricolage Grotesque, Instrument Serif, JetBrains Mono | Repli sur les polices système, mise en page conservée mais identité visuelle perdue |
+| `fonts.googleapis.com` et `fonts.gstatic.com` | Space Grotesk, JetBrains Mono | Repli sur les polices système, mise en page conservée mais identité visuelle perdue |
 | `cdnjs.cloudflare.com` | GSAP 3.12.5 et ScrollTrigger | Les animations d'apparition ne se déclenchent pas |
 
 Le second cas est couvert : `BaseLayout.astro` vérifie la présence de `gsap`
