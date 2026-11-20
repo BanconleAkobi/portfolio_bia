@@ -29,16 +29,12 @@
     "portrait_caption": "portrait"
   },
   "home": {
-    "marquee": [
-      "cybersécurité",
-      "éloquence",
-      "SaaS",
-      "discipline",
-      "LanceOS",
-      "cloud",
-      "pentesting",
-      "full-stack"
-    ],
+    "writing": {
+      "title": "Ce que j’écris",
+      "all": "Tout le blog",
+      "book_label": "livre / publié à 18 ans",
+      "book_desc": "Un livre sur la discipline et le travail sur soi."
+    },
     "manifesto": {
       "eyebrow": "Manifeste",
       "line": "La technique sans vision ne vaut",
@@ -58,7 +54,6 @@
       "title_lead": "Fuir les micros ? Non.",
       "title_accent": "J’y monte.",
       "body": "Vainqueur du concours d'éloquence de l'INSA Hauts-de-France en novembre 2025, puis 2e de France sur huit finalistes à la finale nationale Inter-INSA x VINCI en janvier 2026. La technique est le socle, la parole est la signature.",
-      "quote_source": "MORSE",
       "badges": [
         "auteur de MORSE",
         "vainqueur INSA Hauts-de-France",

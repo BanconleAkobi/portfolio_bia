@@ -29,16 +29,12 @@
     "portrait_caption": "portrait"
   },
   "home": {
-    "marquee": [
-      "cybersecurity",
-      "public speaking",
-      "SaaS",
-      "discipline",
-      "LanceOS",
-      "cloud",
-      "pentesting",
-      "full-stack"
-    ],
+    "writing": {
+      "title": "What I write",
+      "all": "The whole blog",
+      "book_label": "book / published at 18",
+      "book_desc": "A book about discipline and working on yourself."
+    },
     "manifesto": {
       "eyebrow": "Manifesto",
       "line": "Technical skill without vision is worth",
@@ -58,7 +54,6 @@
       "title_lead": "Run from the microphone? No.",
       "title_accent": "I step up.",
       "body": "Winner of the INSA Hauts-de-France public speaking contest in November 2025, then 2nd in France out of eight finalists at the Inter-INSA x VINCI national final in January 2026. Technical skill is the foundation, speech is the signature.",
-      "quote_source": "MORSE",
       "badges": [
         "author of MORSE",
         "winner, INSA Hauts-de-France",

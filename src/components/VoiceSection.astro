@@ -45,7 +45,7 @@ const groups = [
   .filter((g) => g.images.length > 0);
 ---
 
-<section class="om-voice om-inked" id="voix">
+<section class="om-voice" id="voix">
   <div class="om-voice__grid">
     <div class="om-voice__text">
       <div class="om-rule om-voice__eyebrow">
@@ -54,16 +54,11 @@ const groups = [
       </div>
 
       <h2 class="om-voice__title">
-        {voice.title_lead} <em class="om-serif">{voice.title_accent}</em>
+        {voice.title_lead} <em class="om-accent-word">{voice.title_accent}</em>
       </h2>
 
       <div class="om-voice__body">
         <p class="om-voice__lead">{voice.body}</p>
-
-        <blockquote class="om-voice__quote">
-          <p>{tr.quote.text}</p>
-        </blockquote>
-        <p class="om-voice__source">{tr.quote.author}, {voice.quote_source}</p>
       </div>
 
       <ul class="om-voice__badges">
@@ -126,7 +121,7 @@ const groups = [
     font-family: var(--font-mono);
     font-size: 0.625rem;
     letter-spacing: 0.2em;
-    color: var(--om-on-ink-muted);
+    color: var(--om-ink-muted);
   }
 
   .om-voice__title {
@@ -134,7 +129,7 @@ const groups = [
     font-size: clamp(2.2rem, 7vw, 5rem);
     line-height: 0.94;
     letter-spacing: -0.04em;
-    font-weight: 800;
+    font-weight: 600;
     max-width: 18ch;
   }
 
@@ -149,31 +144,7 @@ const groups = [
     margin: 0;
     font-size: clamp(1rem, 1.4vw, 1.2rem);
     line-height: 1.5;
-    color: var(--om-on-ink);
-  }
-
-  .om-voice__quote {
-    margin: 0;
-    padding-left: 1.25rem;
-    border-left: 2px solid var(--om-accent);
-  }
-
-  .om-voice__quote p {
-    margin: 0;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(1.35rem, 2.6vw, 2rem);
-    line-height: 1.22;
-    letter-spacing: -0.01em;
-    color: var(--om-on-ink);
-  }
-
-  .om-voice__source {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.16em;
-    color: var(--om-on-ink-muted);
+    color: var(--om-ink);
   }
 
   .om-voice__badges {
@@ -189,10 +160,10 @@ const groups = [
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.14em;
-    border: 1px solid var(--om-on-ink-line);
+    border: 1px solid var(--om-line);
     border-radius: 999px;
     padding: 0.5rem 0.8rem;
-    color: var(--om-on-ink);
+    color: var(--om-ink);
   }
 
   /* --- Blocs de vignettes --- */
@@ -217,14 +188,14 @@ const groups = [
     font-size: 0.9375rem;
     font-weight: 600;
     letter-spacing: -0.015em;
-    color: var(--om-on-ink);
+    color: var(--om-ink);
   }
 
   .om-gal__meta {
     font-family: var(--font-mono);
     font-size: 0.625rem;
     letter-spacing: 0.16em;
-    color: var(--om-on-ink-muted);
+    color: var(--om-ink-muted);
   }
 
   /* Autant de colonnes que de photos : deux ou trois selon le groupe. */
@@ -241,8 +212,8 @@ const groups = [
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 4px;
-    border: 1px solid var(--om-on-ink-line);
-    background: var(--om-on-ink-line);
+    border: 1px solid var(--om-line);
+    background: var(--om-line);
   }
 
   .om-gal__thumb :global(img) {

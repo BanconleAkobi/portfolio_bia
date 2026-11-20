@@ -46,7 +46,7 @@ const localized = (p: Project) => ({
   </div>
 
   <!-- LanceOS en vedette -->
-  <article class="om-featured om-inked gsap-reveal">
+  <article class="om-featured gsap-reveal">
     <div class="om-featured__body">
       <div class="om-featured__status">
         <span class="om-featured__live">
@@ -75,7 +75,7 @@ const localized = (p: Project) => ({
 
     <div class="om-featured__shot">
       {featured.image ? (
-        <img src={featured.image} alt={`${localized(featured).title}`} loading="lazy" decoding="async" width="1200" height="750" />
+        <img src={featured.image} alt={`${localized(featured).title}`} loading="lazy" decoding="async" width="2000" height="1093" />
       ) : (
         <span class="om-frame__placeholder">{localized(featured).title}</span>
       )}
@@ -171,8 +171,9 @@ const localized = (p: Project) => ({
   .om-featured {
     display: grid;
     grid-template-columns: 1fr;
-    border: 1px solid var(--om-ink);
-    border-radius: 4px;
+    border: 1px solid var(--om-line);
+    border-radius: 10px;
+    background: var(--om-surface);
     overflow: hidden;
   }
 
@@ -202,7 +203,7 @@ const localized = (p: Project) => ({
     border: 1px solid var(--om-accent);
     border-radius: 999px;
     padding: 0.3rem 0.65rem;
-    color: var(--om-on-ink);
+    color: var(--om-ink);
   }
 
   .om-featured__dot {
@@ -212,14 +213,14 @@ const localized = (p: Project) => ({
     background: var(--om-accent);
   }
 
-  .om-featured__kind { color: var(--om-on-ink-muted); }
+  .om-featured__kind { color: var(--om-ink-muted); }
 
   .om-featured__name {
     margin: 0;
-    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
     line-height: 0.94;
     letter-spacing: -0.04em;
-    font-weight: 800;
+    font-weight: 600;
   }
 
   .om-featured__desc {
@@ -243,8 +244,8 @@ const localized = (p: Project) => ({
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.08em;
-    color: var(--om-on-ink-muted);
-    border: 1px solid var(--om-on-ink-line);
+    color: var(--om-ink-muted);
+    border: 1px solid var(--om-line);
     border-radius: 999px;
     padding: 0.375rem 0.7rem;
   }
@@ -254,15 +255,15 @@ const localized = (p: Project) => ({
   .om-featured__shot {
     position: relative;
     min-height: min(56vw, 320px);
-    background: var(--om-on-ink-line);
-    border-top: 1px solid var(--om-on-ink-line);
+    background: var(--om-line);
+    border-top: 1px solid var(--om-line);
   }
 
   .om-featured__shot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: top left;
   }
 
   /* --- Filtres --- */
@@ -294,9 +295,9 @@ const localized = (p: Project) => ({
   }
 
   .om-filters__btn.is-active {
-    background: var(--om-ink);
-    border-color: var(--om-ink);
-    color: var(--om-on-ink);
+    background: var(--om-accent);
+    border-color: var(--om-accent);
+    color: var(--om-on-accent);
   }
 
   /* --- Grille --- */
@@ -313,7 +314,8 @@ const localized = (p: Project) => ({
     gap: 0.875rem;
     min-width: 0;
     border: 1px solid var(--om-line);
-    border-radius: 4px;
+    border-radius: 10px;
+    background: var(--om-surface);
     padding: clamp(1.25rem, 2.4vw, 2rem);
     transition: border-color 0.25s var(--om-ease);
   }
@@ -341,7 +343,7 @@ const localized = (p: Project) => ({
     font-size: clamp(1.35rem, 2.4vw, 2rem);
     line-height: 1.02;
     letter-spacing: -0.03em;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .om-project__desc {
@@ -387,7 +389,7 @@ const localized = (p: Project) => ({
 
     .om-featured__shot {
       border-top: none;
-      border-left: 1px solid var(--om-on-ink-line);
+      border-left: 1px solid var(--om-line);
     }
 
     .om-project { grid-column: span var(--om-span, 6); }

@@ -47,6 +47,15 @@ npm run preview  # sert dist/ pour vérification avant push
 
 Le build prend environ 3 secondes et produit 27 pages.
 
+### Environnement Docker
+
+`Dockerfile` et `compose.yaml` permettent de travailler sans Node sur la
+machine. Le service `dev` lance `astro dev` avec les sources montées, le
+service `preview` (profil `preview`) lance un build suivi de `astro preview`.
+Docker ne sert qu'au poste local : la production reste le build Netlify. Les
+redirections et en-têtes de `netlify.toml` ne sont donc pas appliqués en local.
+Commandes dans le [README](README.md).
+
 ### Dépendances déclarées mais inutilisées
 
 `gsap` (3.14.2) et `lucide-astro` (0.556.0) figurent dans `package.json` mais ne
@@ -166,7 +175,7 @@ domaines tiers** pour s'afficher et s'animer correctement :
 
 | Domaine | Ce qui en vient | Si indisponible |
 |---|---|---|
-| `fonts.googleapis.com` et `fonts.gstatic.com` | Bricolage Grotesque, Instrument Serif, JetBrains Mono | Repli sur les polices système, mise en page conservée mais identité visuelle perdue |
+| `fonts.googleapis.com` et `fonts.gstatic.com` | Space Grotesk, JetBrains Mono | Repli sur les polices système, mise en page conservée mais identité visuelle perdue |
 | `cdnjs.cloudflare.com` | GSAP 3.12.5 et ScrollTrigger | Les animations d'apparition ne se déclenchent pas |
 
 Le second cas est couvert : `BaseLayout.astro` vérifie la présence de `gsap`
@@ -296,7 +305,7 @@ Voir section 2.
 |---|---|---|
 | `profile.jpeg` | 1,9 Mo | **Jamais référencé nulle part.** Suppression pure. |
 | `projects/creathon.png` | 1,5 Mo | Une carte projet |
-| `projects/lanceos.png` | 1,3 Mo | La carte vedette de l'accueil |
+| `projects/lanceos.webp` | 97 Ko | La carte vedette de l'accueil |
 | `og-image.png` | 760 Ko | Image de partage |
 
 Déplacer ces fichiers vers `src/assets/` et les référencer par import les
@@ -329,7 +338,7 @@ preview* est la parade la moins coûteuse.
 
 - pas de backend, pas d'API, pas de base de données
 - pas de variables d'environnement ni de secrets
-- pas de conteneur, pas de Dockerfile
+- pas de conteneur en production (Docker ne sert qu'au développement local)
 - pas de CI/CD hors du build Netlify
 - pas d'analytics, pas de tracking, pas de cookies
 - pas de service worker, pas de mode hors ligne

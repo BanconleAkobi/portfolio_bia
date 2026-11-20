@@ -20,7 +20,7 @@ const dateFormatted = new Date(date).toLocaleDateString(lang === 'fr' ? 'fr-FR' 
 });
 ---
 
-<article class:list={['om-post', 'gsap-item', featured && 'om-post--featured', featured && 'om-inked']}>
+<article class:list={['om-post', 'gsap-item', featured && 'om-post--featured']}>
   <div class="om-post__meta">
     <span>{category}</span>
     <time datetime={date}>{dateFormatted}</time>
@@ -50,7 +50,8 @@ const dateFormatted = new Date(date).toLocaleDateString(lang === 'fr' ? 'fr-FR' 
     gap: 0.875rem;
     padding: clamp(1.25rem, 2.4vw, 1.875rem);
     border: 1px solid var(--om-line);
-    border-radius: 4px;
+    border-radius: 10px;
+    background: var(--om-surface);
     transition: border-color 0.25s var(--om-ease), transform 0.25s var(--om-ease);
   }
 
@@ -61,7 +62,7 @@ const dateFormatted = new Date(date).toLocaleDateString(lang === 'fr' ? 'fr-FR' 
 
   .om-post--featured {
     grid-column: 1 / -1;
-    border-color: var(--om-ink);
+    border-color: var(--om-accent);
   }
 
   .om-post__meta {
@@ -76,8 +77,6 @@ const dateFormatted = new Date(date).toLocaleDateString(lang === 'fr' ? 'fr-FR' 
     text-transform: uppercase;
     color: var(--om-ink-muted);
   }
-
-  .om-post--featured .om-post__meta { color: var(--om-on-ink-muted); }
 
   .om-post__title {
     margin: 0;
@@ -102,12 +101,10 @@ const dateFormatted = new Date(date).toLocaleDateString(lang === 'fr' ? 'fr-FR' 
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
   .om-post__link:hover { color: var(--om-accent-ink); }
-
-  .om-post--featured .om-post__link { color: var(--om-on-ink); }
 
   .om-post__excerpt {
     margin: 0;
@@ -116,8 +113,6 @@ const dateFormatted = new Date(date).toLocaleDateString(lang === 'fr' ? 'fr-FR' 
     line-height: 1.6;
     color: var(--om-ink-muted);
   }
-
-  .om-post--featured .om-post__excerpt { color: var(--om-on-ink-muted); }
 
   .om-post__footer {
     display: flex;
